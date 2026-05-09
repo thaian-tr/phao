@@ -1,130 +1,177 @@
 # phao
-I
-1. Các lĩnh vực chức năng của quản trị mạng (Theo mô hình ISO) Công tác quản trị mạng được chia thành 5 lĩnh vực chức năng chính: 
-•	Quản lý lỗi (Fault Management): Đây là lĩnh vực phức tạp nhất, có nhiệm vụ phát hiện, ghi nhận, thông báo và tự động khắc phục lỗi để duy trì hiệu quả hoạt động của mạng. 
-•	Quản lý cấu hình (Configuration Management): Theo dõi và thu thập thông tin cấu hình hệ thống (phần cứng, phần mềm) và lưu trữ vào cơ sở dữ liệu để phân tích. 
-•	Quản lý kiểm toán/kế toán (Accounting Management): Đo lường việc sử dụng tài nguyên, phân tích mẫu sử dụng và thiết lập hạn ngạch cho người dùng để khai thác hệ thống hiệu quả nhất. 
-•	Quản lý hiệu năng (Performance Management): Đo lường và quản lý băng thông, thời gian hồi đáp để duy trì hiệu năng mạng ở mức có thể truy cập được. 
-•	Quản lý an ninh (Security Management): Điều khiển truy cập tài nguyên dựa trên đặc quyền để bảo vệ các dữ liệu nhạy cảm khỏi người dùng không được phép. 
-
-2. Kiến trúc hệ thống quản trị mạng và Kỹ thuật giám sát
-•	Kiến trúc: Bao gồm Thực thể quản trị (trạm quản lý trung tâm - NMS) và Thực thể bị quản trị (các thiết bị mạng chứa Agent và cơ sở dữ liệu quản lý). 
-•	Phương thức Poll (Get): Trạm quản lý (Manager) chủ động hỏi thông tin định kỳ từ thiết bị (Device). Cách này giúp lấy đúng thông tin cần thiết nhưng có thể cập nhật chậm hoặc bỏ sót sự kiện nếu chu kỳ hỏi dài. 
-•	Phương thức Alert (Trap): Thiết bị tự động gửi thông báo cho Manager ngay khi có sự kiện/biến cố xảy ra. Cách này giúp cập nhật tức thời, nhưng nếu đường truyền gián đoạn thì Manager sẽ không nhận được cảnh báo. 
-
-3. Giao thức quản trị mạng đơn giản (SNMP)
-•	SNMP được dùng để quản lý các thiết bị mạng chạy trên nền TCP/IP, hoạt động trên giao thức UDP (Port 161 cho Polling và Port 162 cho Trapping). 
-•	Thành phần dữ liệu: Các thông tin của thiết bị được gọi là đối tượng (Object) và được nhận dạng bằng mã số OID (Object ID). Tập hợp các đối tượng này tạo thành cơ sở thông tin quản trị MIB (Management Information Base). 
-•	Các bản tin phương thức hoạt động:
-  o	GetRequest / GetNextRequest: Manager yêu cầu Agent cung cấp thông tin của đối tượng (dựa vào OID) hoặc đối tượng kế tiếp trong cây MIB. 
-  o	SetRequest: Manager yêu cầu thiết lập lại giá trị cho một đối tượng trên Agent (đối tượng phải có quyền READ_WRITE). 
-  o	GetResponse: Agent gửi trả lời cho Manager khi nhận được các bản tin Get hoặc Set. 
-  o	Trap: Agent chủ động gửi cảnh báo (có thể là generic trap hoặc specific trap) cho Manager khi có sự kiện bất thường xảy ra. 
-•	Cơ chế bảo mật của SNMP:
-  o	Community string: Đóng vai trò như "mật khẩu" giao tiếp giữa Manager và Agent (gồm Read, Write và Trap community). 
-  o	View: Giới hạn quyền, chỉ cho phép đọc một phần cụ thể của cây MIB tương ứng với community string. 
-  o	SNMP Access Control List (ACL): Thiết lập danh sách các địa chỉ IP của Manager được phép truy cập và quản lý Agent. 
-
-II
-2.1. Bộ định tuyến (Router)
-•	Chức năng chính: Hoạt động ở tầng mạng (tầng 3 mô hình OSI), có nhiệm vụ kết nối nhiều mạng khác nhau (LAN, MAN, WAN) và tìm đường đi tối ưu (định tuyến) để chuyển tiếp các gói tin dựa vào địa chỉ IP. 
-•	Chức năng khác: Kiểm soát tắc nghẽn, đảm bảo chất lượng dịch vụ (QoS), phân mảnh/ghép dữ liệu, quản lý địa chỉ (NAT, DHCP), tích hợp tường lửa và quản trị mạng. 
-•	Thành phần cấu tạo:
-  o	Bên trong: CPU, ROM (chứa trình kiểm tra POST, Bootstrap, Mini-IOS), RAM/DRAM (lưu bảng định tuyến, file cấu hình đang chạy running-config), Flash (lưu hệ điều hành Cisco IOS) và NVRAM (lưu file cấu hình khởi động startup-config). 
-  o	Bên ngoài (Cổng giao tiếp): Các cổng mạng LAN (FastEthernet, GigabitEthernet), cổng WAN (Serial) và cổng quản trị (Console, AUX). 
-•	Hệ điều hành Cisco IOS: Cung cấp dịch vụ định tuyến, chuyển mạch và bảo mật; quá trình khởi động gồm kiểm tra phần cứng, tải IOS từ Flash và tải cấu hình từ NVRAM. 
-
-2.2. Các giao thức định tuyến
-•	Khái niệm: Là ngôn ngữ giao tiếp cho phép các router chia sẻ thông tin về mạng lưới để tự động xây dựng và duy trì "bảng định tuyến" (Routing table). 
-•	Phân loại định tuyến:
-  o	Định tuyến tĩnh (Static Routing): Cấu hình thủ công bởi người quản trị, dùng cho mạng nhỏ và đường đi không thay đổi. 
-  o	Định tuyến động (Dynamic Routing): Router tự động cập nhật và tìm đường đi (VD: RIP, OSPF, EIGRP, BGP), sử dụng cho mạng lớn. 
-•	Các tiêu chí chọn đường:
-  o	Khoảng cách quản trị (AD - Administrative Distance): Đánh giá độ tin cậy của thông tin định tuyến (giá trị từ 0 - 255, càng nhỏ càng đáng tin cậy). 
-  o	Metric: Giá trị định lượng mức độ tối ưu của đường đi (đường có metric nhỏ nhất sẽ được chọn). RIP dùng số bước nhảy (hop-count), OSPF dùng băng thông, EIGRP dùng nhiều thông số (băng thông, độ trễ, tải...). 
-•	Giao thức định tuyến cần đáp ứng việc hội tụ mạng (convergence) nhanh chóng và hỗ trợ cân bằng tải (load balancing). 
-
-2.3. Phần mềm mô phỏng PacketTracer
-•	Chức năng: Là phần mềm giả lập hệ thống mạng trực quan của Cisco, giúp mô phỏng gần như chính xác các thiết bị mạng thực tế và các giao thức đi kèm. 
-•	Cách sử dụng: Cung cấp giao diện để người dùng chọn thiết bị (Router, Switch, Hub, PC, Laptop...), kết nối cáp (cáp thẳng, cáp chéo, cáp console), cấu hình IP và kiểm tra kết nối mạng. 
-•	Kiểm tra mô phỏng: Sử dụng công cụ (như Add Simple PDU) để xem mô phỏng quá trình gửi và nhận gói tin (như ICMP, ARP) theo thời gian thực (Simulation mode). 
-•	Phần mềm cho phép lưu lại (.pkt) và mở các sơ đồ mạng đã thiết kế. 
-
-2.4. Cấu hình và quản trị Router
-•	Giao diện dòng lệnh (CLI): Cấu trúc phân cấp với các chế độ quản trị chính:
-  o	User EXEC Mode (>): Chỉ xem thông tin cơ bản. 
-  o	Privileged EXEC Mode (#): Thực thi mọi lệnh xem cấu hình và trạng thái bằng lệnh enable. 
-  o	Global Configuration Mode ((config)#): Chế độ cấu hình toàn cục bằng lệnh configure terminal. 
-  o	Interface Config/Line Config: Chế độ cấu hình chi tiết cho từng cổng kết nối hoặc đường line. 
-•	Các lệnh cấu hình cơ bản: Đặt tên hostname, cài đặt mật khẩu mã hóa/không mã hóa (enable password, enable secret, password console/vty), cấp IP cho cổng giao tiếp, và lưu cấu hình (copy running-config startup-config). 
-•	Lệnh kiểm tra (Show): show running-config, show interfaces, show ip interface brief, show ip route (xem bảng định tuyến), v.v. 
-•	Cấu hình định tuyến: Bao gồm cú pháp để cấu hình đường đi tĩnh (ip route) hoặc khởi tạo quá trình định tuyến động (router rip hoặc router ospf) và khai báo mạng (network). 
-
-2.5. Cấu hình và quản trị Switch
-•	Cấu hình cơ bản: Sử dụng CLI tương tự như Router để đặt tên, thiết lập mật khẩu truy cập và lưu file cấu hình. 
-•	Cài đặt VLAN: Tạo mạng LAN ảo (VLAN) bằng cách khai báo ID/Tên VLAN và gán các cổng của switch vào VLAN đó (switchport access vlan). 
-•	VLAN-Trunking (VTP): Chỉ định chế độ VTP (Server/Client) và cấu hình cổng Trunk (switchport mode trunk) để chuyển tiếp dữ liệu của nhiều VLAN trên cùng một đường dây. 
-•	VLAN-Routing: Sử dụng Switch Layer 3 (với lệnh ip routing) hoặc Router (cấu hình Subinterface, hay còn gọi là Router-on-a-stick) để định tuyến và kết nối các VLAN khác nhau lại với nhau.
-
-III
-3.1. Giới thiệu Windows Server
-•	Windows Server là hệ điều hành dành cho Server, chuyên cung cấp các dịch vụ mạng và hoạt động trong môi trường Domain. 
-•	Mô hình Workgroup (Peer-to-peer): Các máy tính có vai trò ngang nhau, dữ liệu và tài nguyên được quản lý phân tán tại máy cục bộ (thông tin người dùng lưu trong file SAM mã hóa). Mô hình này chỉ phù hợp với mạng nhỏ (dưới 10 máy) và yêu cầu bảo mật không cao. 
-•	Mô hình Domain (Client-server): Quản lý tập trung thông qua ít nhất một máy điều khiển miền (Domain Controller - DC). Thông tin người dùng được quản lý bởi dịch vụ Active Directory (lưu trong file NTDS.DIT), giúp việc chứng thực và quản lý tài nguyên được tập trung, phù hợp với các công ty vừa và lớn. 
-•	Một số thuật ngữ: Stand-alone là máy chủ không tham gia domain; Member Server là máy chủ tham gia domain nhưng không đóng vai trò Domain Controller. 
-
-3.2. Quản trị Active Directory
-•	Khái niệm: Active Directory (AD) là dịch vụ thư mục độc quyền của Microsoft giúp quản trị tập trung tất cả các đối tượng trong vùng (người dùng, máy tính, thiết bị...). AD mang lại nhiều ưu điểm như: quản lý tập trung, bảo mật dữ liệu, áp dụng chính sách nhóm (Group Policy), khả năng mở rộng và ủy quyền quản trị. 
-•	Thành phần (Directory Services): Gồm có Objects (đối tượng như user, máy in, server), Attribute (thuộc tính mô tả đối tượng), Schema (định nghĩa các đối tượng và thuộc tính) và Container (vật chứa nhiều object bên trong). 
-•	Kiến trúc logic: Bao gồm Domain (nơi lưu trữ các object), OU - Organizational Unit (đơn vị tổ chức nhỏ nhất để ủy quyền quản trị), Tree (tập hợp nhiều domain theo cấu trúc hình cây mẹ-con) và Forest (tập hợp nhiều domain/tree có mối quan hệ tin cậy chia sẻ chung schema và global catalog). 
-•	Kiến trúc vật lý: Bao gồm Site (đại diện cho vị trí địa lý của các domain) và Domain Controller (máy chủ chứa bản sao AD, làm nhiệm vụ xác thực người dùng). 
-•	Hệ thống có thể triển khai thêm các DC đồng hành (ADC) để dự phòng cho DC chính (PDC), hoặc triển khai máy chủ dạng Read-Only Domain Controller (RODC) tại các vị trí không đảm bảo an toàn vật lý. 
-
-3.3. Quản lý tài khoản người dùng và nhóm
-•	Tài khoản người dùng (User Account): Dùng để đăng nhập, xác thực, cấp quyền và theo dõi (auditing) việc truy cập tài nguyên. Có hai loại: 
-  o	Local user account: Tạo và lưu trữ trên máy cục bộ (file SAM), chỉ được truy cập tài nguyên cục bộ. 
-  o	Domain user account: Tạo trên Domain Controller, cho phép người dùng đăng nhập và truy cập tài nguyên trên toàn hệ thống mạng. 
-•	Yêu cầu tài khoản: Tên đăng nhập dài từ 1-20 ký tự, không chứa các ký tự cấm đặc biệt. Mật khẩu phải dài tối thiểu 6 ký tự và có độ phức tạp (kết hợp chữ hoa, chữ thường, số và ký tự đặc biệt). 
-•	Tài khoản nhóm (Group Account): Là đối tượng đại diện cho một nhóm người dùng, giúp quản trị viên gán quyền hàng loạt một cách dễ dàng. Nhóm không được phép đăng nhập hệ thống. 
-•	Phân loại nhóm: Có 2 kiểu nhóm là Security Group (liên quan đến an ninh, gán quyền, có mã SID) và Distribution Group (danh sách phân phối email, không có SID, không dùng gán quyền). 
-•	Phạm vi nhóm: Gồm 4 loại là Local, Global, Domain Local và Universal, tuân theo các quy tắc lồng nhóm (Nesting) và các chiến lược triển khai quyền như AGDLP.
-
-IV
-4.1. Các khái niệm cơ bản về bảo mật mạng
-•	Bảo mật mạng là gì: Là việc bảo vệ dữ liệu an toàn trên môi trường trực tuyến. Theo Liên minh Viễn thông Quốc tế (ITU), đây là tập hợp các công cụ, chính sách, phương pháp quản lý rủi ro và công nghệ dùng để bảo vệ hệ thống mạng và tài sản. 
-•	Các yếu tố đảm bảo an toàn thông tin:
-  o	Tính bí mật: Đảm bảo thông tin chỉ được sử dụng đúng đối tượng. 
-  o	Tính toàn vẹn: Thông tin đầy đủ và nguyên vẹn về cấu trúc. 
-  o	Tính sẵn sàng: Thông tin luôn tiếp cận được để phục vụ đúng mục đích. 
-  o	Tính chính xác: Dữ liệu phải đáng tin cậy và chính xác. 
-  o	Tính không khước từ: Có thể kiểm chứng được nguồn gốc hoặc người đưa tin. 
-•	Các khái niệm về rủi ro:
-  o	Mối đe dọa (Threat): Các hành động/sự kiện có khả năng xâm hại đến hệ thống. Bao gồm mục tiêu tấn công (dịch vụ, tính toàn vẹn), đối tượng tấn công (hacker) và hành vi tấn công (nghe lén, ăn cắp). 
-  o	Lỗ hổng hệ thống (Vulnerability): Điểm yếu mà kẻ tấn công có thể khai thác, tồn tại trong lập trình (back-door), hệ điều hành, ứng dụng, vật lý hoặc thủ tục quản lý. 
-  o	Nguy cơ hệ thống (Risk): Được hình thành từ sự kết hợp giữa mối đe dọa và lỗ hổng hệ thống (Nguy cơ = Mối đe dọa + Lỗ hổng). 
-
-4.2. Một số nguy cơ tấn công
-•	Tấn công quét mạng (Scanning Attacks):
-  o	Port Scanning: Gửi thông điệp để xác định các cổng đang mở nhằm biết dịch vụ nào đang chạy (ví dụ dùng Nmap). 
-  o	Vulnerability Scanning: Quét để xác định lỗ hổng bảo mật, bản cập nhật bị thiếu trên hệ thống. 
-  o	Network Scanning (Ping Sweep): Xác định các máy đang hoạt động trên hệ thống mạng. 
-•	Tấn công giả mạo địa chỉ IP (Spoofing Attacks): Kẻ tấn công giả mạo địa chỉ IP để hạn chế bị phát hiện, qua mặt hệ thống tường lửa và IDS. 
-•	Tấn công chiếm quyền máy chủ (Session Hijacking): Hacker đánh cắp cookie sau khi người dùng đã xác thực với máy chủ, ngắt kết nối của nạn nhân và chiếm lấy phiên làm việc đó. Quá trình gồm dò tìm session, tái đồng bộ kết nối và chèn các gói tin tấn công. 
-•	Tấn công từ chối dịch vụ (DoS - Denial of Service): Làm hệ thống quá tải khiến máy chủ bị tê liệt, không thể đáp ứng yêu cầu hợp lệ. Các công cụ phổ biến gồm Ping of Death, LAND Attack, WinNuke, CPU Hog. 
-•	Tấn công từ chối dịch vụ phân tán (DDoS): Là hình thức DoS nhưng được tiến hành từ nhiều máy tính khác nhau (mạng botnet). Cấu trúc gồm Master (máy điều khiển), Slave/Zombie (máy bị lây nhiễm) và Victim (mục tiêu). 
-•	Tấn công cổng sau (Backdoor Attacks): Cài đặt chương trình ẩn giúp hacker xâm nhập lại dễ dàng và xóa dấu vết. Chúng thường được đặt tên giống các dịch vụ hệ thống Windows để ngụy trang. 
-
-4.3. Một số giải pháp bảo mật mạng
-Tài liệu tập trung vào hai giải pháp chính: IDS và Tường lửa (Firewall). 
-4.3.1. Hệ thống phát hiện xâm nhập (IDS - Intrusion Detection System)
-•	Chức năng: Giám sát lưu lượng mạng, phát hiện các hoạt động khả nghi và cảnh báo cho nhà quản trị. IDS phân tích sự kiện dựa trên dấu hiệu (signature) hoặc sự bất thường (anomaly). 
-•	Phân loại:
-  o	NIDS (Network Base IDS): Đặt ở các điểm kết nối mạng để giám sát toàn bộ lưu lượng. Ưu điểm là "trong suốt", quản lý được nhiều máy , nhưng không phân tích được dữ liệu mã hóa và có thể báo động giả. 
-  o	HIDS (Host Base IDS): Cài đặt phần mềm trên một máy chủ (host) cụ thể để giám sát file log, CPU, Registry. Nó có thể phân tích dữ liệu mã hóa , nhưng sẽ mất tác dụng nếu hệ điều hành của host đó bị sập. 
-4.3.2. Hệ thống tường lửa (Firewall)
-•	Khái niệm: Là rào chắn (phần cứng hoặc phần mềm) giữa mạng an toàn và không an toàn. Firewall điều khiển truy cập bằng cách cho phép hoặc từ chối dữ liệu ra/vào dựa trên một tập luật (chính sách). 
-•	Các vùng mạng cơ bản (Network Zones):
-  o	Mạng nội bộ (LAN): Chứa các máy trạm, thiết bị mạng nội bộ. 
-  o	Vùng DMZ: Vùng trung lập chứa các dịch vụ công khai ra Internet (Web, Mail, DNS Server). 
-  o	Vùng Server Farm: Đặt các máy chủ không trực tiếp giao tiếp với Internet (như Database). 
-•	Chính sách tường lửa: Mỗi luật (rule) thường gồm 7 thuộc tính: Chiều của gói tin, Giao thức, IP nguồn, Cổng nguồn, IP đích, Cổng đích, và Hành động (chấp nhận/từ chối)
+Câu 52: Quá độ lên chủ nghĩa xã hội bỏ qua chế độ tư bản chủ nghĩa, tức là bỏ qua việc xác lập vị trí thống trị của quan hệ sản xuất và kiến trúc thượng tầng tư bản chủ nghĩa, nhưng tiếp thu, kế thừa những thành tựu mà nhân loại đã đạt được dưới chế độ tư bản chủ nghĩa, đặc biệt về khoa học và công nghệ, để phát triển nhanh lực lượng sản xuất, xây dựng nền kinh tế hiện đại là quan điểm được Đảng ta chỉ ra ở thời điểm nào?
+•	B) 2001 
+Câu 53: Ngày 10/8/1985, Bộ Chính trị đã ra Nghị quyết số 28-NQ/TW về vấn đề gì?
+•	D) Phương hướng kinh tế – xã hội năm 1985 
+Câu 54: Một trong những đặc trưng của xã hội xã hội chủ nghĩa mà nhân dân ta xây dựng được Đảng ta khẳng định trong Cương lĩnh 1991 (Đại hội VII) là đặc trưng nào sau đây?
+•	B) Có mối quan hệ hữu nghị và hợp tác với nhân dân tất cả các nước trên thế giới 
+Câu 7: Hội nghị nào của Đảng mở đường cho phong trào "Đồng khởi" ở miền Nam năm 1960?
+•	A) Hội nghị Trung ương 15 – Khoá II của Đảng (1-1959) 
+Câu 8: Ban chấp hành Trung ương Đảng họp hội nghị lần thứ nhất tại Hương Cảng (Trung Quốc), vào thời gian nào?
+•	C) Từ ngày 14 đến 31-10-1930 
+Câu 9: Chủ trương thực hiện cuộc điều chỉnh lớn và toàn diện về giá – lương – tiền được thực hiện năm 1985 đã được quyết định tại Hội nghị nào?
+•	A) Hội nghị Ban chấp hành Trung ương lần thứ 8 khóa V (6/1985) 
+Câu 52: Đầu năm 1953, nhằm cứu vãn tình thế ngày càng sa lầy và tìm kiếm giải pháp chính trị có "danh dự", Pháp và Mỹ đã đưa một viên tướng nào sang làm Tổng chỉ huy quân đội Pháp ở Đông Dương và lập kế hoạch quân sự mang tên ai sau đây?
+•	C) Nava 
+Câu 53: Ngay sau khi chiến tranh thế giới thứ hai mới bùng nổ, Đảng kịp thời rút vào hoạt động bí mật, chuyển trọng tâm công tác về nông thôn, đồng thời vẫn chú trọng các đô thị. Trung ương Đảng gửi toàn Đảng một thông báo quan trọng chỉ rõ: "Hoàn cảnh Đông Dương sẽ tiến bước đến vấn đề dân tộc giải phóng". Thông báo này được đưa ra vào thời gian nào?
+•	A) Ngày 29-9-1939 
+Câu 40: Nghiên cứu, học tập lịch sử Đảng để nâng cao hiểu biết về công tác xây dựng Đảng trong các thời kỳ lịch sử về các vấn đề nào sau đây?
+•	B) Chính trị, tư tưởng, tổ chức, đạo đức 
+Câu 5: "đất đai là tài nguyên quốc gia vô cùng quý giá, là tư liệu sản xuất đặc biệt, là nguồn nội lực và nguồn vốn to lớn của đất nước" là nhận thức mà Đảng ta đưa ra ở thời điểm nào?
+•	B) 2003 ← (được khoanh tròn, ghi chú: HN KS 7)
+Câu 6: Nước ta bước sang thời kỳ mới đẩy mạnh công nghiệp hoá, hiện đại hoá đất nước là nội dung được khẳng định trong văn kiện nào?
+•	C) Báo cáo chính trị của Ban chấp hành trung ương tại Đại hội VIII
+Câu 36: Đảng chính trị đầu tiên mà Nguyễn Ái Quốc gia nhập là Đảng nào và vào thời gian nào?
+•	B) Đảng Cộng sản Pháp vào năm 1919 
+Câu 37: Đại hội đại biểu lần thứ hai của Đảng (2 – 1951) họp ở đâu?
+•	C) Chiêm Hoá, Tuyên Quang 
+Câu 24: Đại hội III (1960) của Đảng cộng sản Việt Nam xác định nhiệm vụ trung tâm trong suốt thời kỳ quá độ ở nước ta là gì?
+•	B) Xây dựng kinh tế thị trường định hướng XHCN 
+Câu 25: Nội dung chủ yếu của đấu tranh giai cấp hiện nay được Đại hội IX của Đảng xác định là gì?
+•	C) Thực hiện thắng lợi sự nghiệp công nghiệp hóa, hiện đại hóa theo định hướng xã hội chủ nghĩa 
+Câu 26: Hiệp định Pari về chấm dứt chiến tranh lập lại hoà bình ở Việt Nam được ký khi nào?
+•	C) 27/01/1970
+Câu 1: Tại Hội Nghị Trung ương lần thứ 8 (5/1941), Đảng ta đã quyết định tạm gác khẩu hiệu "đánh đổ địa chủ, chia ruộng đất cho dân cày" và thay bằng các khẩu hiệu gì?
+•	A) Độc lập dân tộc 
+Câu 2: Đường lối của cách mạng Việt Nam giai đoạn 1969-1975 mà Đảng cộng sản Việt Nam đưa ra là gì?
+•	C) Miền Bắc: Khôi phục kinh tế, bảo vệ miền Bắc. Miền Nam: Đẩy mạnh cuộc chiến đấu giải phóng miền Nam, thống nhất Tổ quốc 
+Câu 54: Nội dung đường lối công nghiệp hóa ở Đại hội 3 của đảng là gì?
+•	D) Ưu tiên phát triển công nghiệp nặng 
+Câu 55: Trong công tác xây dựng Đảng và hệ thống chính trị, xây dựng đội ngũ cán bộ, nhất là cán bộ cấp chiến lược được xác định như thế nào?
+•	D) Là khâu quyết định 
+Câu 56: Trong văn kiện Đại hội IV của Đảng có ghi: "Ưu tiên phát triển công nghiệp nặng một cách hợp lý........... phát triển nông nghiệp và công nghiệp nhẹ". Hãy điền vào chỗ ba chấm những từ sau đây sao cho đúng với nội dung của văn kiện:
+•	D) Trên cơ sở 
+Câu 22: Vì sao cuộc kháng chiến chống thực dân Pháp của nhân dân ta diễn ra trước tiên ở các đô thị?
+•	C) Tạo điều kiện cho cơ quan đầu não rút lên căn cứ Việt Bắc an toàn 
+Câu 23: Khi đánh giá về Chánh cương vắn tắt và Sách lược vắn tắt do Hội nghị hợp nhất vào tháng 2/1930 thông qua, Hội nghị lần thứ nhất Ban chấp hành Trung ương Đảng tháng 10/1930 đã đánh giá "Chánh cương vắn tắt và Sách lược vắn tắt phạm sai lầm ............." Hãy chọn phương án đúng điền vào chỗ trống:
+•	C) "rất nghiêm trọng" 
+Câu 37: Giáo trình Lịch sử Đảng đã đánh giá: "Đó là thiên anh hùng ca chiến đấu và chiến thắng, chứa chan sức mạnh và niềm tin, tràn đầy lòng tự hào và ý chí đấu tranh của nhân dân Việt Nam trong sự nghiệp giành và giữ nền độc lập, tự do" là đánh giá về văn kiện nào?
+•	D) Tuyên Ngôn độc lập 
+Câu 38: Chiến lược chiến tranh mà Đế quốc Mỹ và tay sai triển khai giai đoạn 1960-1965 là gì?
+•	B) Chiến tranh đặc biệt 
+Câu 39: Sắc lệnh phong quân hàm Đại tướng cho Đồng chí Võ Nguyên Giáp được Chủ tịch Hồ Chí Minh ký vào thời gian nào?
+•	C) 1948 ← (ghi chú: 20/1/48)
+Câu 40: Việt Nam và Vương quốc Hà Lan đã thiết lập quan hệ đối tác chiến lược lĩnh vực vào thời gian nào?
+•	C) 2015 
+Câu 40: Việt Nam và Vương quốc Hà Lan đã thiết lập quan hệ đối tác chiến lược lĩnh vực vào thời gian nào?
+•	C) 2015 
+Câu 41: Mục tiêu của Pháp – Mỹ khi đề ra Kế hoạch Nava là gì?
+•	D) Giành một thắng lợi quân sự quyết định để kết thúc chiến tranh trong danh dự
+Câu 42: Nhiệm vụ then chốt mà Đảng xác định tại Đại hội X là gì?
+•	A) Xây dựng, chỉnh đốn Đảng 
+Câu 57: Tháng 3 năm 1935, Đại hội đại biểu lần thứ nhất của Đảng họp ở Ma Cao (Trung Quốc) đề ra nhiệm vụ trước mắt là gì?
+•	B) Củng cố và phát triển Đảng 
+Câu 58: Chức năng giáo dục của môn học Lịch sử Đảng Cộng sản Việt được thể hiện trong các nội dung cụ thể nào?
+•	D) Giáo dục tinh thần yêu nước, giáo dục lý tưởng cách mạng, giáo dục chủ nghĩa anh hùng... 
+Câu 27: Những lý do nào sau đây đã khiến cho Luận cương chính trị tháng 10/1930 không có được chiến lược liên minh dân tộc và giai cấp rộng rãi? Chọn phương án KHÔNG đúng:
+•	A) Do nhận thức rõ sự phân hóa giai cấp trong xã hội Việt Nam lúc này
+•	B) Do tuyệt đối hoá vai trò của giai cấp công nhân và nông dân trong cách mạng Việt Nam
+•	C) Do nhận thức giáo điều mối quan hệ dân tộc – giai cấp
+•	Đáp án đúng - Do trực tiếp chịu ảnh hưởng tư tưởng "tả khuynh" của Quốc tế cộng sản 
+Câu 28: Thực dân Pháp nổ súng xâm lược Việt Nam lần thứ nhất vào thời gian nào và ở đâu?
+•	D) Ngày 1-9-1858 tại Đà Nẵng 
+Câu 29: Chiếu Cần vương là của ai và ban hành vào thời gian nào?
+•	D) Hàm Nghi và ban hành năm 1885 
+Câu 30: Sau khi chiến dịch Điện Biên Phủ trên không kết thúc, Hội nghị quốc tế về chấm dứt chiến tranh Việt Nam đã diễn ra ở đâu?
+•	C) Pari 
+Câu 11: Xã hội Việt Nam dưới ách thống trị của thực dân Pháp có mấy mâu thuẫn vừa cơ bản vừa chủ yếu?
+•	C) 2 
+Câu 12: Trong những mục tiêu về kinh tế – xã hội cho những năm trước mắt của chặng đường đầu tiên của thời kỳ quá độ sau đây, mục tiêu nào do Đại hội VI (12-1986) của Đảng nêu lên?
+•	D) Sản xuất đủ tiêu dùng và có tích lũy 
+Câu 13: Thắng lợi của cuộc kháng chiến chống thực dân Pháp đã ghi nhận sự phát triển và thành công trong lãnh đạo chỉ đạo chiến tranh giải phóng dân tộc của Đảng Lao động Việt Nam và để lại bao nhiêu bài học, kinh nghiệm quý báu?
+•	C) 5 bài học 
+Câu 14: Nước Cộng hòa xã hội chủ nghĩa Việt Nam gia nhập Liên Hợp Quốc vào thời gian nào?
+•	A) 20 – 9 – 1977 
+Câu 18: Đại hội XII đặc biệt chú trọng tập trung lãnh đạo mấy nhiệm vụ trọng tâm?
+•	D) 6 
+Câu 19: Trong những bài học kinh nghiệm về đổi mới, bài học nào do Đại hội VI của Đảng nêu lên?
+•	A) Đảng phải luôn luôn xuất phát từ thực tế, tôn trọng và hành động theo quy luật khách quan 
+Câu 20: Sự kiện nào sau đây cho thấy quyết tâm thống nhất về mặt Nhà nước của Đảng sau khi giải phóng miền Nam?
+•	B) Thắng lợi của cuộc Tổng tuyển cử bầu Quốc hội chung của cả nước (4-1976)
+Câu 21: Câu nói: "Miền Nam là máu của Việt Nam, là thịt của Việt Nam. Sông có thể cạn, núi có thể mòn song chân lý đó không bao giờ thay đổi" là của ai?
+•	C) Hồ Chí Minh 
+Câu 15: Lần đầu tiên Đảng bàn tới vấn đề công nghiệp hóa là ở Đại hội nào?
+•	D) Đại hội 3 
+Câu 16: Một trong những đối tượng nghiên cứu của môn học Lịch sử Đảng Cộng sản Việt Nam là gì?
+•	D) Các sự kiện lịch sử Đảng Cộng sản Việt Nam 
+Câu 17: Tháng 3/1935, Đại hội đại biểu lần thứ nhất của Đảng họp ở Ma Cao (Trung Quốc) đã đề ra 3 nhiệm vụ trước mắt.
+•	A) Củng cố và phát triển Đảng. Mở rộng tuyên truyền chống đế quốc, chống chiến tranh, ủng hộ Liên Xô và ủng hộ cách mạng Trung Quốc. Đẩy mạnh cuộc vận động tập hợp quần chúng 
+Câu 43: Vấn đề có ý nghĩa quyết định hàng đầu của cách mạng trên con đường đẩy mạnh công nghiệp hóa, hiện đại hóa mà Báo cáo chính trị của Ban chấp hành trung ương tại Đại hội VIII khẳng định là gì?
+•	D) Đổi mới kinh tế 
+Câu 44: Nghị quyết Bộ Chính trị "tình hình mới, nhiệm vụ mới và chính sách của Đảng" vào tháng 9-1954 đã chỉ ra cách mạng Việt Nam bước vào một giai đoạn mới là: "……., Nước nhà tạm chia làm hai miền, từ nông thôn chuyển vào thành thị, từ phân tán chuyển đến tập trung". Điền vào chỗ trống
+•	C) Từ chiến tranh chuyển sang hòa bình 
+Câu 45: Trong quá trình thực hiện đại hội VI, tình hình thế giới chuyển biến nhanh chóng, Trung Quốc cho quân đội chiếm đảo Gạc Ma và các bãi cạn Châu Viên, Chữ Thập,... khi nào?
+•	C) Tháng 3 năm 1988 
+Câu 46: Nghiên cứu sự lãnh đạo của Đảng đối với cách mạng Việt Nam, giáo trình Lịch sử Đảng cộng sản Việt Nam chia giai đoạn 1965-1975 thành mấy thời kỳ?
+•	C) 02 thời kỳ 
+Câu 47: Đại hội VI của Đảng (1986) đã nêu lên mấy bài học kinh nghiệm về giai đoạn trước đổi mới 1975 – 1986?
+•	A) 4 bài học kinh nghiệm 
+Câu 1: Mặc dù thất bại nhưng các phong trào yêu nước đã có những đóng góp tích cực cho cách mạng Việt Nam. Hãy chọn phương án KHÔNG đúng:
+•	A) Đã góp phần cổ vũ mạnh mẽ tinh thần yêu nước của nhân dân ta
+•	B) Đã cho thấy sự bất lực của giai cấp phong kiến và tư sản Việt Nam trong vai trò lãnh đạo sự nghiệp giải phóng dân tộc ở Việt Nam
+•	C) Đã góp phần thúc đẩy những nhà yêu nước Việt Nam chọn lựa một con đường cứu nước mới, giải phóng dân tộc theo xu thế của thời đại
+•	Đáp án đúng -  Đã tìm thấy một lực lượng mới để lãnh đạo cách mạng Việt Nam là Đảng cộng sản Việt Nam 
+Câu 2: Phong trào mà Đảng ta đã vận động nhân dân chống nạn mù chữ diễn ra sau cách mạng tháng Tám năm 1945 được gọi là gì?
+•	C) Bình dân học vụ 
+Câu 3: Nhiệm vụ hàng đầu của khoa học lịch sử Đảng là gì?
+•	D) Khẳng định, chứng minh giá trị khoa học và hiện thực của những mục tiêu chiến lược và sách lược cách mạng mà Đảng đề ra 
+Câu 4: Nhiệm vụ cách mạng Việt Nam dưới sự lãnh đạo của Đảng giai đoạn 1954-1975 là gì?
+•	A) Xây dựng CNXH ở miền Bắc, kháng chiến chống đế quốc Mỹ xâm lược, giải phóng miền Nam, thống nhất đất nước 
+Câu 5: Khoa học lịch sử Đảng có mấy nhiệm vụ?
+•	D) 4 
+Câu 60: Việt Nam ký Hiệp định Giơnevơ năm 1954 về Đông Dương là do?
+•	C) Căn cứ vào tương quan lực lượng giữa ta và Pháp trong chiến tranh và xu thế của thế giới là giải quyết các vấn đề chiến tranh bằng thương lượng
+Câu 37: Sau khi bị thực dân Pháp thống trị, xã hội Việt Nam có thêm mấy giai cấp?
+•	B) 3 giai cấp, tầng lớp 
+Câu 38: Người dẫn đầu phái đoàn Việt Nam tham dự Hội nghị Giơnevơ năm 1954 là ai?
+•	A) Đồng chí Phạm Văn Đồng 
+Câu 48: Kẻ thù chính của cách mạng Việt Nam ngay sau cách mạng tháng Tám năm 1945 được nêu trong chỉ thị "Kháng chiến kiến quốc" là gì?
+•	C) Thực dân Pháp xâm lược 
+Câu 49: Đại hội VI của Đảng (1986) đã chỉ ra những nguyên nhân khách quan dẫn đến những hạn chế của việc hoạch định và thực hiện đường lối giai đoạn 1975 – 1986 là gì? Hãy chọn phương án KHÔNG đúng:
+•	A) Do quan hệ quốc tế thay đổi, nguồn viện trợ nước ngoài giảm mạnh
+•	B) Do hậu quả nặng nề của chiến tranh kéo dài
+•	C) Bệnh chủ quan duy ý chí, lối suy nghĩ và hành động giản đơn, nóng vội ← (được khoanh tròn)
+•	D) Đi lên chủ nghĩa xã hội từ một nền kinh tế sản xuất nhỏ, lạc hậu
+Câu 50: Sự thất bại của phong trào Đông du, Duy tân, khởi nghĩa Yên Bái (2-1930) chứng tỏ sự bất lực của giai cấp nào trong việc giải quyết các yêu cầu của xã hội Việt Nam dưới ách thống trị của thực dân Pháp?
+•	C) Giai cấp phong kiến và Tư sản 
+Câu 40: Cuộc chiến tranh phá hoại miền Bắc lần 2 của đế quốc Mỹ diễn ra khi nào?
+•	D) 1972 
+Câu 41: Từ tổ chức Hội Việt Nam cách mạng thanh niên đã hình thành nên các tổ chức cộng sản nào?
+•	D) Đông dương cộng sản Đảng và An nam cộng sản Đảng 
+Câu 42: Một trong những khẩu hiệu được đưa ra khi cuộc kháng chiến chống Pháp quay lại xâm lược đã bùng nổ trên quy mô cả nước?
+•	D) "Tiêu thổ kháng chiến" 
+Câu 55: Đường lối kháng chiến chống thực dân Pháp của Đảng ta được thể hiện trong các văn kiện nào?
+•	D) Chỉ thị Toàn dân kháng chiến, Lời kêu gọi toàn quốc kháng chiến và tác phẩm Kháng chiến nhất định thắng lợi 
+Câu 56: Trong quá trình lãnh đạo cách mạng Việt Nam từ 1930 đến nay, Đảng Cộng sản Việt Nam đã đưa ra những bản Cương lĩnh nào sau đây?
+•	A) Cương lĩnh chính trị đầu tiên, Luận cương chính trị, Chính cương của Đảng lao động Việt Nam, Cương lĩnh xây dựng đất nước trong thời kỳ quá độ lên chủ nghĩa xã hội 
+Câu 57: Quyết định đổi tên Đảng Lao động Việt Nam thành Đảng Cộng sản Việt Nam được đưa ra tại Đại hội nào sau đây?
+•	C) Đại hội IV (12 – 1976) 
+Câu 58: Cuối thế kỷ XIX đầu thế kỷ XX phong trào giải phóng dân tộc diễn ra mạnh mẽ nhất ở đâu?
+•	C) Ở các nước thuộc địa 
+Câu 59: Cuộc tập trung khai thác thuộc địa lần thứ hai của thực dân Pháp ở Việt Nam trong khoảng thời gian nào?
+•	C) Từ 1887 đến 1914 
+Câu 50 (bị cắt một phần): Sự thất bại của phong trào Đông Du, Duy Tân, Khởi nghĩa Yên Bái (2-1930) chứng tỏ sự bất lực của giai cấp nào trong việc giải quyết các yêu cầu của xã hội Việt Nam dưới ách thống trị của thực dân Pháp?
+•	C) Giai cấp phong kiến và Tư sản 
+Câu 51: Đề cương văn hóa Việt Nam năm 1943 chủ trương xây dựng một nền văn hóa mới theo mấy nguyên tắc?
+•	C) 1 nguyên tắc
+Câu 46: Chỉ thị 100CT/TW của Ban bí thư Trung ương Đảng (1-1981) đưa ra chủ trương nào sau đây? Hãy chọn phương án đúng:
+•	B) Mở rộng hình thức trả lương khoán, lương sản phẩm
+Câu 47: Vì sao ra đời ở một nước thuộc địa nửa phong kiến, số lượng khoảng 1% dân số nhưng giai cấp công nhân Việt Nam lại có đủ khả năng, năng lực lãnh đạo cách mạng Việt Nam? Hãy chọn phương án không đúng:
+•	A) Sớm có lý luận tiên tiến là chủ nghĩa Mác- Lênin soi đường dẫn lối
+•	B) Sớm bước lên vũ đài chính trị
+•	C) Sớm có đội tiên phong là Đảng cộng sản Việt Nam lãnh đạo
+•	D) Sớm chịu ảnh hưởng của cách mạng tháng Mười Nga và phong trào đấu tranh của công nhân quốc tế
+Câu 3: Khi Pháp quay trở lại xâm lược nước ta lần thứ 2, nhân dân Nam bộ đứng lên kháng chiến chống thực dân Pháp xâm lược bảo vệ chính quyền cách mạng vào ngày tháng năm nào?
+•	D) 23-9-1945
+Câu 4: Những biện pháp mà Đảng và Chính phủ đã thực hiện để giải quyết các khó khăn trước mắt của nước Việt Nam Dân chủ Cộng hòa ngay sau Cách mạng tháng Tám có ý nghĩa như thế nào đối với đất nước lúc này
+•	B) Đưa đất nước vượt qua khó khăn, thể hiện tính ưu việt của chế độ mới, tăng cường sức mạnh đoàn kết dân tộc, làm cơ sở cho cuộc đấu tranh chống thù trong giặc ngoài
+Câu 22: Cùng với việc đề ra chủ trương cụ thể, trước mắt để lãnh đạo phong trào dân chủ, Ban chấp hành trung ương Đảng đặt vấn đề nhận thức lại mối quan hệ giữa hai nhiệm vụ phản đế và điền địa. Chỉ thị của Ban trung ương gửi các tổ chức của Đảng đã chỉ rõ: "Ở một xứ thuộc địa như Đông Dương, trong hoàn cảnh hiện tại, nếu chỉ quan tâm đến sự phát triển của cuộc đấu tranh giai cấp, có thể sẽ nảy sinh những khó khăn để mở rộng phong trào dân tộc"
+•	C) 1939-1945
+Câu 23: Ban chấp hành Trung ương Đảng họp hội nghị lần thứ nhất (10-1930) tại địa điểm nào?
+•	C) Tại Hương Cảng (Trung Quốc)
+Câu 24: Trong các điểm sau, chỉ rõ điểm khác nhau chủ yếu giữa Luận cương chính trị (10/1930) so với Cương lĩnh chính trị đầu tiên của Đảng (2/1930) là gì?
+•	Chủ trương tập hợp lực lượng cách mạng
+Câu 25: Kế hoạch 5 năm lần thứ nhất được thực hiện trong thời gian nào?
+•	1961-1965
+Câu 26: Năm 2010, Việt Nam có quan hệ thương mại đầu tư với bao nhiêu nước và vùng lãnh thổ?
+•	B) 230
