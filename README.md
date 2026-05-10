@@ -240,6 +240,438 @@ TỔNG HỢP #2
 •	Bác Hồ dự đoán Việt Nam độc lập trong tác phẩm nào? Lịch sử nước ta 1941
 •	Ngày 29/9/1939, TW Đảng ra thông báo quan trọng trước thềm chiến tranh thế giới thứ 2
 
+CHƯƠNG 3
+ĐẠI HỘI IV 1976
+Thời gian
+14-20/12/1976
+Tổng bí thư
+Lê Duẩn
+Nội dung
+Đổi tên Đảng Lao động Việt Nam thành Đảng Cộng sản Việt Nam
+
+Nhiệm vụ đầu tiên,bức thiết nhất của cách mạng VN sau đại thắng mùa xuân 1975 là THỐNG NHẤT ĐẤT NƯỚC VỀ MẶT NHÀ NƯỚC
+25/04/1976
+Cuộc TỔNG TUYỂN CỬ bầu quốc hội chung của nước VN thống nhất đất nước về mặt nhà nước
+
+Chính trị: Chuyên chính vô sản
+
+3 cuộc cách mạng:
+Cách mạng quan hệ sản xuất
+Cách mạng về khoa học - kỹ thuật => Then chốt
+Cách mạng tư tưởng, văn hóa
+
+Nhiệm vụ trọng tâm của TKQĐ là CÔNG NGHIỆP HÓA XHCN
+
+Đường lối: phát triển kinh tế => Ưu tiên phát triển công nghiệp nặng một cách hợp lý trên cơ sở phát triển nông nghiệp và công nghiệp nhẹ
+=> Sai lầm: Đất nước rơi vào thời kỳ khó khăn, nhu cầu cấp thiết yếu về lương thực - thực phẩm, hàng tiêu dùng không được đáp ứng.
+
+Xây dựng mô hình sản xuất dựa trên sở hữu tập thể là HỢP TÁC XÃ
+4/1975
+Tập đoàn Pôn Pốt thi hành chính sách diệt chủng ở Campuchia và tăng cường chống Việt Nam
+3/5/1975
+tập đoàn Pôn Pốt cho quân đánh chiếm đảo Thổ Chu, Phú Quốc mở đầu cho cuộc CHIẾN TRANH BIÊN GIỚI TÂY NAM
+26/12/1978
+Quân tình nguyện Việt Nam giúp đỡ Campuchia tổng tiến công
+7/1/1979
+Giải phóng Phnôm Pênh, đánh đổ chế độ diệt chủng Pôn Pốt
+17/2/1979
+Cuộc chiến tranh phía Bắc ( Trung Quốc - Việt Nam ), Trung Quốc huy động 60 vạn quân tấn công từ Lai Châu đến Quảng Ninh
+18/2/1979
+Việt Nam - Campuchia ký Hiệp ước Hòa bình
+HN 6 (8/1979)
+Bước đột phá đầu tiên > khắc phục sai lầm > phá bỏ rào cản >
+“ sản xuất bung ra “
+10/1979
+Hội đồng Chính phủ quyết định:
+Tận dụng đất đai nông nghiệp để khai hoang, miễn thuế
+Xóa bỏ trạm kiểm soát để người sản xuất tự do đưa sản phẩm ra trao đổi ngoài thị trường
+9/1980
+BCH TW Đảng họp để cho ý kiến về bản Dự thảo Hiến pháp mới
+18/12/1980
+Hiến pháp được thông qua
+Chỉ thị 100-CT/TW
+( 13/1/1981 )
+Khoán sản phẩm đến nhóm người, người lao động trong các hợp tác xã nông nghiệp ( Khoán 100 ) ra đời sau hiện tượng KHOÁN CHUI
+
+
+ĐẠI HỘI V 1982
+Thời gian
+27-31/3/1982
+Tổng bí thư
+Lê Duẩn
+Nội dung
+Mỹ tiếp tục thực hiện chính sách bao vây cấm vận và “ Kế hoạch hậu chiến “
+
+Nền kinh tế Việt Nam = Kinh tế tập thể + Kinh tế nhà nước
+Cơ chế kế hoạch tập trung
+Chế độ phân phối bao cấp: Cào bằng, chia đều, không thừa nhận quan hệ hàng hóa tiền tệ mà sử dụng tem phiếu
+
+Nước ta đang ở CHẶNG ĐƯỜNG ĐẦU của TKQĐ lên CNXH
+Hai nhiệm vụ chiến lược
+Xây dựng thành công CNXH
+Bảo vệ vững chắc Tổ Quốc Việt Nam XHCN
+=> Quan hệ mật thiết, nhiệm vụ hàng đầu: xây dựng CNXH
+
+Tập trung phát triển NÔNG NGHIỆP, coi nông nghiệp là mặt trận hàng đầu
+=> Được ví như “ Vừa đạp xe, vừa kít phanh “ ĐH IV từ công nghiệp nặng => ĐH V nông nghiệp
+HN 6 (7/1984)
+Giải quyết vấn đề phân phối lưu thông
+HN 7 (12/1984)
+Kế hoạch năm 1985 coi mặt trận nông nghiệp là mặt trận hàng đầu
+HN 8 (6/1985)
+BƯỚC ĐỘT PHÁ THỨ 2 > Đảng đã thực hiện cải cách giá - lương - tiền > xóa bỏ cơ chế KẾ HOẠCH HÓA TẬP TRUNG BAO CẤP.
+Hội nghị Bộ Chính trị khóa V (8/1986)
+BƯỚC ĐỘT PHÁ THỨ 3 về đổi mới kinh tế: Lấy nông nghiệp là mặt trận hàng đầu, ra sức phát triển công nghiệp nhẹ, công nghiệp nặng hợp lý về quy mô và nhịp độ
+
+
+ĐẠI HỘI VI 1986 ĐƯỜNG LỐI ĐỔI MỚI TOÀN DIỆN
+Thời gian
+15-18/12/1986 bối cảnh cuộc cách mạng khoa học kỹ thuật đang phát triển mạnh, xu thế đối thoại trên thế giới đang dần thay thế xu thế đối đầu
+Tổng bí thư
+Nguyễn Văn Linh
+
+Đảng thừa nhận sai lầm giai đoạn 1975 - 1986
+
+Bài học kinh nghiệm hàng đầu Đảng rút ra “ Lấy dân làm gốc “
+
+Kinh tế tập thể + Kinh tế nhà nước => Kinh tế nhiều thành phần
+Cơ chế tập trung quan liêu => Cơ chế thị trường có sự quản lý của nhà nước
+Chế độ phân phối bao cấp ( cào bằng, chia đều, dùng tem phiếu ) => Phân phối theo lao động ( làm nhiều hưởng nhiều, làm ít hưởng ít, hưởng theo vốn góp )
+
+3 chương trình kinh tế lớn: lương thực - thực phẩm, hàng tiêu dùng, hàng xuất khẩu
+=> Công nghiệp hóa chặng đường đầu TKQĐ
+5 phương hướng lớn
+4 nhóm chính sách xã hội
+
+Đổi mới tư duy, trước hết là đổi mới tư duy kinh tế
+HN 2 (4/1987)
+Biện pháp cấp bách về phân phối, lưu thông, trọng tâm là BỐN GIẢM: Giảm bội chi ngân sách, giảm nhịp độ tăng giá,...
+Quyết định số 217/HĐBT của Hội đồng Bộ trưởng (14/11/1987)
+Trao quyền tự chủ cho các doanh nghiệp
+1/1/1988
+Lần đầu tiên Luật đầu tư nước ngoài được Quốc hội khóa VIII thông qua, có hiệu lực từ 1/1/1988
+3/1988
+Trung Quốc cho quân chiếm đảo Gạc Ma
+Nghị quyết số 10-NQ/TW của Bộ Chính trị
+5/4/1988
+“ Đổi mới quản lý kinh tế nông nghiệp “ ( Khoán 10 ):
+Nông dân nhận khoán và canh tác trên diện tích ổn định trong 15 năm, bảo đảm có thu nhập 40% sản lượng khoản trở lên
+Cuối năm 1988
+Chế độ phân phối theo tem phiếu đã bị xóa bỏ
+HN 6 (3/1989)
+Sử dụng khái niệm hệ thống chính trị
+HN 8 (3/1990)
+Phân tích tình hình CNXH, sự phá hoại của CN đế quốc, nhiệm vụ của ta
+HN 6 và HN 8
+Giải quyết vấn đề cấp bách trong công tác xây dựng Đảng
+=> Điểm nổi bật là đổi mới tư duy, nhất là tư duy kinh tế
+Từ năm 1990
+Chủ trương về quan hệ đối ngoại: “ Tiếp tục mở rộng quan hệ đối ngoại theo phương châm thêm bạn, bớt thù, giữ vững hòa bình, để xây dựng và bảo vệ Tổ quốc. “
+1991
+Bình thường hóa quan hệ Việt Nam - Trung Quốc
+11/7/1995
+Bình thường hóa quan hệ Việt Nam - Hoa Kỳ
+
+
+ĐẠI HỘI VII 1991 - Bối cảnh CNXH sụp đổ
+Thời gian
+24-27/6/1991
+Tổng bí thư
+Đỗ Mười
+
+Sau 4 năm đổi mới đất nước cơ bản đã ổn định nhưng chưa hoàn toàn thoát khỏi khủng hoảng kinh tế - xã hội.
+Chủ đề ĐH VII
+" Đại hội của trí tuệ - đổi mới, dân chủ - kỷ cương - đoàn kết "
+Hai văn kiện
+Cương lĩnh xây dựng đất nước trong TKQĐ lên CNXH 1991 ( thứ 4 sau Cương lĩnh tháng 2/1930, Luận cương tháng 10/1930, Chính cương của Đảng lao động Việt Nam ĐH II tháng 2/1951 )
+Chiến lược ổn định và phát triển kinh tế - xã hội đến năm 2000
+
+Đại hội VII lần đầu tiên khẳng định “ Đảng lấy CNMLN và TTHCM làm nền tảng, kim chỉ nam cho hoạt động “
+
+5 bài học lớn
+Cương lĩnh 1991
+6 đặc trưng cơ bản của xã hội xã hội chủ nghĩa:
+Chính trị: Nhà nước của dân, vì quyền lợi của đa số
+Kinh tế: phát triển cao, công hữu về TLSX chủ yếu
+Văn hóa: Văn hóa tiên tiến, đậm đà bản sắc văn hóa dân tộc
+Xã hội: Con người thoát khỏi áp bức, bất công
+Đối nội: Các dân tộc đoàn kết, gắn bó
+Đối ngoại: Làm bạn với tất cả các nước
+=> Mục tiêu tổng quát: Khi kết thúc TKQĐ, xây dựng xong cơ bản cơ sở kinh tế của CNXH
+
+7 phương hướng cơ bản
+Chính trị:
+Xây dựng nhà nước XHCN của dân, do dân, vì dân
+Xây dựng Đảng trong sạch, vững mạnh
+Kinh tế:
+PT LLSX công nghiệp hóa theo hướng hiện đại, nông nghiệp toàn diện
+ Thiết lập QHSX từ thấp đến cao, phù hợp với LLSX
+Văn hóa - Xã hội:
+Tiến hành cách mạng CNXH trên lĩnh vực tư tưởng văn hóa - xã hội
+ Đại đoàn kết toàn dân
+Nhiệm vụ chiến lược: Xây dựng CNXH song hành với nhiệm vụ bảo vệ tổ quốc
+
+Hệ thống chính trị và vai trò lãnh đạo của Đảng:
+Đảng cộng sản Việt Nam
+Nhà nước CHXH CN VN
+Mặt trận Tô quốc Việt Nam:
+5 tổ chức chính trị - xã hội khác:
+Liên đoàn Lao Động
+Hội Cựu chiến binh
+Hội Liên hiệp phụ nữ
+Hội Nông dân
+Đoàn thanh niên Cộng sản Hồ Chí Minh
+Kỳ họp thứ 11
+( 4/1992 )
+Quốc hội thông qua Hiến pháp năm 1992
+HN 3
+6/1992
+3 quyết sách quan trọng về củng cố quốc phòng, an ninh, quan hệ đối ngoại, đổi mới
+lần đầu tiên đưa tự đổi mới, tự chỉnh đốn Đảng
+HN 5 Nghị quyết 05-NQ/TW
+10/6/1993
+Đề ra chính sách với nông dân, nông nghiệp, nông thôn
+Hội nghị giữa kì T1/1994
+Lần đầu tiên tổ chức Hội nghị giữa nhiệm kì: Quan điểm coi con người là nhân tố quyết định, mục tiêu cao nhất là HẠNH PHÚC CON NGƯỜI
+HN 7
+tháng 7/1994
+Chủ trương phát triển công nghiệp, công nghệ, gccn trong giai đoạn mới
+11/7/1995
+Thiết lập quan hệ ngoại giao Việt Nam - Hoa Kỳ
+28/7/1995
+Trở thành thành viên đầy đủ Hiệp hội các quốc gia Đông Nam Á ( ASEAN )
+
+
+ĐẠI HỘI VIII 1996 - Bước đầu thực hiện CNH HĐH
+Thời gian
+28/6 - 1/7/1996
+Tổng bí thư
+Đỗ Mười
+
+Thực trạng: Nước nghèo, kém phát triển
+Thời kỳ đẩy mạnh CNH. HĐH
+“ Dựa vào nguồn lực TRONG NƯỚC là chính, đi đôi với tranh thủ tối đa nguồn lực BÊN NGOÀI “
+“ Lấy việc phát huy nguồn lực CON NGƯỜI là yếu tố cơ bản cho sự phát triển nhanh và bền vững “
+“ KHOA HỌC và CÔNG NGHỆ là động lực của CNH HĐH “
+Nội dung
+Mục tiêu: Từ nay đến 2020 đưa VN cơ bản trở thành một nước công nghiệp
+Mục tiêu tổng quát
+“ Dân giàu, nước mạnh, xã hội công bằng, văn minh “
+
+Nhiệm vụ đề ra trong chặng đường đầu: Chuẩn bị tiền đề cho CNH đã cơ bản hoàn thành, cho phép chuyển sang thời kỳ mới: Đẩy mạnh CNH HĐH đất nước
+
+6 bài học
+
+Coi phát triển kinh tế: nhiệm vụ trọng tâm
+HN 3 ĐH VIII
+Xây dựng đội ngũ cán bộ
+HN 4 ĐH VIII
+12/1997
+Đồng chí Lê Khả Phiêu là Tổng bí thư
+HN 6 lần 2 (2/1999)
+Nghị quyết số 10- NQ/TW ngày
+2/2/1999 về một số vấn đề cơ bản và cấp bách trong công tác xây
+dựng Đảng hiện nay
+
+HNTW 7 khóa VIII
+8/1999
+Xây dựng, củng cố tổ chức bộ
+máy của hệ thống chính trị từ trung ương đến cơ sở
+
+HNTW 2 
++ Nghị quyết số 2-NQ/HNTW ngày 24/12/1996 về định hướng
+chiến lược phát triển giáo dục - đào tạo trong thời kỳ CNH - HĐH và
+nhiệm vụ đến năm 2000
++ Nghị quyết số 2-NQ/HNTW ngày 24/12/1996 về định hướng
+chiến lược phát triển khoa học và công nghệ trong thời kỳ CNH -
+HĐH và nhiệm vụ đến năm 2000
+
+HN 5 ĐH VIII
+16/7/1998
+Nền văn hóa tiên tiến, đậm đà bản sắc văn hóa dân tộc
+Tuyên ngôn văn hóa
+Phong trào “ Toàn dân đoàn kết, xây dựng đời sống văn hóa “
+
+
+ĐẠI HỘI IX 2001- Đại hội được tổ chức đầu tiên trong thế kỷ XXI
+Thời gian
+19-22/4/2001
+Tổng bí thư
+Nông Đức Mạnh
+
+“ ĐH 9 là đại hội mở đầu thế kỷ 21, cách mạng khoa học và công nghệ, kinh tế tri thức và TOÀN CẦU HÓA diễn ra mạnh mẽ “
+Nội dung
+Chiến lược phát triển kinh tế - xã hội 10 năm 2001 - 2010 mục tiêu: Đưa nước ta thoát khỏi tình trạng kém phát triển, tạo nền tảng đến năm 2020 nước ta trở thành nước công nghiệp theo hướng hiện đại
+
+Động lực chủ yếu: Đại đoàn kết toàn dân trên cơ sở HÀI HÒA CÁC LOẠI LỢI ÍCH
+ĐH IX 2001
+Việt Nam sẵn sàng làm bạn, là đối tác tin cậy của các nước trong cộng đồng quốc tế, phấn đấu vì hòa bình, độc lập, phát triển
+HNTW 3 khóa IX 
+nghị quyết 05-NQ/TW ngày 24/9/2001 về tiếp tục sắp xếp, đổi mới, phát triển và nâng cao hiệu quả doanh nghiệp Nhà nước
+
+HN 5 ĐH IX
+3/2002
+Coi kinh tế tư nhân là bộ phận cấu thành quan trọng của nền kinh tế quốc dân
+
+Luật đất đai 1987
+HN 7 ĐH IX
+3/2003
+Đất đai là tài nguyên quốc gia vô cùng quý giá
+HN 8 ĐH IX
+7/2003
+Chiến lược bảo vệ tổ quốc trong tình hình mới
+
+
+ĐẠI HỘI X 2006
+Thời gian
+18-25/4/2006
+Tổng bí thư
+Nông Đức Mạnh
+Nội dung
+20 năm đổi mới
+
+Chủ đề của đại hội X gồm 4 thành tố:
+Nâng cao năng lực lãnh đạo và sức chiến đấu của Đảng ( Lãnh đạo: Đảng )
+Phát huy sức mạnh dân tộc ( Lực lượng: Đại đoàn kết toàn dân ) => HÀI HÒA CÁC LOẠI LỢI ÍCH
+Đẩy mạnh toàn diện công cuộc đổi mới ( Công việc: Đổi mới )
+Hoàn thiện thể chế kinh tế thị trường định hướng XHCN
+Đẩy mạnh CNH - HĐH gắn với phát triển kinh tế tri thức
+Tích cực hội nhập kinh tế quốc tế
+Sớm đưa nước ta thoát khỏi tình trạng kém phát triển ( Mục tiêu: Thoát khỏi tình trạng kém phát triển )
+
+Đại hội X bổ sung 2 đặc trưng mới của CNXH so với cương lĩnh 1991:
+Mới:
+Dân giàu, nước mạnh, công bằng, dân chủ, văn minh
+Có nhà nước pháp quyền xhcn của nhân dân, do nhân dân, vì nhân dân dưới sự lãnh đạo của Đảng
+Cũ:
+Chính trị: Do nhân dân làm chủ
+Kinh tế: có nền kinh tế phát triển cao dựa trên lực lượng sản xuất hiện đại và quan hệ sản xuất tiến bộ, phù hợp
+Văn hóa: Văn hóa tiên tiến, đậm đà bản sắc dân tộc
+Xã hội: Con người được giải phóng khỏi áp bức, bất công
+Đối nội: Các dân tộc trong cộng đồng Việt Nam bình đẳng, đoàn kết
+Đối ngoại: Có quan hệ hữu nghị và hợp tác với nhân dân các nước trên thế giới
+Nhiệm vụ then chốt
+Xây dựng và chỉnh đốn Đảng
+Điểm mới
+Làm sáng tỏ bản chất của Đảng:
+Đảng Cộng sản Việt Nam là đội tiên phong của GCCN
+Đồng thời là đội tiên phong của nhân dân lao động và của dân tộc
+Đại diện trung thành lợi ích của GCCN, NDLĐ và của dân tộc
+Quan điểm mới nổi bật
+Cho phép đảng viên làm kinh tế tư nhân, kể cả tư bản tư nhân
+Yêu cầu phải tuân thủ điều lệ đảng, nghị quyết của đảng và pháp luật của nhà nước
+Chủ trương đúng đắn, là động lực để xây dựng mục tiêu " Dân giàu, nước mạnh, xã hội công bằng, văn minh "
+HN 4 ĐH X,
+nghị quyết 09 - NQ/TW
+9/2/2007
+Chiến lược biển Việt Nam đến 2020
+HN 6 ĐH X nghị quyết 21 - NQ/TW
+30/1/2008
+Tiếp tục hoàn thiện thể chế kinh tế thị trường định hướng XHCN
+HN 7 ĐH X 8/2008
+Đánh giá tình hình nông nghiệp, nông dân, nông thôn và đưa ra quyết sách giải quyết 3 vấn đề này
+thanh niên
+tri thức
+Nghị quyết số 15/2008/QH12 của Quốc hội khóa X
+Điều chỉnh địa giới hành chính TP Hà Nội và các tỉnh liên quan từ 1/8/2008
+Tháng 11/2006, sau hơn 10 năm đàm phán
+Việt Nam chính thức trở thành thành viên thứ 150 của WTO
+11/2006
+Việt Nam đăng cai tổ chức thành công tuần lễ cao cấp APEC ( Diễn đàn kinh tế Châu Á - Thái Bình Dương ) lần thứ 14
+Đến năm 2010
+Việt Nam có quan hệ thương mại đầu tư với 230 nước và vùng lãnh thổ, trong đó đối tác lớn nhất là Trung Quốc và Mỹ
+
+
+ĐẠI HỘI XI 2011 - Bổ sung phát triển Cương lĩnh 1991
+Thời gian
+12-19/1/2011
+Tổng bí thư
+Nguyễn Phú Trọng
+Nội dung
+Kỷ niệm 1000 năm Thăng Long Hà Nội
+Thông qua
+Cương lĩnh xây dựng đất nước trong thời kỳ quá độ lên chủ nghĩa xã hội (sửa đổi, phát triển năm 2011 )
+=> Mục tiêu tổng quát: " Dân giàu, nước mạnh, dân chủ, công bằng, văn minh "
+
+Cương lĩnh năm 2011 sửa " bảo đảm " thành " quyết định "
+
+Cương lĩnh 2011 bổ sung 2 vấn đề:
+Chống khủng bố
+Ứng phó với biến đổi khí hậu toàn cầu
+
+
+Mục tiêu đến giữa thế kỉ XXI là xây dựng nước ta thành nước công nghiệp hiện đại, theo hướng xã hội chủ nghĩa
+
+Đại hội nêu 8 phương hướng cơ bản xây dựng cnxh
+
+Đại hội nêu 8 mối quan hệ lớn
+Chiến lược phát triển kinh tế - xã hội 2011-2020
+Ba đột phá chiến lược:
+Hoàn thiện thể chế kinh tế thị trường định hướng XHCN
+Phát triển nhanh nguồn nhân lực
+Xây dựng hệ thống kết cấu hạ tầng
+HN 4 ĐH XI
+1/2012
+Hệ thống kết cấu hạ tầng
+Đến năm 2012
+Có 36 nước công nhận cơ chế thị trường của Việt Nam
+Đến năm 2012
+ASEAN và Trung Quốc xây dựng Tuyên bố chung  kỷ niệm 10 năm tuyên bố về ứng xử ở các bên Biển Đông ( DOC ) và ASEAN: 6 điểm về vấn đề biển Đông
+Đến năm 2015
+Việt Nam đã thiết lập quan hệ đối tác chiến lược với 15 nước
+Đối tác toàn diện với 10 nước
+Đối tác chiến lược LĨNH VỰC với Vương quốc Hà Lan
+
+
+ĐẠI HỘI XII 2016
+Thời gian
+20 - 26/1/2016 - Đại hội VII họp sau 30 năm đổi mới
+Tổng bí thư
+Nguyễn Phú Trọng
+Nội dung
+Chủ đề " Đoàn kết - Dân chủ - Kỷ cương - Đổi mới "
+
+Để đạt được mục tiêu Đại hội VII nêu ra thì 2 công cụ chủ yếu cần phát huy:
+Sức mạnh toàn dân tộc
+Dân chủ XHCN
+
+Chiến dịch chống tham nhũng mà TBT Nguyễn Phú Trọng và BCH TW khởi xướng tên Chiến dịch Đốt lò
+
+Ba đột phá chiến lược Đảng cần tiếp tục thực hiện:
+Hoàn thiện thể chế kinh tế thị trường định hướng XHCN
+Đổi mới căn bản, toàn diện giáo dục đào tạo, phát triển nguồn nhân lực
+Xây dựng hệ thống kết cấu hạ tầng đồng bộ
+HN 6 ĐH XII nghị quyết số 20 - NQ/TW 25/10/2017
+Tăng cường công tác bảo vệ, chăm sóc và nâng cao sức khỏe nhân dân trong tình hình mới
+Xây dựng con người ở khía cạnh
+“ Đạo đức, nhân cách, lối sống, trí tuệ, năng lực làm việc, môi trường văn hóa lành mạnh
+
+
+ĐẠI HỘI XIII 2021
+Thời gian
+25/1 - 1/2/2021
+TBT
+Nguyễn Phú Trọng
+ND
+Chủ đề:
+Lãnh đạo: Đảng
+Lực lượng: Toàn dân tộc + SMDT + SMTĐ
+Công việc: Đổi mới
+Xây dựng vững chắc và bảo vệ Tổ quốc
+Đến giữa thế kỷ XXI, nước ta thành nước phát triển theo định hướng XHCN
+
+3 đột phá chiến lược:
+Hoàn thiện đồng bộ thể chế
+Phát triển nguồn nhân lực, nhất là nguồn nhân lực CLC
+Xây dựng hệ thống kết cấu hạ tầng
+ĐH XIII khẳng định
+Phấn đấu năm 2030, xây dựng Quân đội nhân dân, công an nhân dân CÁCH MẠNG, CHÍNH QUY, TINH NHUỆ, HIỆN ĐẠI
+ĐH XIII khẳng định
+Nâng cao chất lượng cuộc sống và chỉ số HẠNH PHÚC của con người VN
+ĐH XIII khẳng định
+Khơi dậy phát triển đất nước PHỒN VINH, hạnh phúc
+
+
 Câu 52: Quá độ lên chủ nghĩa xã hội bỏ qua chế độ tư bản chủ nghĩa, tức là bỏ qua việc xác lập vị trí thống trị của quan hệ sản xuất và kiến trúc thượng tầng tư bản chủ nghĩa, nhưng tiếp thu, kế thừa những thành tựu mà nhân loại đã đạt được dưới chế độ tư bản chủ nghĩa, đặc biệt về khoa học và công nghệ, để phát triển nhanh lực lượng sản xuất, xây dựng nền kinh tế hiện đại là quan điểm được Đảng ta chỉ ra ở thời điểm nào?
 •	B) 2001
 Câu 53: Ngày 10/8/1985, Bộ Chính trị đã ra Nghị quyết số 28-NQ/TW về vấn đề gì?
@@ -1205,478 +1637,4 @@ Phạm Văn Đồng: Thủ tướng chính phủ
 Quốc hội thành lập ủy ban dự thảo Hiến Pháp mới
 
 
-
-
-ĐẠI HỘI IV 1976
-Thời gian
-14-20/12/1976
-Tổng bí thư
-Lê Duẩn
-Nội dung
-Đổi tên Đảng Lao động Việt Nam thành Đảng Cộng sản Việt Nam
-
-
-Nhiệm vụ đầu tiên,bức thiết nhất của cách mạng VN sau đại thắng mùa xuân 1975 là THỐNG NHẤT ĐẤT NƯỚC VỀ MẶT NHÀ NƯỚC
-25/04/1976
-Cuộc TỔNG TUYỂN CỬ bầu quốc hội chung của nước VN thống nhất đất nước về mặt nhà nước
-
-
-Chính trị: Chuyên chính vô sản
-
-
-3 cuộc cách mạng:
-Cách mạng quan hệ sản xuất
-Cách mạng về khoa học - kỹ thuật => Then chốt
-Cách mạng tư tưởng, văn hóa
-
-
-Nhiệm vụ trọng tâm của TKQĐ là CÔNG NGHIỆP HÓA XHCN
-
-
-Đường lối: phát triển kinh tế => Ưu tiên phát triển công nghiệp nặng một cách hợp lý trên cơ sở phát triển nông nghiệp và công nghiệp nhẹ
-=> Sai lầm: Đất nước rơi vào thời kỳ khó khăn, nhu cầu cấp thiết yếu về lương thực - thực phẩm, hàng tiêu dùng không được đáp ứng.
-
-
-Xây dựng mô hình sản xuất dựa trên sở hữu tập thể là HỢP TÁC XÃ
-4/1975
-Tập đoàn Pôn Pốt thi hành chính sách diệt chủng ở Campuchia và tăng cường chống Việt Nam
-3/5/1975
-tập đoàn Pôn Pốt cho quân đánh chiếm đảo Thổ Chu, Phú Quốc mở đầu cho cuộc CHIẾN TRANH BIÊN GIỚI TÂY NAM
-26/12/1978
-Quân tình nguyện Việt Nam giúp đỡ Campuchia tổng tiến công
-7/1/1979
-Giải phóng Phnôm Pênh, đánh đổ chế độ diệt chủng Pôn Pốt
-17/2/1979
-Cuộc chiến tranh phía Bắc ( Trung Quốc - Việt Nam ), Trung Quốc huy động 60 vạn quân tấn công từ Lai Châu đến Quảng Ninh
-18/2/1979
-Việt Nam - Campuchia ký Hiệp ước Hòa bình
-HN 6 (8/1979)
-Bước đột phá đầu tiên > khắc phục sai lầm > phá bỏ rào cản >
-“ sản xuất bung ra “
-10/1979
-Hội đồng Chính phủ quyết định:
-Tận dụng đất đai nông nghiệp để khai hoang, miễn thuế
-Xóa bỏ trạm kiểm soát để người sản xuất tự do đưa sản phẩm ra trao đổi ngoài thị trường
-9/1980
-BCH TW Đảng họp để cho ý kiến về bản Dự thảo Hiến pháp mới
-18/12/1980
-Hiến pháp được thông qua
-Chỉ thị 100-CT/TW
-( 13/1/1981 )
-Khoán sản phẩm đến nhóm người, người lao động trong các hợp tác xã nông nghiệp ( Khoán 100 ) ra đời sau hiện tượng KHOÁN CHUI
-
-
-
-ĐẠI HỘI V 1982
-Thời gian
-27-31/3/1982
-Tổng bí thư
-Lê Duẩn
-Nội dung
-Mỹ tiếp tục thực hiện chính sách bao vây cấm vận và “ Kế hoạch hậu chiến “
-
-
-Nền kinh tế Việt Nam = Kinh tế tập thể + Kinh tế nhà nước
-Cơ chế kế hoạch tập trung
-Chế độ phân phối bao cấp: Cào bằng, chia đều, không thừa nhận quan hệ hàng hóa tiền tệ mà sử dụng tem phiếu
-
-
-Nước ta đang ở CHẶNG ĐƯỜNG ĐẦU của TKQĐ lên CNXH
-Hai nhiệm vụ chiến lược
-Xây dựng thành công CNXH
-Bảo vệ vững chắc Tổ Quốc Việt Nam XHCN
-=> Quan hệ mật thiết, nhiệm vụ hàng đầu: xây dựng CNXH
-
-
-Tập trung phát triển NÔNG NGHIỆP, coi nông nghiệp là mặt trận hàng đầu
-=> Được ví như “ Vừa đạp xe, vừa kít phanh “ ĐH IV từ công nghiệp nặng => ĐH V nông nghiệp
-HN 6 (7/1984)
-Giải quyết vấn đề phân phối lưu thông
-HN 7 (12/1984)
-Kế hoạch năm 1985 coi mặt trận nông nghiệp là mặt trận hàng đầu
-HN 8 (6/1985)
-BƯỚC ĐỘT PHÁ THỨ 2 > Đảng đã thực hiện cải cách giá - lương - tiền > xóa bỏ cơ chế KẾ HOẠCH HÓA TẬP TRUNG BAO CẤP.
-Hội nghị Bộ Chính trị khóa V (8/1986)
-BƯỚC ĐỘT PHÁ THỨ 3 về đổi mới kinh tế: Lấy nông nghiệp là mặt trận hàng đầu, ra sức phát triển công nghiệp nhẹ, công nghiệp nặng hợp lý về quy mô và nhịp độ
-
-ĐẠI HỘI VI 1986 ĐƯỜNG LỐI ĐỔI MỚI TOÀN DIỆN
-Thời gian
-15-18/12/1986 bối cảnh cuộc cách mạng khoa học kỹ thuật đang phát triển mạnh, xu thế đối thoại trên thế giới đang dần thay thế xu thế đối đầu
-Tổng bí thư
-Nguyễn Văn Linh
-
-
-Đảng thừa nhận sai lầm giai đoạn 1975 - 1986
-
-
-Bài học kinh nghiệm hàng đầu Đảng rút ra “ Lấy dân làm gốc “
-
-
-Kinh tế tập thể + Kinh tế nhà nước => Kinh tế nhiều thành phần
-Cơ chế tập trung quan liêu => Cơ chế thị trường có sự quản lý của nhà nước
-Chế độ phân phối bao cấp ( cào bằng, chia đều, dùng tem phiếu ) => Phân phối theo lao động ( làm nhiều hưởng nhiều, làm ít hưởng ít, hưởng theo vốn góp )
-
-
-3 chương trình kinh tế lớn: lương thực - thực phẩm, hàng tiêu dùng, hàng xuất khẩu
-=> Công nghiệp hóa chặng đường đầu TKQĐ
-
-
-5 phương hướng lớn
-
-
-4 nhóm chính sách xã hội
-
-
-Đổi mới tư duy, trước hết là đổi mới tư duy kinh tế
-HN 2 (4/1987)
-Biện pháp cấp bách về phân phối, lưu thông, trọng tâm là BỐN GIẢM: Giảm bội chi ngân sách, giảm nhịp độ tăng giá,...
-Quyết định số 217/HĐBT của Hội đồng Bộ trưởng (14/11/1987)
-Trao quyền tự chủ cho các doanh nghiệp
-1/1/1988
-Lần đầu tiên Luật đầu tư nước ngoài được Quốc hội khóa VIII thông qua, có hiệu lực từ 1/1/1988
-3/1988
-Trung Quốc cho quân chiếm đảo Gạc Ma
-Nghị quyết số 10-NQ/TW của Bộ Chính trị
-5/4/1988
-“ Đổi mới quản lý kinh tế nông nghiệp “ ( Khoán 10 ):
-Nông dân nhận khoán và canh tác trên diện tích ổn định trong 15 năm, bảo đảm có thu nhập 40% sản lượng khoản trở lên
-Cuối năm 1988
-Chế độ phân phối theo tem phiếu đã bị xóa bỏ
-HN 6 (3/1989)
-Sử dụng khái niệm hệ thống chính trị
-HN 8 (3/1990)
-Phân tích tình hình CNXH, sự phá hoại của CN đế quốc, nhiệm vụ của ta
-HN 6 và HN 8
-Giải quyết vấn đề cấp bách trong công tác xây dựng Đảng
-=> Điểm nổi bật là đổi mới tư duy, nhất là tư duy kinh tế
-Từ năm 1990
-Chủ trương về quan hệ đối ngoại: “ Tiếp tục mở rộng quan hệ đối ngoại theo phương châm thêm bạn, bớt thù, giữ vững hòa bình, để xây dựng và bảo vệ Tổ quốc. “
-1991
-Bình thường hóa quan hệ Việt Nam - Trung Quốc
-11/7/1995
-Bình thường hóa quan hệ Việt Nam - Hoa Kỳ
-
-
-ĐẠI HỘI VII 1991 - Bối cảnh CNXH sụp đổ
-Thời gian
-24-27/6/1991
-Tổng bí thư
-Đỗ Mười
-
-
-Sau 4 năm đổi mới đất nước cơ bản đã ổn định nhưng chưa hoàn toàn thoát khỏi khủng hoảng kinh tế - xã hội.
-Chủ đề ĐH VII
-" Đại hội của trí tuệ - đổi mới, dân chủ - kỷ cương - đoàn kết "
-Hai văn kiện
-Cương lĩnh xây dựng đất nước trong TKQĐ lên CNXH 1991 ( thứ 4 sau Cương lĩnh tháng 2/1930, Luận cương tháng 10/1930, Chính cương của Đảng lao động Việt Nam ĐH II tháng 2/1951 )
-Chiến lược ổn định và phát triển kinh tế - xã hội đến năm 2000
-
-
-Đại hội VII lần đầu tiên khẳng định “ Đảng lấy CNMLN và TTHCM làm nền tảng, kim chỉ nam cho hoạt động “
-
-
-5 bài học lớn
-Cương lĩnh 1991
-6 đặc trưng cơ bản của xã hội xã hội chủ nghĩa:
-Chính trị: Nhà nước của dân, vì quyền lợi của đa số
-Kinh tế: phát triển cao, công hữu về TLSX chủ yếu
-Văn hóa: Văn hóa tiên tiến, đậm đà bản sắc văn hóa dân tộc
-Xã hội: Con người thoát khỏi áp bức, bất công
-Đối nội: Các dân tộc đoàn kết, gắn bó
-Đối ngoại: Làm bạn với tất cả các nước
-=> Mục tiêu tổng quát: Khi kết thúc TKQĐ, xây dựng xong cơ bản cơ sở kinh tế của CNXH
-
-
-7 phương hướng cơ bản
-Chính trị:
-Xây dựng nhà nước XHCN của dân, do dân, vì dân
-Xây dựng Đảng trong sạch, vững mạnh
-Kinh tế:
-PT LLSX công nghiệp hóa theo hướng hiện đại, nông nghiệp toàn diện
- Thiết lập QHSX từ thấp đến cao, phù hợp với LLSX
-Văn hóa - Xã hội:
-Tiến hành cách mạng CNXH trên lĩnh vực tư tưởng văn hóa - xã hội
- Đại đoàn kết toàn dân
-Nhiệm vụ chiến lược: Xây dựng CNXH song hành với nhiệm vụ bảo vệ tổ quốc
-
-
-Hệ thống chính trị và vai trò lãnh đạo của Đảng:
-Đảng cộng sản Việt Nam
-Nhà nước CHXH CN VN
-Mặt trận Tô quốc Việt Nam:
-5 tổ chức chính trị - xã hội khác:
-Liên đoàn Lao Động
-Hội Cựu chiến binh
-Hội Liên hiệp phụ nữ
-Hội Nông dân
-Đoàn thanh niên Cộng sản Hồ Chí Minh
-Kỳ họp thứ 11
-( 4/1992 )
-Quốc hội thông qua Hiến pháp năm 1992
-HN 3
-6/1992
-3 quyết sách quan trọng về củng cố quốc phòng, an ninh, quan hệ đối ngoại, đổi mới
-lần đầu tiên đưa tự đổi mới, tự chỉnh đốn Đảng
-HN 5 Nghị quyết 05-NQ/TW
-10/6/1993
-Đề ra chính sách với nông dân, nông nghiệp, nông thôn
-Hội nghị giữa kì T1/1994
-Lần đầu tiên tổ chức Hội nghị giữa nhiệm kì: Quan điểm coi con người là nhân tố quyết định, mục tiêu cao nhất là HẠNH PHÚC CON NGƯỜI
-HN 7
-tháng 7/1994
-Chủ trương phát triển công nghiệp, công nghệ, gccn trong giai đoạn mới
-11/7/1995
-Thiết lập quan hệ ngoại giao Việt Nam - Hoa Kỳ
-28/7/1995
-Trở thành thành viên đầy đủ Hiệp hội các quốc gia Đông Nam Á ( ASEAN )
-
-
-ĐẠI HỘI VIII 1996 - Bước đầu thực hiện CNH HĐH
-Thời gian
-28/6 - 1/7/1996
-Tổng bí thư
-Đỗ Mười
-
-
-Thực trạng: Nước nghèo, kém phát triển
-Thời kỳ đẩy mạnh CNH. HĐH
-“ Dựa vào nguồn lực TRONG NƯỚC là chính, đi đôi với tranh thủ tối đa nguồn lực BÊN NGOÀI “
-“ Lấy việc phát huy nguồn lực CON NGƯỜI là yếu tố cơ bản cho sự phát triển nhanh và bền vững “
-“ KHOA HỌC và CÔNG NGHỆ là động lực của CNH HĐH “
-Nội dung
-Mục tiêu: Từ nay đến 2020 đưa VN cơ bản trở thành một nước công nghiệp
-Mục tiêu tổng quát
-“ Dân giàu, nước mạnh, xã hội công bằng, văn minh “
-
-
-Nhiệm vụ đề ra trong chặng đường đầu: Chuẩn bị tiền đề cho CNH đã cơ bản hoàn thành, cho phép chuyển sang thời kỳ mới: Đẩy mạnh CNH HĐH đất nước
-
-
-6 bài học
-
-
-Coi phát triển kinh tế: nhiệm vụ trọng tâm
-HN 3 ĐH VIII
-Xây dựng đội ngũ cán bộ
-HN 4 ĐH VIII
-12/1997
-Đồng chí Lê Khả Phiêu là Tổng bí thư
-HN 6 lần 2 (2/1999)
-Nghị quyết số 10- NQ/TW ngày
-2/2/1999 về một số vấn đề cơ bản và cấp bách trong công tác xây
-dựng Đảng hiện nay
-
-
-HNTW 7 khóa VIII
-8/1999
-Xây dựng, củng cố tổ chức bộ
-máy của hệ thống chính trị từ trung ương đến cơ sở
-
-
-HNTW 2 
-+ Nghị quyết số 2-NQ/HNTW ngày 24/12/1996 về định hướng
-chiến lược phát triển giáo dục - đào tạo trong thời kỳ CNH - HĐH và
-nhiệm vụ đến năm 2000
-+ Nghị quyết số 2-NQ/HNTW ngày 24/12/1996 về định hướng
-chiến lược phát triển khoa học và công nghệ trong thời kỳ CNH -
-HĐH và nhiệm vụ đến năm 2000
-
-
-HN 5 ĐH VIII
-16/7/1998
-Nền văn hóa tiên tiến, đậm đà bản sắc văn hóa dân tộc
-Tuyên ngôn văn hóa
-Phong trào “ Toàn dân đoàn kết, xây dựng đời sống văn hóa “
-
-
-
-ĐẠI HỘI IX 2001- Đại hội được tổ chức đầu tiên trong thế kỷ XXI
-Thời gian
-19-22/4/2001
-Tổng bí thư
-Nông Đức Mạnh
-
-
-“ ĐH 9 là đại hội mở đầu thế kỷ 21, cách mạng khoa học và công nghệ, kinh tế tri thức và TOÀN CẦU HÓA diễn ra mạnh mẽ “
-Nội dung
-Chiến lược phát triển kinh tế - xã hội 10 năm 2001 - 2010 mục tiêu: Đưa nước ta thoát khỏi tình trạng kém phát triển, tạo nền tảng đến năm 2020 nước ta trở thành nước công nghiệp theo hướng hiện đại
-
-
-Động lực chủ yếu: Đại đoàn kết toàn dân trên cơ sở HÀI HÒA CÁC LOẠI LỢI ÍCH
-ĐH IX 2001
-Việt Nam sẵn sàng làm bạn, là đối tác tin cậy của các nước trong cộng đồng quốc tế, phấn đấu vì hòa bình, độc lập, phát triển
-HNTW 3 khóa IX 
-nghị quyết 05-NQ/TW ngày 24/9/2001 về tiếp tục sắp xếp, đổi mới, phát triển và nâng cao hiệu quả doanh nghiệp Nhà nước
-
-
-HN 5 ĐH IX
-3/2002
-Coi kinh tế tư nhân là bộ phận cấu thành quan trọng của nền kinh tế quốc dân
-
-
-Luật đất đai 1987
-HN 7 ĐH IX
-3/2003
-Đất đai là tài nguyên quốc gia vô cùng quý giá
-HN 8 ĐH IX
-7/2003
-Chiến lược bảo vệ tổ quốc trong tình hình mới
-
-ĐẠI HỘI X 2006
-Thời gian
-18-25/4/2006
-Tổng bí thư
-Nông Đức Mạnh
-Nội dung
-20 năm đổi mới
-
-
-Chủ đề của đại hội X gồm 4 thành tố:
-Nâng cao năng lực lãnh đạo và sức chiến đấu của Đảng ( Lãnh đạo: Đảng )
-Phát huy sức mạnh dân tộc ( Lực lượng: Đại đoàn kết toàn dân ) => HÀI HÒA CÁC LOẠI LỢI ÍCH
-Đẩy mạnh toàn diện công cuộc đổi mới ( Công việc: Đổi mới )
-Hoàn thiện thể chế kinh tế thị trường định hướng XHCN
-Đẩy mạnh CNH - HĐH gắn với phát triển kinh tế tri thức
-Tích cực hội nhập kinh tế quốc tế
-Sớm đưa nước ta thoát khỏi tình trạng kém phát triển ( Mục tiêu: Thoát khỏi tình trạng kém phát triển )
-
-
-Đại hội X bổ sung 2 đặc trưng mới của CNXH so với cương lĩnh 1991:
-Mới:
-Dân giàu, nước mạnh, công bằng, dân chủ, văn minh
-Có nhà nước pháp quyền xhcn của nhân dân, do nhân dân, vì nhân dân dưới sự lãnh đạo của Đảng
-Cũ:
-Chính trị: Do nhân dân làm chủ
-Kinh tế: có nền kinh tế phát triển cao dựa trên lực lượng sản xuất hiện đại và quan hệ sản xuất tiến bộ, phù hợp
-Văn hóa: Văn hóa tiên tiến, đậm đà bản sắc dân tộc
-Xã hội: Con người được giải phóng khỏi áp bức, bất công
-Đối nội: Các dân tộc trong cộng đồng Việt Nam bình đẳng, đoàn kết
-Đối ngoại: Có quan hệ hữu nghị và hợp tác với nhân dân các nước trên thế giới
-Nhiệm vụ then chốt
-Xây dựng và chỉnh đốn Đảng
-Điểm mới
-Làm sáng tỏ bản chất của Đảng:
-Đảng Cộng sản Việt Nam là đội tiên phong của GCCN
-Đồng thời là đội tiên phong của nhân dân lao động và của dân tộc
-Đại diện trung thành lợi ích của GCCN, NDLĐ và của dân tộc
-Quan điểm mới nổi bật
-Cho phép đảng viên làm kinh tế tư nhân, kể cả tư bản tư nhân
-Yêu cầu phải tuân thủ điều lệ đảng, nghị quyết của đảng và pháp luật của nhà nước
-Chủ trương đúng đắn, là động lực để xây dựng mục tiêu " Dân giàu, nước mạnh, xã hội công bằng, văn minh "
-HN 4 ĐH X,
-nghị quyết 09 - NQ/TW
-9/2/2007
-Chiến lược biển Việt Nam đến 2020
-HN 6 ĐH X nghị quyết 21 - NQ/TW
-30/1/2008
-Tiếp tục hoàn thiện thể chế kinh tế thị trường định hướng XHCN
-HN 7 ĐH X 8/2008
-Đánh giá tình hình nông nghiệp, nông dân, nông thôn và đưa ra quyết sách giải quyết 3 vấn đề này
-thanh niên
-tri thức
-Nghị quyết số 15/2008/QH12 của Quốc hội khóa X
-Điều chỉnh địa giới hành chính TP Hà Nội và các tỉnh liên quan từ 1/8/2008
-Tháng 11/2006, sau hơn 10 năm đàm phán
-Việt Nam chính thức trở thành thành viên thứ 150 của WTO
-11/2006
-Việt Nam đăng cai tổ chức thành công tuần lễ cao cấp APEC ( Diễn đàn kinh tế Châu Á - Thái Bình Dương ) lần thứ 14
-Đến năm 2010
-Việt Nam có quan hệ thương mại đầu tư với 230 nước và vùng lãnh thổ, trong đó đối tác lớn nhất là Trung Quốc và Mỹ
-
-ĐẠI HỘI XI 2011 - Bổ sung phát triển Cương lĩnh 1991
-Thời gian
-12-19/1/2011
-Tổng bí thư
-Nguyễn Phú Trọng
-Nội dung
-Kỷ niệm 1000 năm Thăng Long Hà Nội
-Thông qua
-Cương lĩnh xây dựng đất nước trong thời kỳ quá độ lên chủ nghĩa xã hội (sửa đổi, phát triển năm 2011 )
-=> Mục tiêu tổng quát: " Dân giàu, nước mạnh, dân chủ, công bằng, văn minh "
-
-
-Cương lĩnh năm 2011 sửa " bảo đảm " thành " quyết định "
-
-
-Cương lĩnh 2011 bổ sung 2 vấn đề:
-Chống khủng bố
-Ứng phó với biến đổi khí hậu toàn cầu
-
-
-Mục tiêu đến giữa thế kỉ XXI là xây dựng nước ta thành nước công nghiệp hiện đại, theo hướng xã hội chủ nghĩa
-
-
-Đại hội nêu 8 phương hướng cơ bản xây dựng cnxh
-
-
-Đại hội nêu 8 mối quan hệ lớn
-Chiến lược phát triển kinh tế - xã hội 2011-2020
-Ba đột phá chiến lược:
-Hoàn thiện thể chế kinh tế thị trường định hướng XHCN
-Phát triển nhanh nguồn nhân lực
-Xây dựng hệ thống kết cấu hạ tầng
-HN 4 ĐH XI
-1/2012
-Hệ thống kết cấu hạ tầng
-Đến năm 2012
-Có 36 nước công nhận cơ chế thị trường của Việt Nam
-Đến năm 2012
-ASEAN và Trung Quốc xây dựng Tuyên bố chung  kỷ niệm 10 năm tuyên bố về ứng xử ở các bên Biển Đông ( DOC ) và ASEAN: 6 điểm về vấn đề biển Đông
-Đến năm 2015
-Việt Nam đã thiết lập quan hệ đối tác chiến lược với 15 nước
-Đối tác toàn diện với 10 nước
-Đối tác chiến lược LĨNH VỰC với Vương quốc Hà Lan
-
-
-ĐẠI HỘI XII 2016
-Thời gian
-20 - 26/1/2016 - Đại hội VII họp sau 30 năm đổi mới
-Tổng bí thư
-Nguyễn Phú Trọng
-Nội dung
-Chủ đề " Đoàn kết - Dân chủ - Kỷ cương - Đổi mới "
-
-
-Để đạt được mục tiêu Đại hội VII nêu ra thì 2 công cụ chủ yếu cần phát huy:
-Sức mạnh toàn dân tộc
-Dân chủ XHCN
-
-
-Chiến dịch chống tham nhũng mà TBT Nguyễn Phú Trọng và BCH TW khởi xướng tên Chiến dịch Đốt lò
-
-
-Ba đột phá chiến lược Đảng cần tiếp tục thực hiện:
-Hoàn thiện thể chế kinh tế thị trường định hướng XHCN
-Đổi mới căn bản, toàn diện giáo dục đào tạo, phát triển nguồn nhân lực
-Xây dựng hệ thống kết cấu hạ tầng đồng bộ
-HN 6 ĐH XII nghị quyết số 20 - NQ/TW 25/10/2017
-Tăng cường công tác bảo vệ, chăm sóc và nâng cao sức khỏe nhân dân trong tình hình mới
-Xây dựng con người ở khía cạnh
-“ Đạo đức, nhân cách, lối sống, trí tuệ, năng lực làm việc, môi trường văn hóa lành mạnh
-
-
-ĐẠI HỘI XIII 2021
-Thời gian
-25/1 - 1/2/2021
-TBT
-Nguyễn Phú Trọng
-ND
-Chủ đề:
-Lãnh đạo: Đảng
-Lực lượng: Toàn dân tộc + SMDT + SMTĐ
-Công việc: Đổi mới
-Xây dựng vững chắc và bảo vệ Tổ quốc
-Đến giữa thế kỷ XXI, nước ta thành nước phát triển theo định hướng XHCN
-
-
-3 đột phá chiến lược:
-Hoàn thiện đồng bộ thể chế
-Phát triển nguồn nhân lực, nhất là nguồn nhân lực CLC
-Xây dựng hệ thống kết cấu hạ tầng
-ĐH XIII khẳng định
-Phấn đấu năm 2030, xây dựng Quân đội nhân dân, công an nhân dân CÁCH MẠNG, CHÍNH QUY, TINH NHUỆ, HIỆN ĐẠI
-ĐH XIII khẳng định
-Nâng cao chất lượng cuộc sống và chỉ số HẠNH PHÚC của con người VN
-ĐH XIII khẳng định
-Khơi dậy phát triển đất nước PHỒN VINH, hạnh phúc
 
