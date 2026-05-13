@@ -263,3 +263,26 @@ RAN và CN được kết nối thông qua giao diện S1. Các thiết bị di 
 - Z-Wave hoạt động ở bằng tần ISM (khoảng 900MHz) và cho phép truyền đi với tốc độ 40kbps, và lên tới 200kbps.
 - Z-Wave có cấu trúc lưới. Các thiết bị (nút) được liên kết với 1 trung tâm. Qua đó sẽ dễ dàng điều khiển bằng điện thoại/ máy tính
 - Đánh giá: Nhược điểm: cấu trúc khép kín, không tương thích được với nhiều thiết bị, bị phụ thuộc vào đường truyền wifi, giá thành vẫn cao. Ưu điểm: độ tin cậy, khả năng mở rộng, hiệu suất mạnh.
+
+CHƯƠNG 4
+
+1. Một chương trình cơ bản gồm hai phần chính: setup() và loop()
+- setup() là nơi khai báo các giá trị biến, khai báo thư viện, thiết đặt thông số...Chạy một lần duy nhất sau khi cấp nguồn cho arduino, cho đến khi reset lại hệ thống.
+- loop() sẽ khởi động sau khi khi setup() chạy xong, đây là nơi các chương trình được lặp đi lặp lại cho đến khi dừng cấp nguồn hoặc reset lại hệ thống.
+
+2. Hằng số và biến số
+- HIGH: là một hằng số có giá trị nguyên là 1. Trong điện tử, HIGH là một mức điện áp lớn hơn 0V (Giá trị của HIGH được định nghĩa khác nhau trong các mạch điện khác nhau, nhưng thường được quy ước ở các mức như 3,3V; 5V;...)
+- LOW: là một hằng số có giá trị nguyên là 0. Trong điện tử, LOW là mức điện áp 0V.
+- INPUT
+- INPUT_PULLUP
+- OUTPUT
+
+3. Hàm và thủ tục
+Digital I/O
+- pinMode()
+- digitalWrite() 
+- digitalRead()
+Analog I/O
+- analogReference()
+- analogRead()
+- analogWrite()
