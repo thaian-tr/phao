@@ -1,223 +1,265 @@
 # phao
-Câu 1: Một ngân hàng triển khai hệ thống AI để hỗ trợ xét duyệt khoản vay. Sau 3 tháng, bộ phận kinh doanh phản ánh rằng mô hình từ chối quá nhiều khách hàng tiềm năng, trong khi bộ phận quản trị rủi ro lại cho rằng mô hình vẫn chưa đủ thận trọng. Nếu là người phụ trách dự án, anh/chị sẽ phân tích mâu thuẫn này như thế nào và cần xem xét những yếu tố nào trước khi điều chỉnh hệ thống?
-Mâu thuẫn giữa bộ phận kinh doanh và quản trị rủi ro trong hệ thống xét duyệt khoản vay
-Khi một hệ thống AI xét duyệt khoản vay vấp phải hai luồng phản ánh trái chiều – bộ phận kinh doanh cho rằng mô hình từ chối quá nhiều khách hàng tiềm năng, trong khi bộ phận quản trị rủi ro lại lo ngại mô hình chưa đủ thận trọng – đây không đơn thuần là câu chuyện kỹ thuật mà phản ánh sự không thống nhất về mục tiêu và tiêu chí thành công giữa các bên liên quan ngay từ giai đoạn thiết kế bài toán.
-1. Phân tích nguồn gốc mâu thuẫn
-Mâu thuẫn này bắt nguồn từ sự khác biệt căn bản về hàm mục tiêu. Bộ phận kinh doanh tối ưu hóa doanh thu và tăng trưởng danh mục tín dụng, nên họ đánh giá mô hình tốt khi tỷ lệ chấp thuận cao và ít bỏ lỡ khách hàng có khả năng trả nợ. Ngược lại, bộ phận quản trị rủi ro tối ưu hóa tỷ lệ nợ xấu và mức độ tổn thất, nên họ muốn mô hình thận trọng và ít chấp thuận những hồ sơ đáng ngờ. Đây là sự đánh đổi cổ điển giữa Precision và Recall trong bài toán phân loại nhị phân – hai bên đang nhìn vào hai chiều sai số khác nhau của cùng một mô hình.
-Trên thực tế, mô hình hoàn toàn có thể đang hoạt động đúng về mặt kỹ thuật – tức là tối ưu theo ngưỡng phân loại (threshold) đã được cài đặt. Nhưng ngưỡng đó có thể chưa bao giờ được thảo luận và đồng thuận với các bên nghiệp vụ. Đây là lỗi thiết kế phổ biến khi triển khai AI trong doanh nghiệp: nhóm kỹ thuật chọn ngưỡng dựa trên một chỉ số tối ưu duy nhất (như F1-score) mà không tham chiếu đến chi phí kinh doanh thực tế của từng loại sai lầm.
-2. Các yếu tố cần xem xét trước khi điều chỉnh
-Thứ nhất, cần kiểm tra lại định nghĩa nhãn và bối cảnh dữ liệu huấn luyện. Mô hình học từ dữ liệu lịch sử – vậy dữ liệu đó phản ánh hành vi tín dụng trong giai đoạn kinh tế nào? Nếu phần lớn dữ liệu được thu thập trong giai đoạn kinh tế khó khăn hoặc có tỷ lệ nợ xấu cao, mô hình sẽ học được bức tranh bi quan hơn so với thực tế hiện tại và có xu hướng từ chối nhiều hơn mức cần thiết.
-Thứ hai, cần phân tích đặc điểm của tập hồ sơ bị từ chối. Trong số khách hàng bị từ chối, hồ sơ của họ phân bố ở điểm rủi ro như thế nào? Có bao nhiêu hồ sơ nằm gần sát ngưỡng phân loại và có thể đang bị xếp nhầm? Điều này đòi hỏi cơ chế kiểm chứng phản thực (counterfactual validation), ví dụ như cho vay thử nghiệm một tỷ lệ nhỏ hồ sơ bị từ chối để theo dõi kết quả thực tế – đây là phương pháp phổ biến mà nhiều tổ chức tài chính áp dụng để đánh giá khả năng bỏ sót khách hàng tốt.
-Thứ ba, cần định lượng cơ cấu chi phí lỗi một cách rõ ràng. Chi phí trung bình của một khoản vay xấu (false negative: chấp thuận người sẽ vỡ nợ) và chi phí cơ hội của việc bỏ lỡ khách hàng tốt (false positive: từ chối người đáng được vay) là bao nhiêu? Khi hai con số này được xác định, người phụ trách có thể điều chỉnh ngưỡng phân loại một cách có căn cứ, thay vì điều chỉnh tùy tiện theo áp lực từng phía.
-Thứ tư, cần kiểm tra vấn đề data drift. Sau 3 tháng triển khai, phân phối hồ sơ đầu vào có thể đã thay đổi so với thời điểm huấn luyện – thành phần khách hàng khác, kênh thu hút dẫn đến tệp khách hàng khác về chất lượng. Mô hình chưa thấy những dạng hồ sơ mới này trong quá trình học, khiến hiệu suất giảm mà không phải do thuật toán sai.
-Tóm lại, trước khi điều chỉnh bất kỳ tham số kỹ thuật nào, người phụ trách dự án cần triệu tập một cuộc thảo luận đa bên để thống nhất định nghĩa "mô hình tốt" là gì theo quan điểm kinh doanh tổng thể, sau đó mới dựa trên phân tích dữ liệu thực tế để đưa ra quyết định điều chỉnh có cơ sở và được các bên chấp nhận.
+CHƯƠNG 1 
 
-Câu 2: Một chuỗi siêu thị dùng AI để dự đoán nhu cầu hàng hóa. Mô hình dự đoán một mặt hàng sẽ bán rất chạy nên hệ thống đề xuất nhập số lượng lớn. Tuy nhiên, mặt hàng đó sau đó bán chậm, gây tồn kho cao. Anh/chị hãy phân tích các nguyên nhân có thể dẫn đến sai lệch này và đề xuất cách cải thiện quy trình ra quyết định.
-AI dự đoán nhu cầu hàng hóa sai dẫn đến tồn kho cao
-Tình huống mô hình dự đoán nhu cầu đưa ra tín hiệu quá lạc quan, khiến siêu thị nhập hàng lớn nhưng thực tế bán chậm, là bài toán điển hình phản ánh sự thiếu hụt trong thiết kế dữ liệu, mô hình và quy trình ra quyết định khi tích hợp AI vào chuỗi cung ứng.
-1. Phân tích nguyên nhân sai lệch
-Nguyên nhân đầu tiên và phổ biến nhất là mô hình chỉ học từ dữ liệu bán hàng lịch sử mà không tích hợp được tín hiệu thị trường theo thời gian thực. Dữ liệu lịch sử phản ánh hành vi tiêu dùng trong điều kiện cũ – cạnh tranh cũ, tâm lý cũ, xu hướng cũ. Nếu thị trường thay đổi (đối thủ tung sản phẩm mới, xu hướng tiêu dùng dịch chuyển, hay mặt hàng đó bị thay thế bởi sản phẩm thay thế), mô hình sẽ không bắt kịp và vẫn dự đoán theo quán tính của quá khứ.
-Nguyên nhân thứ hai là mô hình có thể đã học nhầm mối quan hệ nhân quả. Nếu trong lịch sử, mặt hàng bán tốt thường đi kèm với các chương trình khuyến mãi hoặc dịp lễ đặc biệt, nhưng những điều kiện kèm theo đó không được đưa vào mô hình như đặc trưng riêng biệt, mô hình sẽ ảo tưởng rằng sản phẩm đó "tự nhiên" bán tốt và áp dụng kết luận sai vào giai đoạn bình thường.
-Nguyên nhân thứ ba là vấn đề overfitting theo thời gian. Nếu mô hình được huấn luyện trên dữ liệu của một giai đoạn tương đối đặc thù (ví dụ sau đại dịch, khi hành vi tiêu dùng bị méo mó), và sau đó được triển khai vào một giai đoạn bình thường hơn, dự đoán sẽ sai hệ thống ngay cả khi hiệu suất trong kiểm thử rất tốt.
-Một yếu tố quy trình không kém phần quan trọng: hệ thống có cho phép nhân viên quản lý kho điều chỉnh đề xuất của AI không? Nếu đề xuất của mô hình được thực thi tự động mà không có bước xét duyệt của người có kiến thức thực tế về thị trường, một sai lệch nhỏ của mô hình sẽ được khuếch đại thành hậu quả lớn.
-2. Đề xuất cải thiện quy trình ra quyết định
-Về mặt dữ liệu, cần bổ sung các tín hiệu bên ngoài vào mô hình: xu hướng tìm kiếm Google, dữ liệu đánh giá và bình luận sản phẩm trực tuyến, lịch sử giá của đối thủ cạnh tranh, và các chỉ số kinh tế vĩ mô liên quan. Những nguồn dữ liệu này giúp mô hình cập nhật được thực tế thị trường mà dữ liệu bán hàng nội bộ không nắm bắt được.
-Về mặt mô hình, thay vì đưa ra một con số dự đoán duy nhất, hệ thống nên trình bày khoảng tin cậy của dự đoán. Khi khoảng tin cậy rộng, đó là tín hiệu để người ra quyết định thận trọng hơn thay vì tin tưởng tuyệt đối vào con số trung tâm. Phương pháp ensemble forecasting – kết hợp dự báo từ nhiều mô hình khác nhau – cũng giúp giảm rủi ro khi một mô hình đơn lẻ sai lệch.
-Về mặt quy trình, cần thiết lập cơ chế human-in-the-loop có cấu trúc: mô hình đề xuất, nhân viên am hiểu thị trường xem xét và điều chỉnh trước khi đặt hàng, và mọi điều chỉnh đều được ghi lại để phân tích sau. Lâu dài, phản hồi này sẽ trở thành dữ liệu quý giá để cải thiện mô hình, tạo vòng lặp học hỏi liên tục giữa hệ thống AI và người dùng.
+1. Một số khái niệm và định nghĩa
+- Theo ITU (International Telecommunication Union): "IoT là một cơ sở hạ tầng toàn cầu cho xã hội thông tin, cho phép các dịch vụ tiên tiến bằng cách liên kết các vật thể (vật lý hoặc ảo) dựa trên các công nghệ thông tin và truyền thông hiện có và tương lai."
+- Theo IETF ((Internet Engineering Task Force): "IoT là một mạng lưới toàn cầu gồm các đối tượng được kết nối với nhau, có khả năng định danh duy nhất, dựa trên các giao thức truyền thông tiêu chuẩn."
+- Theo IEEE (Institute of Electrical and Electronics Engineers): "IoT là một mạng lưới các đối tượng, mỗi đối tượng được nhúng cảm biến và kết nối với Internet."
+- Theo WSIS 2005 (World Summit on the Information Society): "Bằng cách nhúng các thiết bị truyền tín hiệu di động tầm ngắn vào nhiều thiết bị và đồ vật hàng ngày, tạo ra các hình thức giao tiếp mới giữa con người và thiết bị, cũng như giữa các thiết bị với nhau."
+- Theo Gartner: "IoT là mạng lưới các đối tượng vật lý có chứa công nghệ nhúng để tương tác với các trạng thái bên trong của chúng hoặc môi trường bên ngoài."
+- Theo Kevin Ashton (Người đầu tiên giới thiệu thuật ngữ IoT): "IoT là khái niệm sử dụng cảm biến để kết nối thế giới vật lý với thế giới số, cho phép hệ thống máy tính hiểu và phản ứng với môi trường."
+- Theo IoTAgenda: "IoT là một hệ thống các thiết bị máy tính, máy cơ khí và thiết bị số, các vật thể, động vật hoặc con người có liên quan với nhau được cung cấp mã định danh duy nhất (UID) và có khả năng truyền dữ liệu qua mạng mà không cần tương tác giữa con người với nhau hoặc giữa con người với máy tính."
+- Theo Forbes: "IoT là một khái niệm kết nối bất kỳ thiết bị nào có công tắc bật/tắt với Internet (và/hoặc với nhau), từ điện thoại di động, máy pha cà phê, máy giặt, tai nghe, đèn, thiết bị đeo tay đến các thiết bị phức tạp hơn như động cơ phản lực hoặc giàn khoan dầu."
+- Theo IoT Association: "IoT là mạng lưới các thiết bị vật lý được kết nối với Internet, cho phép thu thập và trao đổi dữ liệu mà không cần sự can thiệp của con người."
+- Theo Cisco Systems: "IoT mô tả mạng lưới gồm hàng tỷ đối tượng vật lý trên thế giới, được kết nối với nhau thông qua Internet và có khả năng chia sẻ dữ liệu."
 
-Câu 3: Một sàn thương mại điện tử phát hiện hệ thống gợi ý sản phẩm (Recommendation System) thường xuyên gợi ý các sản phẩm giá rẻ cho một nhóm khách hàng, dù họ có khả năng chi trả cao hơn. Theo anh/chị, vấn đề này có thể xuất phát từ dữ liệu, thuật toán, hay cách xác định mục tiêu kinh doanh? Hãy phân tích và đề xuất hướng xử lý.
-Hệ thống gợi ý sản phẩm giá rẻ cho khách hàng có khả năng chi trả cao
-Đây là tình huống tiêu biểu phản ánh sự không khớp giữa mục tiêu kinh doanh và cách bài toán AI được thiết lập, đồng thời ẩn chứa yếu tố thiên kiến trong dữ liệu và giới hạn của thuật toán khi xử lý nhóm người dùng thiểu số.
-1. Phân tích từ góc độ dữ liệu
-Nếu nhóm khách hàng có thu nhập cao lịch sử ít mua sản phẩm cao cấp qua nền tảng thương mại điện tử này – có thể vì họ ưu tiên mua tại cửa hàng vật lý, qua kênh trực tiếp, hoặc trên các nền tảng khác – thì mô hình sẽ không có đủ tín hiệu để hiểu sở thích thực sự của họ trong kênh số. Kết quả là mô hình mặc định gợi ý theo hành vi đa số: sản phẩm giá rẻ được mua nhiều hơn về số lượng tuyệt đối, nên có điểm phổ biến cao và dễ được hệ thống đề xuất.
-Ngoài ra, hành vi của nhóm khách hàng giàu có trên nền tảng có thể có nhiều đặc điểm không điển hình: mua không thường xuyên, lướt nhiều nhưng mua ít, hoặc chỉ mua trong các dịp đặc biệt. Những hành vi này khó bị thuật toán học được và dễ bị xếp vào nhóm khách hàng mà mô hình không chắc chắn – dẫn đến fallback về gợi ý phổ biến chung.
-2. Phân tích từ góc độ thuật toán
-Các hệ thống gợi ý cộng tác (collaborative filtering) tìm kiếm người dùng tương đồng để đưa ra gợi ý. Nếu nhóm khách hàng giàu có chiếm tỷ lệ nhỏ và hành vi của họ đa dạng (không có cụm hành vi rõ ràng), thuật toán sẽ khó tìm được "hàng xóm" gần đủ tương đồng và thường fallback về sản phẩm phổ biến tổng thể – vốn là hàng giá rẻ bán số lượng lớn. Hệ thống gợi ý dựa trên nội dung (content-based) cũng gặp vấn đề tương tự nếu lịch sử tương tác của nhóm này quá thưa.
-3. Phân tích từ góc độ mục tiêu kinh doanh
-Nếu hàm mục tiêu của mô hình được tối ưu theo tỷ lệ nhấp chuột (CTR) hoặc số lượng đơn hàng, mô hình sẽ học cách gợi ý những thứ dễ được nhấp và dễ được mua với xác suất cao nhất – đó thường là sản phẩm giá rẻ, quen thuộc và phổ biến. Gợi ý sản phẩm cao cấp có CTR thấp hơn tự nhiên vì đây là quyết định mua đòi hỏi cân nhắc nhiều hơn, nên mô hình bị huấn luyện để "tránh" chúng dù chúng mang lại giá trị đơn hàng cao hơn.
-4. Đề xuất hướng xử lý
-Bước đầu tiên là xem xét lại hàm mục tiêu: chuyển từ tối ưu CTR sang tối ưu doanh thu trên mỗi phiên hoặc lợi nhuận biên. Điều này đòi hỏi đưa giá trị đơn hàng vào trọng số của mỗi tương tác trong quá trình huấn luyện, thay vì coi mọi nhấp chuột là như nhau.
-Bước thứ hai là phân đoạn người dùng rõ ràng hơn dựa trên hành vi chi tiêu thực tế và xây dựng mô hình gợi ý riêng biệt cho từng phân khúc. Nhóm khách hàng chi tiêu cao cần được phục vụ bởi một mô hình được tối ưu riêng với dữ liệu đặc thù của họ, không nên gộp chung với nhóm chi tiêu trung bình và thấp.
-Bước thứ ba là bổ sung thông tin ngữ cảnh phong phú hơn: không chỉ lịch sử mua hàng mà còn cả lịch sử tìm kiếm, thời gian xem sản phẩm, giá trị giỏ hàng trung bình, và đặc điểm nhân khẩu học. Những tín hiệu này giúp mô hình hiểu khả năng chi trả và sở thích tiềm ẩn của từng khách hàng chính xác hơn so với chỉ dựa vào lịch sử giao dịch.
+2. MỘT SỐ MỐC THỜI GIAN
+- 1990: Máy nướng bánh mì được cho là đồ vật đầu tiên được kết nối internet.
+- 1999: Thuật ngữ “internet of things” được đề xuất bởi Kevin Ashton khi thuyết trình về một hệ thống cảm biến và nhãn nhận dạng qua tần số radio (RFID) gắn trên hàng hóa để quản lý chuỗi cung ứng.
+- 2000: LG giới thiệu chiếc tủ lạnh có kết nối internet đầu tiên trên thế giới
+- 2008: Hội nghị quốc tế đầu tiên về IoT được tổ chức tại Zurich, Thụy Sĩ.
+- 2009: Theo Cisco, đây là thời điểm mà mạng internet vạn vật thực sự được khai sinh, khi số lượng thiết bị được kết nối internet vượt dân số thế giới.
+- 2012: Hội nghị Internet Châu Âu diễn ra với chủ đề “Internet of Things”.
+- 2021: Ước tính có hơn 46 tỷ thiết bị được kết nối trên Internet.
 
-Câu 4: Một công ty sử dụng AI để dự đoán nhân viên có nguy cơ nghỉ việc. Mô hình đánh dấu một số nhân viên là “nguy cơ cao”, nhưng quản lý trực tiếp cho rằng họ vẫn đang làm việc tốt. Nếu anh/chị là chuyên viên phân tích dữ liệu, anh/chị sẽ kiểm tra và giải thích kết quả này như thế nào để tránh gây hiểu nhầm hoặc ảnh hưởng tiêu cực đến nhân viên?
-Mô hình dự đoán nghỉ việc mâu thuẫn với đánh giá của quản lý trực tiếp
-Khi mô hình AI gắn cờ "nguy cơ cao" cho một nhân viên mà quản lý trực tiếp đánh giá là đang làm việc tốt, không nên vội vàng kết luận mô hình sai hay quản lý sai. Cả hai đều có thể đúng theo những chiều thông tin khác nhau, và nhiệm vụ của người phân tích dữ liệu là làm sáng tỏ sự khác biệt đó một cách có hệ thống.
-1. Kiểm tra và giải thích kết quả mô hình
-Bước đầu tiên là sử dụng các kỹ thuật giải thích mô hình như SHAP (SHapley Additive exPlanations) hoặc LIME để xác định những đặc trưng nào đang đóng góp lớn nhất vào dự đoán nguy cơ cao của từng cá nhân. Điều này biến kết quả của mô hình từ một hộp đen thành một tập luận điểm cụ thể có thể đối thoại được với người quản lý.
-Ví dụ, nếu mô hình đánh trọng số cao cho biến "số năm làm việc" kết hợp với "không thăng chức trong 2 năm gần đây", đó là tín hiệu về nguy cơ trở nên trì trệ và chán nản – điều mà quản lý trực tiếp có thể chưa nhận ra vì nhân viên vẫn hoàn thành công việc tốt trên bề mặt. Cũng có thể xảy ra trường hợp ngược lại: mô hình đang nhầm lẫn giữa việc nhân viên hay xin nghỉ phép (dấu hiệu sức khoẻ hoặc công việc gia đình) với việc có ý định nghỉ việc, trong khi thực tế hai điều này không liên quan.
-Ngoài ra, cần xem xét kỹ xem dữ liệu đầu vào có phản ánh đúng hành vi thực tế không. Một số đặc trưng trong mô hình có thể được đo lường bằng proxy không chính xác – chẳng hạn "mức độ gắn kết" được tính bằng số lần tham dự họp trực tuyến, trong khi nhân viên làm việc hiệu quả qua các kênh khác hoàn toàn có thể bị định giá sai.
-2. Tránh gây ảnh hưởng tiêu cực đến nhân viên
-Thông tin dự đoán nguy cơ nghỉ việc là thông tin nhạy cảm và dễ bị lạm dụng. Nó tuyệt đối không được dùng để đưa ra quyết định trực tiếp về nhân sự – như cắt giảm phúc lợi, chuyển bộ phận bất lợi, hay tăng mức độ giám sát – mà không có xác minh thêm. Một nhân viên bị mô hình gắn cờ mà sau đó bị đối xử theo hướng bất lợi hoàn toàn có thể tự biến dự đoán đó thành sự thật – một dạng tự thực hiện tiên tri (self-fulfilling prophecy) cực kỳ có hại.
-Thay vào đó, kết quả mô hình nên được dùng như một tín hiệu khởi đầu cho cuộc trò chuyện chủ động: quản lý có thể lắng nghe tâm tư nhân viên, thảo luận về lộ trình phát triển, hoặc kiểm tra các yếu tố gắn kết thực tế. Nguyên tắc nền tảng cần thiết lập rõ ngay từ đầu là mô hình chỉ đóng vai trò hỗ trợ quyết định, không thay thế phán đoán của con người trong các vấn đề có tác động trực tiếp đến cuộc sống và sự nghiệp của nhân viên.
 
-Câu 5: Một chiến dịch quảng cáo dùng AI để chọn nhóm khách hàng mục tiêu. Sau chiến dịch, tỷ lệ nhấp chuột (Click-through Rate - CTR) tăng nhưng doanh số không tăng. Anh/chị hãy phân tích vì sao một chỉ số có vẻ tốt lại không dẫn đến kết quả kinh doanh tốt. Nên đánh giá lại bài toán AI này theo hướng nào?
-CTR tăng nhưng doanh số không tăng sau chiến dịch quảng cáo AI
-Đây là minh họa điển hình cho vấn đề tối ưu hóa sai chỉ số (metric misalignment) – hiện tượng mô hình AI học cách cực đại hóa một thước đo trung gian trong khi thước đo đó không phản ánh đúng mục tiêu kinh doanh thực sự. Việc đặt nhầm chỉ số tối ưu không chỉ lãng phí ngân sách quảng cáo mà còn có thể tạo ra ảo giác về hiệu quả trong khi doanh nghiệp thực tế đang đứng yên.
-1. Phân tích tại sao CTR tốt nhưng doanh số không tăng
-CTR và doanh số đo lường hai hành vi hoàn toàn khác nhau nằm ở các giai đoạn khác nhau trong hành trình khách hàng. CTR phản ánh khả năng thu hút sự chú ý và tạo ra sự tò mò, còn doanh số phản ánh khả năng thuyết phục người dùng đưa ra quyết định mua và thực sự chi tiền. Giữa hai giai đoạn đó còn có nhiều rào cản: giá cả, sự tin tưởng, đánh giá sản phẩm, trải nghiệm trang web, và nhiều yếu tố khác.
-Mô hình AI tối ưu CTR sẽ học cách chọn những quảng cáo gây tò mò, giật tít, hoặc cá nhân hóa về mặt nhân khẩu học – nhưng không nhất thiết nhắm đúng những người thực sự có nhu cầu mua sản phẩm đó tại thời điểm đó. Kết quả là tệp người dùng được nhắm mục tiêu có thể gồm rất nhiều người "hay nhấp" nhưng ít "hay mua". Hiện tượng này còn được gọi là nhắm mục tiêu theo nhấp chuột (click-bait targeting).
-Một khả năng khác là landing page hoặc trải nghiệm sau nhấp chuột không đủ thuyết phục: quảng cáo đúng người nhưng khi họ vào trang, thông điệp không nhất quán, giá không hấp dẫn, hoặc quy trình mua hàng quá phức tạp. Trong trường hợp này lỗi không nằm ở mô hình nhắm mục tiêu mà nằm ở khâu chuyển đổi sau đó.
-2. Đánh giá lại bài toán AI theo hướng đúng đắn
-Cần tái định nghĩa bài toán từ "tối ưu CTR" sang tối ưu theo chỉ số gắn liền trực tiếp với doanh thu. Các lựa chọn phù hợp hơn bao gồm: tỷ lệ chuyển đổi (conversion rate), giá trị đơn hàng trung bình (AOV), lợi nhuận trên mỗi đồng chi phí quảng cáo (ROAS – Return on Ad Spend), hoặc tốt hơn nữa là giá trị vòng đời khách hàng (CLV – Customer Lifetime Value) nếu doanh nghiệp có khả năng theo dõi.
-Để làm được điều này, cần thiết lập pipeline dữ liệu khép kín: từ lần nhấp quảng cáo, qua các bước thêm vào giỏ hàng, thanh toán, đến hoàn tất đơn hàng – và đưa toàn bộ chuỗi hành vi sau nhấp chuột đó vào vòng lặp phản hồi của mô hình huấn luyện. Mô hình lúc đó sẽ học cách nhắm mục tiêu không chỉ là người hay nhấp, mà là người có xác suất cao đi đến cuối phễu chuyển đổi.
+CHƯƠNG 2
+2.1. CẢM BIẾN VÀ CƠ CẤU CHẤP HÀNH
+- Cảm biến (Sensor) IoT là thiết bị quan sát một hoặc nhiều thuộc tính của một thực thể vật lý và chuyển đổi các thuộc tính đó thành thông tin. Đầu ra của cảm biến có thể là tín hiệu tương tự (analog) hoặc là tín hiệu số
+- Cơ cấu chấp hành (Actuator) (bộ truyền động) là thiết bị cóthể thay đổi một hoặc nhiều thuộc tính của một thực thể vật lý để đáp ứng với thông tin nhận được.
 
-Câu 6: Một công ty bảo hiểm dùng AI để phát hiện gian lận. Mô hình phát hiện được nhiều hồ sơ nghi ngờ hơn trước, nhưng khách hàng phàn nàn vì nhiều hồ sơ hợp lệ bị kiểm tra quá lâu. Anh/chị hãy phân tích sự đánh đổi giữa phát hiện gian lận và trải nghiệm khách hàng. Doanh nghiệp nên điều chỉnh quy trình sử dụng AI như thế nào?
-Đánh đổi giữa phát hiện gian lận và trải nghiệm khách hàng trong bảo hiểm
-Khi mô hình phát hiện gian lận bảo hiểm hoạt động quá nhạy cảm, hệ quả trực tiếp là nhiều hồ sơ hợp lệ bị gắn cờ nghi ngờ, thời gian xử lý kéo dài và khách hàng thực sự cảm thấy bị đối xử như tội phạm. Đây là bài toán đánh đổi giữa hai mục tiêu cạnh tranh có giá trị thực sự: bảo vệ tài chính của doanh nghiệp và duy trì trải nghiệm dịch vụ tốt cho đại đa số khách hàng trung thực.
-1. Phân tích sự đánh đổi về mặt kỹ thuật và kinh doanh
-Trong bài toán phân loại nhị phân như phát hiện gian lận, khi tăng độ nhạy của mô hình (tức là recall đối với nhãn gian lận), tỷ lệ dương tính giả (false positive) – tức hồ sơ hợp lệ bị gắn cờ – sẽ tăng theo. Đây là quy luật không thể tránh khỏi trong hầu hết các bài toán phân loại khi dữ liệu không hoàn hảo. Mỗi hồ sơ hợp lệ bị gắn cờ không cần thiết đều có chi phí thực: chi phí xử lý của nhân viên điều tra, thời gian chờ của khách hàng, và nguy cơ mất khách hàng hoặc nhận đánh giá tiêu cực.
-Ngược lại, nếu giảm độ nhạy để hạn chế false positive, nguy cơ bỏ sót các hồ sơ gian lận thực sự (false negative) sẽ tăng lên – đây là tổn thất trực tiếp về tài chính. Bài toán của doanh nghiệp là tìm điểm cân bằng tối ưu dựa trên chi phí thực tế của hai loại sai lầm này, không dựa trên ngưỡng kỹ thuật mặc định.
-2. Điều chỉnh quy trình sử dụng AI phù hợp hơn
-Thay vì hệ thống phân loại nhị phân cứng nhắc là "gian lận" hoặc "hợp lệ", doanh nghiệp nên chuyển sang quy trình ba cấp dựa trên điểm rủi ro liên tục. Hồ sơ có điểm rủi ro thấp được tự động phê duyệt mà không cần xem xét thủ công. Hồ sơ có điểm rủi ro trung bình được chuyển sang quy trình xem xét rút gọn với danh sách kiểm tra ngắn gọn. Chỉ hồ sơ có điểm rủi ro cao mới trải qua điều tra toàn diện. Cách phân tầng này cho phép tập trung nguồn lực điều tra vào đúng chỗ trong khi đảm bảo trải nghiệm nhanh chóng cho phần lớn khách hàng hợp lệ.
-Đồng thời, doanh nghiệp cần xây dựng vòng phản hồi chặt chẽ: kết quả điều tra thực tế (hồ sơ nào thực sự là gian lận, hồ sơ nào hợp lệ bị gắn cờ nhầm) phải được đưa trở lại để cập nhật và tinh chỉnh mô hình theo định kỳ. Không có hệ thống phát hiện gian lận nào hoạt động tốt mà không có cơ chế học hỏi liên tục từ dữ liệu thực tế của chính tổ chức đó.
+Các đại lượng cần đo (m) thường không có tính chất điện (như nhiệt độ, áp suất ...) tác động lên cảm biến cho ta một đặc trưng (s) mang tính chất điện (như điện tích, điện áp, dòng điện hoặc trở kháng) chứa đựng thông tin cho phép xác định giá trị của đại lượng đo. Đặc trưng (s) là hàm của đại lượng cần đo (m):
+s = F(m)
+- (s) là đại lượng đầu ra (hoặc là phản ứng của cảm biến)
+- (m) là đại lượng đầu vào hay kích thích (có nguồn gốc là đại lượng cần đo).
 
-Câu 7: Một mô hình AI dự đoán giá nhà hoạt động tốt ở các quận trung tâm nhưng sai lệch lớn ở khu vực ngoại thành. Anh/chị hãy suy luận những nguyên nhân có thể khiến mô hình hoạt động không đồng đều giữa các khu vực và đề xuất cách kiểm tra vấn đề này.
-Mô hình dự đoán giá nhà hoạt động tốt ở trung tâm nhưng sai lệch lớn ở ngoại thành
-Hiệu suất không đồng đều giữa các phân khúc địa lý là dấu hiệu cảnh báo rõ ràng về vấn đề thiếu tính tổng quát hóa (poor generalization) của mô hình. Đây không phải là vấn đề hiếm gặp mà ngược lại, rất phổ biến trong các bài toán dự đoán bất động sản khi dữ liệu phân phối không đồng đều theo khu vực địa lý.
-1. Các nguyên nhân có thể
-Nguyên nhân đầu tiên là sự thiếu đại diện của dữ liệu huấn luyện. Nếu phần lớn giao dịch lịch sử tập trung ở khu vực trung tâm, mô hình sẽ học được rất tốt các quy luật định giá đặc thù của môi trường đô thị: giá trên mét vuông, khoảng cách đến trung tâm thương mại, tầng và hướng nhà. Nhưng các quy luật này không áp dụng được cho ngoại thành nơi số lượng mẫu ít hơn nhiều.
-Nguyên nhân thứ hai là sự khác biệt về các yếu tố định giá thực chất. Ở ngoại thành, các yếu tố như diện tích đất, tiếp giáp đường lớn, gần khu công nghiệp hoặc trường học, tình trạng pháp lý của đất, hay khả năng sinh lời từ nông nghiệp có thể là động lực định giá quan trọng nhưng hoàn toàn không có ý nghĩa ở đô thị – do đó không được đưa vào mô hình.
-Nguyên nhân thứ ba là chất lượng dữ liệu có hệ thống kém hơn ở ngoại thành. Giao dịch bất động sản ngoại thành thường ít hơn, kém thanh khoản hơn, giá có thể bị ảnh hưởng bởi thỏa thuận riêng tư (như mua bán giữa thân nhân với giá ưu đãi), và ít có sàn giao dịch chuyên nghiệp ghi nhận. Điều này khiến dữ liệu nhãn (giá thực tế) ở ngoại thành vốn đã kém đại diện hơn cho giá trị thị trường công bằng.
+2.2. Đường cong chuẩn của cảm biến
+Khái niệm: Đường cong chuẩn cảm biến là đường cong biểu diễn sự phụ thuộc của đại lượng điện (s) ở đầu ra của cảm biến vào giá trị của đại lượng đo (m) ở đầu vào.
 
-2. Cách kiểm tra và xử lý vấn đề
-Bước đầu tiên là phân tích phân phối sai số (residual analysis) của mô hình theo từng khu vực địa lý. Nếu sai số ở ngoại thành có xu hướng một chiều (mô hình luôn dự đoán cao hơn hoặc thấp hơn thực tế), đó là bằng chứng của thiên kiến hệ thống, không phải nhiễu ngẫu nhiên. Cần vẽ bản đồ phân phối sai số để trực quan hóa vấn đề.
-Từ đó, có thể lựa chọn một trong hai hướng: huấn luyện các mô hình riêng biệt cho từng khu vực địa lý (nội thành, ngoại thành, nông thôn) với tập đặc trưng phù hợp với từng bối cảnh; hoặc bổ sung thêm các đặc trưng phản ánh đặc thù ngoại thành vào mô hình chung và đảm bảo số lượng mẫu ngoại thành đủ lớn để mô hình học được. Trong nhiều trường hợp, mô hình phân khu vực cho hiệu quả tốt hơn đáng kể so với một mô hình tổng quát duy nhất.
+Phương pháp chuẩn cảm biến
++ Chuẩn đơn giản
+Trong trường hợp đại lượng đo chỉ có một đại lượng vật lý duy nhất tác động lên một đại lượng đo xác định và cảm biến sử dụng không nhạy với tác động của các đại lượng ảnh hưởng, người ta dùng phương pháp chuẩn đơn giản. Thực chất của chuẩn đơn giản là đo các giá trị của đại lượng đầu ra ứng với các giá xác định không đổi của đại lượng đo ở đầu vào.
+Việc chuẩn được tiến hành theo hai cách:
+- Chuẩn trực tiếp: các giá trị khác nhau của đại lượng đo lấy từ các mẫu chuẩn hoặc các phần tử so sánh có giá trị biết trước với độ chính xác cao.
+- Chuẩn gián tiếp: kết hợp cảm biến cần chuẩn với một cảm biến so sánh đã có sẵn đường cong chuẩn, cả hai được đặt trong cùng điều kiện làm việc. Khi tác động lên hai cảm biến với cùng một giá trị của đại lượng đo ta nhận được giá trị tương ứng của cảm biến so sánh và cảm biến cần chuẩn. Lặp lại tương tự với các giá trị khác của đại lượng đo cho phép ta xây dựng được đường cong chuẩn của cảm biến cần chuẩn.
 
-Câu 8: Một trường đại học dùng AI để phát hiện sinh viên có nguy cơ học tập kém. Mô hình thường đánh dấu các sinh viên ít đăng nhập hệ thống học trực tuyến là nguy cơ cao. Tuy nhiên, một số sinh viên học tốt lại ít đăng nhập vì họ học bằng tài liệu offline. Anh/chị hãy phân tích hạn chế của dữ liệu trong tình huống này và đề xuất cách tránh kết luận sai.
-Mô hình cảnh báo sinh viên học kém dựa trên số lần đăng nhập hệ thống trực tuyến
-Tình huống này phản ánh một hạn chế căn bản trong thiết kế đặc trưng: khi biến được dùng để đo lường một hành vi lại chỉ nắm bắt được một kênh biểu hiện của hành vi đó, bỏ sót toàn bộ các kênh còn lại. Đây là dạng thiên kiến đo lường (measurement bias) có tác động đặc biệt nghiêm trọng vì nó không phân biệt đối xử một cách rõ ràng – nó chỉ đơn giản là "không thấy" những sinh viên học theo cách khác.
-1. Phân tích hạn chế của dữ liệu
-Số lần đăng nhập hệ thống học trực tuyến là chỉ số proxy – tức là đại lượng thay thế – cho mức độ chủ động học tập. Nhưng học tập là hành vi đa kênh: đọc giáo trình in, học nhóm trực tiếp, trao đổi với giảng viên sau giờ học, làm bài tập tay, ôn luyện bằng flashcard vật lý. Tất cả những hình thức này đều hoàn toàn không để lại dấu vết trong hệ thống số mà mô hình dựa vào.
-Hệ quả là mô hình đang đo lường "mức độ sử dụng hệ thống số" chứ không phải "mức độ học tập thực sự". Những sinh viên học tốt theo phương pháp truyền thống sẽ bị hệ thống gắn nhãn sai là nguy cơ cao, trong khi một số sinh viên đăng nhập nhiều nhưng chỉ lướt nhanh qua tài liệu hoặc thậm chí để hệ thống chạy trong nền có thể bị bỏ sót. Điều này không chỉ làm hệ thống kém chính xác mà còn gây ra bất công cho một nhóm sinh viên cụ thể có phong cách học tập không số hóa.
++ Chuẩn nhiều lần
+Khi cảm biến có phần tử bị trễ (trễ cơ hoặc trễ từ), giá trị đo được ở đầu ra phụ thuộc không những vào giá trị tức thời của đại lượng cần đo ở đầu vào mà còn phụ thuộc vào giá trị trước đó của của đại lượng này. Trong trường hợp như vậy, người ta áp dụng phương pháp chuẩn nhiều lần và tiến hành như sau:
+- Đặt lại điểm 0 của cảm biến: đại lượng cần đo và đại lượng đầu ra có giá trị tương ứng với điểm gốc, m=0 và s=0.
+- Đo giá trị đầu ra theo một loạt giá trị tăng dần đến giá trị cực đại của đại lượng đo ở đầu vào.
+- Lặp lại quá trình đo với các giá trị giảm dần từ giá trị cực đại.
+Khi chuẩn nhiều lần cho phép xác định đường cong chuẩn theo cả hai hướng đo tăng dần và đo giảm dần.
 
-2. Đề xuất cách tránh kết luận sai
-Giải pháp cốt lõi là đa dạng hóa nguồn tín hiệu học tập. Thay vì chỉ dùng dữ liệu hành vi trên hệ thống số, cần tích hợp thêm: điểm bài tập định kỳ, tỷ lệ nộp bài đúng hạn, kết quả các bài kiểm tra ngắn (quiz), điểm kiểm tra giữa kỳ, và phản hồi định tính của giảng viên. Những tín hiệu này đo lường kết quả học tập thực chất hơn là hành vi truy cập hệ thống.
-Ngoài ra, cần thiết lập giao thức xác minh kép: khi mô hình gắn cờ một sinh viên là nguy cơ cao, giảng viên được thông báo và yêu cầu xác minh bằng đánh giá trực tiếp trước khi có bất kỳ can thiệp chính thức nào. Kết quả xác minh này sau đó được đưa lại làm dữ liệu phản hồi để cải thiện mô hình theo thời gian.
+2.3. Các đặc trưng
+- Độ nhạy của cảm biến: Mức độ thay đổi của tín hiệu đầu ra khi đại lượng đầu vào thay đổi. Độ nhạy cao giúp cảm biến phản ứng tốt với biến đổi nhỏ. (Sự thay đổi tối thiểu của thông số đo được gây ra thay đổi có thể phát hiện được trong tín hiệu đầu ra )
+- Độ phân giải của cảm biến: Sự thay đổi tối thiểu trong hiện tượng mà cảm biến có thể phát hiện
+- Độ tuyến tính của cảm biến: Mức độ mà đầu ra của cảm biến thay đổi tuyến tính theo đầu vào. Cảm biến tuyến tính dễ xử lý và hiệu chỉnh.
+- Sai số và độ chính xác: Sai số là sự chênh lệch giữa giá trị đo được và giá trị thực của đại lượng cần đo. Độ chính xác phản ánh mức độ gần đúng của kết quả đo so với giá trị thực.
+- Thời gian hồi đáp: Khoảng thời gian cảm biến cần để phản ứng với sự thay đổi của đại lượng đo và đạt đến giá trị ổn định.
+- Vùng làm việc danh định: Khoảng giá trị của đại lượng đo mà cảm biến có thể hoạt động ổn định và chính xác.
+- không gây nên hư hỏng: vùng gây thay đổi đặc trưng của cảm biến, mang tính thuận nghịch
+- không phá huỷ: vùng gây thay đổi đặc trưng của cảm biến, ko thuận nghịch (cần chuẩn lại)
 
-Câu 9: Một phòng khám sử dụng AI để hỗ trợ phân loại bệnh nhân. Mô hình đưa ra cảnh báo nguy cơ cao cho nhiều bệnh nhân, khiến bác sĩ phải kiểm tra lại quá nhiều trường hợp. Theo anh/chị, hệ thống này đang gặp vấn đề gì về mục tiêu, dữ liệu hoặc cách sử dụng kết quả? Cần điều chỉnh như thế nào để AI hỗ trợ bác sĩ hiệu quả hơn?
-AI phân loại bệnh nhân đưa ra quá nhiều cảnh báo nguy cơ cao
-Khi một hệ thống AI y tế liên tục đưa ra quá nhiều cảnh báo "nguy cơ cao", hệ quả là bác sĩ phải xem xét lại một lượng lớn ca bệnh không thực sự cần can thiệp khẩn cấp. Theo thời gian, điều này dẫn đến hiện tượng "mỏi cảnh báo" (alert fatigue) – bác sĩ bắt đầu bỏ qua cảnh báo của hệ thống, làm mất đi toàn bộ giá trị mà hệ thống AI đáng lẽ phải mang lại.
-1. Vấn đề về mục tiêu và dữ liệu
-Mô hình có thể đã được tối ưu hóa theo tiêu chí an toàn tối đa: không được bỏ sót bất kỳ ca nguy hiểm nào (minimize false negative). Đây là mục tiêu hoàn toàn hợp lý trong bối cảnh y tế, nơi bỏ sót một ca nghiêm trọng có thể gây hậu quả không thể đảo ngược. Tuy nhiên, khi không có ràng buộc đồng thời về tỷ lệ false positive, mô hình sẽ học cách an toàn nhất: cảnh báo tất cả để chắc chắn không bỏ sót. Hệ thống trở nên quá nhạy và mất đi tính chọn lọc.
-Về mặt dữ liệu, có thể tồn tại vấn đề mất cân bằng: nếu trong tập huấn luyện, ca "nguy cơ cao" thực sự chiếm tỷ lệ nhỏ và được gán nhãn không nhất quán bởi nhiều bác sĩ khác nhau, mô hình sẽ khó học được ranh giới phân loại rõ ràng và sẽ thiên về cảnh báo nhiều hơn để giảm thiểu rủi ro bỏ sót.
-2. Điều chỉnh để AI hỗ trợ bác sĩ hiệu quả hơn
-Thay vì phân loại nhị phân, hệ thống nên chuyển sang đầu ra là điểm rủi ro liên tục kết hợp với lý do cụ thể bằng ngôn ngữ lâm sàng. Bác sĩ không chỉ nhìn thấy "nguy cơ cao" mà còn thấy: "Chỉ số X cao bất thường, kết hợp với tiền sử Y và dấu hiệu Z – cần kiểm tra thêm A và B." Điều này giúp bác sĩ đánh giá nhanh và có thể điều chỉnh ưu tiên dựa trên bối cảnh lâm sàng mà họ biết rõ hơn mô hình.
-Ngưỡng cảnh báo cần được hiệu chỉnh (calibrate) thông qua quá trình thử nghiệm có cấu trúc: chọn ngưỡng sao cho tỷ lệ false positive nằm trong mức mà đội ngũ y tế có thể xử lý được mà không bị quá tải. Ngưỡng này có thể khác nhau tùy theo thời điểm trong ngày (giờ cao điểm hay thấp điểm) và tùy theo khoa. Quan trọng nhất, cần thiết lập vòng phản hồi định kỳ để bác sĩ đánh giá xem cảnh báo nào là hữu ích, qua đó liên tục cải thiện chất lượng mô hình.
+2.4. Nguyên lý chế tạo cảm biến
+Các cảm biến được chế tạo dựa trên cơ sở các hiện tượng vật lý và được phân làm hai loại:
+- Cảm biến tích cực: là các cảm biến hoạt động như một máy phát, đáp ứng (s) là điện tích, điện áp hay dòng.
+- Cảm biến thụ động: là các cảm biến hoạt động như một trở kháng trong đó đáp ứng (s) là điện trở, độ tự cảm hoặc điện dung.
 
-Câu 10: Một công ty giao hàng dùng AI để dự đoán thời gian giao hàng. Vào những ngày mưa lớn, mô hình thường dự đoán quá lạc quan, khiến khách hàng nhận thông báo thời gian giao hàng không chính xác. Anh/chị hãy phân tích nguyên nhân và đề xuất cách bổ sung dữ liệu hoặc thay đổi quy trình để mô hình phản ánh tốt hơn các tình huống bất thường.
-Mô hình dự đoán thời gian giao hàng kém chính xác vào ngày mưa lớn
-Đây là biểu hiện điển hình của mô hình không được huấn luyện với đủ dữ liệu về các tình huống ngoại lệ – một vấn đề phổ biến khi các điều kiện bất thường xuất hiện ít trong dữ liệu lịch sử nhưng lại có tác động lớn trong thực tế. Mô hình học cách hoạt động tốt trong điều kiện bình thường và hoàn toàn bị bất ngờ khi hoàn cảnh thay đổi.
-1. Phân tích nguyên nhân
-Trong dữ liệu giao hàng lịch sử, các ngày mưa lớn chỉ chiếm một tỷ lệ nhỏ. Khi mô hình học từ dữ liệu này mà không có đặc trưng thời tiết, nó sẽ không biết phân biệt giữa đơn hàng được giao trong điều kiện bình thường và điều kiện thời tiết cực đoan. Tất cả đơn hàng có chung cùng tập đặc trưng đầu vào, nhưng kết quả thực tế hoàn toàn khác nhau tùy thời tiết – đây là nhiễu hệ thống mà mô hình không thể giải thích được.
-Ngay cả khi dữ liệu thời tiết được đưa vào, nếu số lượng mẫu giao hàng trong điều kiện mưa lớn quá ít, mô hình sẽ không học được tác động của mưa đủ chắc chắn và sẽ bị kéo về giá trị trung bình của toàn bộ tập – tức là thời tiết bình thường chiếm đa số. Đây là hậu quả của mất cân bằng dữ liệu theo điều kiện môi trường.
-2. Đề xuất bổ sung dữ liệu và thay đổi quy trình
-Về mặt dữ liệu, cần tích hợp theo thời gian thực các đặc trưng thời tiết có độ phân giải cao: cường độ mưa (mm/giờ), tầm nhìn, tốc độ gió, cảnh báo giao thông, và dữ liệu tắc đường từ các nguồn như Google Maps Traffic API. Những đặc trưng này cần được đồng bộ hóa với dữ liệu giao hàng lịch sử để huấn luyện lại mô hình với đủ ngữ cảnh thời tiết.
-Về mặt kỹ thuật, có thể áp dụng phương pháp tăng cường dữ liệu (data augmentation) hoặc tổng hợp dữ liệu cho các điều kiện bất thường mà dữ liệu thực tế còn thiếu. Một hướng khác là xây dựng mô hình điều chỉnh (adjustment model) chuyên biệt: mô hình chính dự đoán thời gian trong điều kiện bình thường, còn mô hình điều chỉnh cộng thêm buffer tương ứng với mức độ nghiêm trọng của điều kiện thời tiết.
-Về mặt quy trình vận hành, một giải pháp thực tế và triển khai nhanh là thiết lập các quy tắc nghiệp vụ cứng (hard business rules): khi mưa vượt ngưỡng X mm/giờ hoặc khi ứng dụng giao thông báo tắc đường nghiêm trọng, hệ thống tự động cộng thêm một khoảng thời gian đệm nhất định vào mọi dự đoán và thông báo chủ động cho khách hàng. Đây là cách kết hợp giữa quy tắc chuyên gia và mô hình học máy để bổ sung điểm yếu cho nhau.
+Các hiệu ứng:
+- Hiệu ứng nhiệt điện
+- Hiệu ứng hoả điện
+- Hiệu ứng áp điện
+- Hiệu ứng cảm ứng điện từ
+- Hiệu ứng quang điện
+- Hiệu ứng quang - điện - từ
+- Hiệu ứng Hall
 
-Câu 11: Trong bài toán dự đoán khách hàng có khả năng vỡ nợ, dữ liệu lịch sử cho thấy phần lớn khách hàng trong tập dữ liệu đều trả nợ đúng hạn. Nếu dùng dữ liệu này để huấn luyện mô hình, anh/chị dự đoán mô hình có thể gặp vấn đề gì? Hãy phân tích ảnh hưởng của mất cân bằng dữ liệu (Imbalanced Data) và đề xuất hướng xử lý.
-Ảnh hưởng của mất cân bằng dữ liệu trong bài toán dự đoán vỡ nợ
-Mất cân bằng dữ liệu (imbalanced data) là một trong những thách thức phổ biến và dễ bị bỏ qua nhất khi xây dựng mô hình phân loại trong lĩnh vực tài chính. Đây là trường hợp cấu trúc của dữ liệu phản ánh thực tế tự nhiên – phần lớn khách hàng đều trả nợ tốt – nhưng lại mâu thuẫn với mục tiêu phân tích là phát hiện chính xác nhóm thiểu số rủi ro.
-1. Phân tích vấn đề mô hình có thể gặp phải
-Giả sử trong tập dữ liệu, 95% khách hàng trả nợ đúng hạn và chỉ 5% vỡ nợ. Nếu mô hình được huấn luyện mà không có xử lý đặc biệt, nó có xu hướng học cách dự đoán tất cả khách hàng là "không vỡ nợ" và vẫn đạt độ chính xác tổng thể (accuracy) 95% – một con số ấn tượng về mặt số học nhưng hoàn toàn vô nghĩa về mặt kinh doanh. Mô hình này thực chất không học được gì cả, chỉ đơn giản là phản chiếu lại phân phối của tập dữ liệu.
-Hậu quả thực tiễn là mô hình gần như không có khả năng phát hiện những khách hàng thực sự có nguy cơ vỡ nợ – tức là nhóm thiểu số mà bài toán cần phân loại chính xác nhất. Recall trên lớp vỡ nợ có thể gần bằng 0, nghĩa là hệ thống bỏ sót gần như toàn bộ các trường hợp cần cảnh báo. Đây là sự thất bại hoàn toàn về mặt mục tiêu kinh doanh dù chỉ số kỹ thuật trông rất đẹp.
-2. Đề xuất hướng xử lý
-Về mặt dữ liệu, hai kỹ thuật phổ biến nhất là oversampling lớp thiểu số và undersampling lớp đa số. Oversampling bằng SMOTE (Synthetic Minority Over-sampling Technique) tạo ra các mẫu tổng hợp mới cho lớp vỡ nợ bằng cách nội suy giữa các mẫu thực có, giúp cân bằng tập huấn luyện mà không đơn giản là sao chép lại dữ liệu. Undersampling giảm số lượng mẫu lớp đa số để cân bằng, nhưng có nguy cơ mất thông tin quan trọng nếu áp dụng không cẩn thận.
-Về mặt mô hình, nên điều chỉnh trọng số lớp (class weight) trong hàm mất mát để mô hình bị phạt nặng hơn khi bỏ sót một ca vỡ nợ thực sự so với khi gắn nhầm nhãn một ca không vỡ nợ. Tỷ lệ phạt này nên được xác định dựa trên chi phí thực tế của hai loại sai lầm trong bối cảnh kinh doanh cụ thể.
-Về mặt đánh giá, việc dùng accuracy để đo hiệu suất mô hình trong bài toán mất cân bằng là hoàn toàn sai. Cần chuyển sang các chỉ số như F1-score, AUC-ROC (phản ánh khả năng phân biệt tổng thể của mô hình), hoặc tốt hơn là Precision-Recall curve (đặc biệt hữu ích khi lớp dương tính hiếm và quan trọng). Chỉ khi đánh giá bằng đúng chỉ số, người phát triển mới thấy được điểm yếu thực sự của mô hình.
+2.5. KHUẾCH ĐẠI, LỌC VÀ XỬ LÝ TÍN HIỆU
+Lọc nhiễu cho tín hiệu cảm biến
+- Khi tín hiệu bị nhiễu gây khó khăn trong việc điều khiển và giám sát.
+- Sử dụng bộ lọc nhiễu để khắc phục các nhiễu trong tín hiệu analog, giúp hệ thống chạy ổn định, chính xác.
+- Các tín hiệu truyền về theo chuẩn công nghiệp hiện nay chủ yếu là dùng tín hiệu 4-20mA.
 
-Câu 12: Một cửa hàng phân tích dữ liệu bán hàng và nhận thấy doanh số tăng mạnh trong một tháng. Quản lý kết luận rằng chiến dịch khuyến mãi rất hiệu quả. Tuy nhiên, cùng thời điểm đó có một dịp lễ lớn và thời tiết thuận lợi. Anh/chị hãy phân tích vì sao kết luận của quản lý có thể chưa chắc đúng và cần kiểm tra thêm những dữ liệu nào.
-Kết luận về hiệu quả khuyến mãi khi nhiều yếu tố tác động đồng thời
-Khi doanh số tăng mạnh đúng vào tháng diễn ra chiến dịch khuyến mãi, kết luận rằng khuyến mãi là nguyên nhân nghe có vẻ hợp lý và thuyết phục – nhưng về mặt phân tích dữ liệu và suy luận nhân quả, đây là một trong những sai lầm phổ biến nhất mà các nhà quản lý mắc phải khi không có phương pháp kiểm soát phù hợp.
-1. Vấn đề suy luận nhân quả và nhiễu đồng thời
-Sự trùng hợp về thời gian không bao giờ chứng minh được quan hệ nhân quả. Doanh số tăng đồng thời với chiến dịch khuyến mãi chỉ chứng minh sự tương quan giữa hai sự kiện đó trong tháng đó. Nhưng trong cùng tháng, còn có dịp lễ lớn và thời tiết thuận lợi – cả hai đều là yếu tố có khả năng thúc đẩy tiêu dùng một cách độc lập. Không thể phân tách được phần đóng góp của từng yếu tố nếu chỉ nhìn vào số liệu tổng hợp.
-Trong thống kê, đây gọi là vấn đề confounding (yếu tố gây nhiễu): dịp lễ và thời tiết là confounders có tương quan với cả chiến dịch khuyến mãi lẫn doanh số. Nếu không kiểm soát được chúng, mọi kết luận về tác động của khuyến mãi đều có thể bị thổi phồng hoặc bị thu nhỏ. Đôi khi khuyến mãi thực ra hoàn toàn không có tác động, toàn bộ tăng trưởng đến từ dịp lễ – nhưng doanh nghiệp vẫn tiếp tục chi tiền cho khuyến mãi vì nhầm tưởng nó hiệu quả.
-2. Cần kiểm tra thêm những dữ liệu nào
-Để có kết luận đáng tin cậy hơn, cần thu thập và so sánh dữ liệu từ nhiều nguồn. Thứ nhất, so sánh với cùng kỳ năm trước trong điều kiện không có chiến dịch khuyến mãi tương tự – nếu doanh số cũng tăng mạnh trong dịp lễ đó mà không có khuyến mãi, thì tác động ròng của chiến dịch có thể nhỏ hơn nhiều so với nhận định ban đầu.
-Thứ hai, so sánh doanh số của các cửa hàng hoặc khu vực không tham gia chiến dịch khuyến mãi trong cùng thời điểm (nhóm đối chứng). Nếu nhóm này cũng tăng doanh số tương đương, thì dịp lễ và thời tiết là nguyên nhân chính, không phải khuyến mãi. Thứ ba, lý tưởng nhất là thiết kế thực nghiệm đối chứng ngẫu nhiên (A/B test) cho các chiến dịch tương lai: phân ngẫu nhiên khách hàng vào nhóm nhận và không nhận khuyến mãi, kiểm soát các yếu tố khác để đo lường tác động ròng thực sự.
+2.6. Chuyển đổi ADC, DAC
+Quá trình chuyển đổi ADC gồm ba bước chính: lấy mẫu, lượng tử hóa, mã hóa.
 
-Câu 13: Một sàn thương mại điện tử muốn dự đoán khả năng khách hàng mua hàng. Trong dữ liệu, biến “số lần thêm vào giỏ hàng” có vẻ liên quan rất mạnh đến việc mua hàng. Tuy nhiên, nhóm kỹ thuật phát hiện biến này được ghi nhận sau khi khách hàng đã gần hoàn tất mua hàng. Anh/chị hãy phân tích vấn đề rò rỉ dữ liệu (Data Leakage) trong tình huống này và cách xử lý.
-Vấn đề rò rỉ dữ liệu trong mô hình dự đoán mua hàng
-Rò rỉ dữ liệu (data leakage) là một trong những lỗi nghiêm trọng và tinh vi nhất trong xây dựng mô hình học máy. Nó tinh vi vì mô hình vẫn hoạt động rất tốt trong giai đoạn phát triển và kiểm thử – thậm chí tốt một cách đáng ngờ – nhưng thất bại hoàn toàn khi triển khai thực tế. Nguyên nhân là mô hình đã vô tình được "nhìn trộm" thông tin từ tương lai trong quá trình học.
-1. Phân tích vấn đề trong tình huống này
-Biến "số lần thêm vào giỏ hàng" có giá trị dự đoán rất cao về mặt thống kê, và điều đó hoàn toàn hợp lý về mặt logic: người thêm nhiều sản phẩm vào giỏ hàng rõ ràng đang trong quá trình mua. Nhưng đây chính xác là vấn đề – biến này không phải là nguyên nhân dẫn đến việc mua hàng, mà là một bước trong chính quá trình mua hàng.
-Nếu biến này được ghi nhận sau khi khách hàng đã gần hoàn tất mua hàng, thì tại thời điểm mà mô hình cần đưa ra dự đoán (trước khi khách hàng bắt đầu hành động), biến này chưa tồn tại. Đây là temporal leakage – sử dụng thông tin từ tương lai so với điểm dự đoán. Mô hình sẽ đạt accuracy rất cao trong môi trường kiểm thử vì dữ liệu kiểm thử cũng chứa thông tin hậu sự kiện, nhưng hoàn toàn vô dụng khi triển khai vì lúc đó thông tin đó chưa có.
+2.7. QUÁ TRÌNH XỬ LÝ DỮ LIỆU
+1. Thu thập dữ liệu:
+2. Lọc dữ liệu:
+3. Biến đổi dữ liệu:
+4. Tổ chức và lưu trữ:
+5. Phân tích dữ liệu:
+6. Trình bày kết quả:
 
-2. Cách nhận diện và xử lý
-Quy tắc vàng để phát hiện data leakage là: với mỗi đặc trưng trong tập dữ liệu, hỏi một câu hỏi đơn giản – "Tại thời điểm chúng ta cần đưa ra dự đoán, đặc trưng này đã có sẵn chưa?" Nếu câu trả lời là chưa có, đặc trưng đó phải bị loại bỏ khỏi mô hình.
-Cần thiết lập rõ điểm thời gian dự đoán (prediction time point) ngay từ đầu dự án: đây là thời điểm mà mô hình sẽ được gọi trong thực tế, và tất cả đặc trưng phải phản ánh trạng thái của thế giới tại hoặc trước thời điểm đó. Toàn bộ pipeline dữ liệu từ thu thập, xử lý đến đặc trưng hóa đều phải tuân thủ ràng buộc thời gian nghiêm ngặt này. Trong thực tế, nên xây dựng dữ liệu huấn luyện theo cấu trúc Point-in-Time (PIT), tức là với mỗi mẫu, chỉ sử dụng thông tin có sẵn tại thời điểm quan sát đó, không lấy thông tin từ sau thời điểm sự kiện.
+2.5. CÁC GIẢI THUẬT XỬ LÝ DỮ LIỆU
+Tiền xử lý dữ liệu cảm biến
+- Lọc nhiễu (Noise Filtering): Sử dụng các bộ lọc để loại bỏ nhiễu khỏi dữ liệu cảm biến.
+- Chuẩn hóa dữ liệu (Normalization): Đưa dữ liệu về cùng một thang đo để dễ phân tích.
+- Phát hiện và xử lý dữ liệu thiếu (Missing Data Handling): Dùng kỹ thuật nội suy hoặc thay thế bằng giá trị trung bình hoặc Nhân tố ma trận xác suất (PMF) để xử lý dữ liệu khuyết thiếu.
+- Xử lý dữ liệu ngoại lệ (Data Outlier Detection): Phát hiện và xử lý các giá trị cảm biến bất thường – những giá trị
+khác biệt rõ rệt so với phần lớn dữ liệu còn lại.
 
-Câu 14: Một mô hình dự đoán nghỉ việc sử dụng dữ liệu về lương, số ngày nghỉ, số năm làm việc, phòng ban và điểm đánh giá hiệu suất. Kết quả cho thấy “phòng ban” là yếu tố ảnh hưởng rất mạnh. Anh/chị có nên kết luận rằng nhân viên thuộc phòng ban đó có nguy cơ nghỉ việc cao hơn không? Hãy phân tích các yếu tố gây nhiễu (Confounding Factors) có thể tồn tại.
-Biến "phòng ban" ảnh hưởng mạnh đến dự đoán nghỉ việc – phân tích confounding factors
-Khi một biến phân loại như "phòng ban" nổi lên như yếu tố quan trọng nhất trong mô hình dự đoán nghỉ việc, phản xạ tự nhiên là quy kết cho môi trường hoặc văn hóa của phòng ban đó. Nhưng đây là bước nhảy logic nguy hiểm nếu không có phân tích bổ sung về các yếu tố gây nhiễu.
-1. Tại sao không nên kết luận trực tiếp
-"Phòng ban" không phải là một biến nhân quả độc lập – nó là nhãn định danh tổng hợp cho một tập hợp các đặc điểm cụ thể: cơ cấu lương đặc thù của phòng, đặc thù công việc (áp lực cao hay thấp, sáng tạo hay lặp lại), đặc điểm nhân sự (tỷ lệ nhân viên trẻ, nhân viên hợp đồng, nhân viên lâu năm), và cả cơ hội thăng tiến trong phòng đó. Tất cả những yếu tố này đều tương quan với nhau và với "phòng ban", tạo thành một mạng lưới quan hệ phức tạp.
-Mô hình học máy không phân biệt được: nó chỉ biết rằng nhân viên thuộc "Phòng X" có xác suất nghỉ việc cao hơn, nhưng không biết tại sao. Việc kết luận và hành động dựa trực tiếp trên "phòng ban" như nguyên nhân sẽ dẫn đến can thiệp sai mục tiêu – ví dụ tổ chức team-building cho phòng đó trong khi nguyên nhân thực sự là lương thấp hơn thị trường.
-2. Phân tích và xử lý confounding factors
-Bước đầu tiên là kiểm tra xem tác động của "phòng ban" có biến mất hay giảm đáng kể khi kiểm soát đồng thời các biến như mức lương, thâm niên, và điểm hiệu suất không. Nếu sau khi kiểm soát các biến này, tác động của "phòng ban" trở nên không đáng kể về mặt thống kê, thì đó là bằng chứng rằng "phòng ban" chỉ là proxy cho các yếu tố thực sự quan trọng đó.
-Bước thứ hai là điều tra định tính bổ sung. Phân tích dữ liệu chỉ có thể chỉ ra tương quan, không thể giải thích cơ chế. Phỏng vấn exit với nhân viên đã nghỉ việc từ phòng đó, khảo sát mức độ hài lòng nặc danh, và trao đổi trực tiếp với nhân viên hiện tại là những nguồn thông tin không thể thiếu để hiểu bức tranh đầy đủ và đưa ra can thiệp đúng hướng.
+Phân tích dữ liệu cảm biến
+- Các giải thuật phân tích dữ liệu giúp hệ thống IoT hiểu, dự đoán và phản ứng với dữ liệu từ cảm biến. Bao gồm học máy, học sâu, thống kê, chuỗi thời gian và xử lý tại biên.
+- Học máy: Sử dụng các thuật toán như Decision Tree, Random Forest,… phân loại trạng thái thiết bị hoặc dự đoán sự cố. Ví dụ: dự đoán lỗi động cơ từ dữ liệu cảm biến rung.
+- Học sâu: Áp dụng CNN, RNN phân tích dữ liệu phức tạp như hình ảnh, chuỗi thời gian. Ví dụ: nhận dạng hình ảnh từ camera IoT hoặc phân tích nhịp tim từ cảm biến y tế.
+- Phân tích thống kê và chuỗi thời gian
+- Xử lý dữ liệu tại biên (Edge Analytics)
 
-Câu 15: Một công ty muốn dùng dữ liệu cũ để dự đoán khách hàng nào sẽ phản hồi với chiến dịch quảng cáo mới. Tuy nhiên, chiến dịch mới có thông điệp, kênh truyền thông và nhóm sản phẩm khác hoàn toàn chiến dịch cũ. Anh/chị hãy phân tích rủi ro khi dùng dữ liệu lịch sử trong tình huống này và đề xuất cách chuẩn bị dữ liệu phù hợp hơn.
-Rủi ro khi dùng dữ liệu chiến dịch cũ để dự đoán phản hồi cho chiến dịch mới hoàn toàn khác
-Đây là tình huống điển hình của vấn đề distribution shift (phân phối dữ liệu thay đổi) kết hợp với vấn đề domain transfer (chuyển miền áp dụng). Mô hình học máy giả định rằng quy luật học được từ dữ liệu cũ vẫn còn hiệu lực trong hoàn cảnh mới – nhưng khi chiến dịch mới khác hoàn toàn về thông điệp, kênh và sản phẩm, giả định đó sụp đổ.
-1. Phân tích rủi ro cụ thể
-Mô hình huấn luyện trên dữ liệu chiến dịch cũ học được các mẫu phản hồi đặc thù của chiến dịch đó: loại khách hàng nào phản hồi với thông điệp đó, trên kênh đó, với sản phẩm đó. Những mẫu này có thể hoàn toàn không áp dụng được cho chiến dịch mới. Khách hàng phản hồi với email khuyến mãi giảm giá cho sản phẩm A không nhất thiết là những người sẽ phản hồi với quảng cáo video cảm xúc trên mạng xã hội cho sản phẩm B.
-Hơn nữa, việc dùng mô hình cũ có thể dẫn đến tình trạng nhắm mục tiêu sai hoàn toàn: ngân sách chiến dịch bị phân bổ cho những người từng phản hồi với chiến dịch cũ nhưng thực ra không quan tâm đến thông điệp và sản phẩm mới, trong khi bỏ qua tệp khách hàng tiềm năng thực sự của chiến dịch mới.
-2. Đề xuất cách chuẩn bị dữ liệu và mô hình phù hợp hơn
-Giải pháp lý tưởng nhất là thu thập dữ liệu thực tế cho chiến dịch mới trước khi triển khai toàn bộ. Thực hiện chiến dịch thử nghiệm quy mô nhỏ (pilot) trên mẫu ngẫu nhiên đủ lớn để thu thập phản hồi thực tế, sau đó dùng dữ liệu đó để xây dựng hoặc tinh chỉnh mô hình. Cách này đòi hỏi thêm thời gian nhưng tránh được rủi ro triển khai toàn bộ với mô hình sai.
-Nếu không có đủ thời gian cho pilot, cần chuyển sang sử dụng các đặc trưng ổn định hơn theo thời gian và bất biến với loại chiến dịch: đặc điểm nhân khẩu học, hành vi mua hàng dài hạn, mức độ gắn kết với thương hiệu, và giá trị vòng đời khách hàng. Những đặc trưng này ít bị ảnh hưởng bởi sự thay đổi chiến dịch hơn so với lịch sử phản hồi chiến dịch cụ thể. Ngoài ra, nên kết hợp phán đoán chuyên gia của đội marketing về nhóm mục tiêu của chiến dịch mới như một lớp lọc bổ sung cho đầu ra của mô hình.
+CHƯƠNG 3
 
-Câu 16: Trong dữ liệu bồi thường bảo hiểm, có một số hồ sơ yêu cầu bồi thường với số tiền rất lớn so với phần còn lại. Nhân viên đề xuất xóa toàn bộ các giá trị này vì cho rằng đó là dữ liệu ngoại lai (Outlier). Anh/chị có đồng ý không? Hãy phân tích khi nào nên xóa, khi nào nên giữ và khi nào cần xử lý theo cách khác.
-Xử lý giá trị ngoại lai trong dữ liệu bồi thường bảo hiểm
-Đề xuất xóa toàn bộ các hồ sơ có số tiền bồi thường rất lớn vì cho chúng là ngoại lai thể hiện một hiểu lầm căn bản về bản chất của dữ liệu bảo hiểm và mục tiêu của phân tích. Quyết định xử lý ngoại lai không bao giờ là quyết định kỹ thuật thuần túy – nó phải được đặt trong bối cảnh kinh doanh và mục tiêu mô hình hóa cụ thể.
-1. Khi nào nên xóa ngoại lai
-Chỉ nên xóa khi có bằng chứng rõ ràng và có thể kiểm chứng được rằng giá trị đó là lỗi nhập liệu, lỗi đo lường, hoặc thuộc về một tổng thể khác với tổng thể cần phân tích. Ví dụ cụ thể trong bảo hiểm: hồ sơ có số tiền bồi thường âm, hồ sơ có ngày sự kiện xảy ra sau ngày lập hồ sơ, hoặc hồ sơ ghi nhận số tiền bồi thường vượt quá giới hạn hợp đồng nhiều lần. Những trường hợp này là lỗi dữ liệu xác nhận cần xóa hoặc sửa chữa.
-2. Khi nào nên giữ ngoại lai
-Trong lĩnh vực bảo hiểm, các hồ sơ bồi thường có giá trị rất lớn (catastrophic claims) như tai nạn lao động nghiêm trọng, cháy nổ lớn, hay bệnh hiểm nghèo kéo dài là hoàn toàn hợp lệ và đại diện cho rủi ro cốt lõi mà công ty bảo hiểm cần định giá và quản lý. Đây chính xác là những trường hợp mà mô hình cần học để đánh giá rủi ro đuôi phân phối (tail risk). Xóa chúng sẽ tạo ra mô hình có vẻ tốt trên paper nhưng sẽ đánh giá thấp nghiêm trọng xác suất và mức độ của các tổn thất lớn trong thực tế – có thể gây ra tổn thất tài chính nghiêm trọng cho công ty.
-3. Khi nào cần xử lý theo cách khác
-Thay vì xóa, có một số phương án xử lý tinh tế hơn. Phép biến đổi logarithm (log transformation) giúp thu hẹp khoảng giá trị và giảm ảnh hưởng của các giá trị cực đại mà không mất thông tin. Winsorization (cắt bớt tại một phân vị nhất định) giảm ảnh hưởng của các điểm cực trị mà vẫn giữ lại chúng trong tập dữ liệu với giá trị được điều chỉnh. Xây dựng mô hình riêng biệt cho phân khúc bồi thường lớn (severity model) – một mô hình học các quy luật của những hồ sơ có giá trị cao – là hướng tiếp cận chuyên nghiệp được sử dụng rộng rãi trong ngành actuarial.
+I. IPv6 cho mạng IoT
+Địa chỉ IPv6 có chiều dài 128bit với tổng không gian IPv6 là 2^128 địa chỉ
++ Các dạng địa chỉ IPv6
+Địa chỉ IPv6 không còn duy trì khái niệm broadcast. Mọi chức năng của địa chỉ broadcast trong IPv4 được đảm nhiệm thay thế bởi địa chỉ IPv6 multicast. Theo cách thức gói tin được gửi đến đích, IPv6 bao gồm ba loại địa chỉ sau:
+- Unicast: Địa chỉ unicast xác định một giao diện duy nhất. Địa chỉ unicast được sử dụng trong giao tiếp một – một
+- Multicast: Địa chỉ multicast định danh một nhóm nhiều giao diện. Địa chỉ multicast được sử dụng trong giao tiếp một – nhiều.
+- Anycast: Anycast là khái niệm mới của địa chỉ IPv6. Địa chỉ anycast cũng xác định tập hợp nhiều giao diện. Tuy nhiên, trong mô hình định tuyến, gói tin có địa chỉ đích anycast chỉ được gửi tới một giao diện duy nhất trong tập hợp. Giao diện đó là giao diện “gần nhất” theo khái niệm của thủ tục định tuyến.
 
-Câu 17: Một tập dữ liệu giá nhà thiếu thông tin về khoảng cách tới trung tâm thành phố ở 40% số dòng. Đây lại là biến được cho là rất quan trọng. Anh/chị sẽ xử lý vấn đề này như thế nào? Hãy so sánh các lựa chọn như xóa dòng, điền giá trị thiếu (Missing Value Imputation), bổ sung dữ liệu từ nguồn khác hoặc thay thế bằng biến liên quan.
-Xử lý giá trị thiếu của biến quan trọng "khoảng cách tới trung tâm" trong 40% dữ liệu giá nhà
-Khi một biến được đánh giá là quan trọng bị thiếu đến 40% dòng dữ liệu, đây là vấn đề nghiêm trọng cần được xử lý cẩn thận bởi vì quyết định sai có thể tạo ra thiên kiến hệ thống hoặc làm mất thông tin giá trị. Không có một giải pháp duy nhất đúng – lựa chọn phù hợp nhất phụ thuộc vào nguyên nhân thiếu dữ liệu và khả năng thu thập thêm thông tin.
-1. Xóa các dòng bị thiếu – và tại sao đây thường là lựa chọn tồi
-Xóa 40% dòng dữ liệu là một mất mát lớn về khối lượng thông tin. Quan trọng hơn, cần hiểu tại sao dữ liệu bị thiếu (missing mechanism). Nếu dữ liệu thiếu không hoàn toàn ngẫu nhiên (Missing Not At Random – MNAR) – ví dụ chỉ thiếu ở các khu vực ngoại thành vì hệ thống thu thập dữ liệu chủ yếu phủ trung tâm – thì xóa các dòng này sẽ loại bỏ có chọn lọc một phân khúc thị trường cụ thể, tạo ra mô hình thiên kiến về mặt địa lý.
-2. Điền giá trị thiếu (Imputation)
-Imputation bằng giá trị trung vị toàn tập là giải pháp đơn giản nhưng kém chính xác: giá trị khoảng cách ở trung tâm và ngoại thành rất khác nhau, nên trung vị tổng thể không đại diện tốt cho bất kỳ nhóm nào. Imputation bằng mô hình phụ (model-based imputation) – xây dựng một mô hình hồi quy dự đoán khoảng cách dựa trên các biến khác như tọa độ GPS, mã phường xã, tên đường – cho kết quả tốt hơn đáng kể. Multiple Imputation tạo ra nhiều phiên bản điền giá trị và kết hợp kết quả để phản ánh sự không chắc chắn.
-3. Bổ sung dữ liệu từ nguồn bên ngoài
-Đây là giải pháp tốt nhất nếu có thể thực hiện được. Nếu dữ liệu có thông tin địa chỉ, có thể sử dụng API bản đồ như Google Maps Distance Matrix API hay OpenStreetMap/Nominatim để tính khoảng cách thực tế từ địa chỉ của từng bất động sản đến điểm trung tâm xác định. Đây là thông tin thực sự, không phải ước đoán, và hoàn toàn khả thi về mặt kỹ thuật.
-4. Thay thế bằng biến liên quan
-Nếu không thể thu thập dữ liệu khoảng cách, có thể thay thế bằng các biến proxy nắm bắt được một phần thông tin vị trí: mã quận/huyện (phản ánh khu vực địa lý), thời gian đi lại ước tính đến trung tâm theo phương tiện công cộng (nếu có), hay mật độ dân số của khu vực (thường tương quan thuận với vị trí trung tâm). Cần kiểm tra mức độ tương quan giữa proxy và biến gốc trên phần dữ liệu không bị thiếu để đánh giá chất lượng thay thế.
+Các lợi thế từ sự cải thiện thiết kế của IPv6 phù hợp với IoT 
+Các lợi ích và ưu điểm của IPv6 cho IoT có thể được liệt kê như sau: 
+• Khả năng mở rộng 
+IPv6 cung cấp không gian địa chỉ khổng lồ với 2128 (3,4×1038) địa chỉ, đủ để giải quyết nhu cầu của bất kỳ thiết bị giao tiếp hiện tại và tương lai. 
+ • Giải quyết rào cản NAT 
+Nhiều ứng dụng IoT không chấp nhận NAT, vì yêu cầu địa chỉ có khả năng truy cập toàn cầu. IPv6 không cần thiết phải dùng NAT.
+• Cải thiện về định tuyến 
+IPv6 cung cấp kết nối end-to-end, với cơ chế định tuyến hiệu quả hơn, giảm kích thước và độ phức tạp của bảng định tuyến. IPv6 cho phép các nhà cung cấp dịch vụ Internet (ISP) tổ hợp các tiền tố trong mạng của khách hàng của họ thành một tiền tố duy nhất và quảng bá chỉ một tiền tố này trên IPv6.
+• Tự động cấu hình địa chỉ không trạng thái Stateless (SLAAC) 
+IPv6 cung cấp cơ chế tự cấu hình địa chỉ (cơ chế không trạng thái). Điều này cho phép cấu hình plug-and-play, không cần tới cấu hình nhân công hay thông qua sự phân phối IP bằng máy chủ DHCP. Tính năng này rất hữu ích trong mạng IoT.
+• Multicast và Anycast 
+Sử dụng multicast trong IPv6 hạn chế rủi ro hơn trong IPv4 rất nhiều nhờ vào cách tạo địa chỉ cho các nhóm điểm đến. IP multicast đặc biệt hữu ích trong các mạng IoT quy mô lớn.
+Anycast không được thiết kế trong IPv4. Trong IPv6, anycast cho phép xác minh tính sẵn sàng của thiết bị trong mạng. Anycast rất hữu ích trong mạng cục bộ và mạng cảm biến. Nó có thể được sử dụng cho các kho lưu trữ tài nguyên IoT, các máy chủ bảo mật và các cổng kết nối đa hướng.
+• Chất lượng dịch vụ 
+Cấu trúc địa chỉ IPv6 cung cấp một số bit để xác định mức Chất lượng dịch vụ (QoS) trong xử lý các gói tin. Ví dụ: IPv6 có thể sử dụng các tính năng QoS như Diffserv hoặc IntServ để ưu tiên các cảnh báo cảm biến khẩn cấp. Tính năng này đã được khai thác thực tế trên các bộ định tuyến thương mại khi chúng đã được cấu hình để sử dụng các bit này trong địa chỉ IPv6. 
+• Tính di động 
+IPv6 cung cấp các tính năng và giải pháp mạnh mẽ để hỗ trợ tính di động của cả hai nút cuối, và các nút định tuyến. IPv4 cũng cung cấp tính di động nhưng giao thức Internet di động (MIP) mà IPv4 sử dụng rất không hiệu quả: mỗi gói phải đi qua Home Agent bằng đường dẫn hình tam giác. Trong IPv6, một phiên bản mới của MIP là MIPv6 đã được phát triển. So với MIP, MIPv6 giảm độ trễ chuyển giao nhờ một số tối ưu hóa trong các cơ chế: phát hiện chuyển động (MD); phát hiện địa chỉ trùng lặp (DAD) và Cập nhật ràng buộc (BU). 
+• Bảo mật 
+Thiết kế của IPv4 không tính đến vấn đề bảo mật. Do đó, bảo mật trong IPv4 phải được thực hiện bằng các ứng dụng. Để khắc phục hạn chế này, tính năng bảo mật được thiết kế trong IPv6, có thể kể tới gồm: (i) IPSec: IPv6 được thiết kế cho kết nối đầu cuối – đầu cuối; (ii) Bắt buộc sử dụng IPsec cho IPv6 di động để đảm bảo khả năng định tuyến trở lại; (iii) Không gian địa chỉ lớn; (iv) Thủ tục Neighbor Discovery.
+• Phiên bản IPv6 có sẵn cho các thiết bị tiêu thụ điện năng thấp 
+Việc sử dụng IPv6 cho các ứng dụng IoT đã được nghiên cứu trong nhiều năm. Một trong những kết quả đáng kể là phiên bản nén của IPv6 cho thiết bị công suất thấp, cụ thể là IPv6 qua Mạng cá nhân không dây công suất thấp (6LoWPAN). Đây là một cơ chế đơn giản và hiệu quả cho phép rút ngắn kích thước địa chỉ IPv6 cho các thiết bị có hạn chế, đồng thời cho phép bộ định tuyến biên dịch các địa chỉ nén thành địa chỉ IPv6 thông thường.
 
-Câu 18: Một trường học muốn dự đoán sinh viên có nguy cơ trượt môn. Dữ liệu điểm giữa kỳ có khả năng dự đoán rất tốt kết quả cuối kỳ, nhưng điểm giữa kỳ chỉ 3 có sau nửa học kỳ. Nếu mục tiêu là cảnh báo sớm ngay từ tuần thứ 2, anh/chị có nên dùng biến này không? Hãy phân tích sự phù hợp giữa thời điểm có dữ liệu và mục tiêu dự đoán.
-Tính phù hợp giữa thời điểm có dữ liệu và mục tiêu dự đoán sớm từ tuần thứ 2
-Bài toán cảnh báo sớm nguy cơ học tập kém có một ràng buộc thực tế không thể bỏ qua: giá trị của cảnh báo hoàn toàn phụ thuộc vào việc nó được đưa ra đủ sớm để có thể can thiệp hiệu quả. Một cảnh báo chính xác nhưng quá muộn không có giá trị hơn việc không có cảnh báo.
-1. Phân tích vấn đề thời điểm dữ liệu
-Điểm giữa kỳ là một đặc trưng dự đoán mạnh về mặt thống kê – điểm số thực tế phản ánh trực tiếp năng lực và tiến độ học tập của sinh viên. Nhưng nó chỉ có sau nửa học kỳ, tức là khoảng 7-8 tuần. Nếu mục tiêu là cảnh báo từ tuần thứ 2, thì điểm giữa kỳ còn 5-6 tuần nữa mới xuất hiện – đây là thông tin từ tương lai và không được phép đưa vào mô hình. Làm như vậy là một dạng temporal data leakage: mô hình sẽ hoạt động tốt trong kiểm thử (vì dữ liệu kiểm thử cũng chứa điểm giữa kỳ) nhưng thất bại hoàn toàn khi triển khai thực tế ở tuần 2.
-Hơn nữa, ngay cả nếu chúng ta chờ đến khi có điểm giữa kỳ và mới cảnh báo, thì "cảnh báo sớm" đó thực ra không sớm. Từ giữa học kỳ đến cuối kỳ còn lại rất ít thời gian để tổ chức tư vấn học thuật, thay đổi phương pháp học, hoặc bổ sung kiến thức một cách có hệ thống.
-2. Đặc trưng khả dụng trong tuần thứ 2 và cách tối ưu hóa
-Ở tuần thứ 2, những tín hiệu có thể quan sát được bao gồm: tỷ lệ điểm danh trong các buổi học đầu tiên, số lần nộp bài tập đúng hạn (nếu có bài tập trong tuần đầu), thời lượng và thời điểm truy cập tài liệu học trực tuyến, kết quả bài kiểm tra ngắn (diagnostic quiz) nếu giảng viên tổ chức, và điểm đánh giá đầu vào hoặc kết quả năm học trước.
-Dù các tín hiệu này yếu hơn điểm giữa kỳ về mặt dự đoán, chúng có giá trị thực tiễn vì tạo ra cửa sổ can thiệp thực sự rộng. Một mô hình có độ chính xác trung bình nhưng cảnh báo sớm 6 tuần có thể mang lại kết quả tốt hơn nhiều cho sinh viên so với một mô hình rất chính xác nhưng chỉ cảnh báo 3 tuần trước khi thi. Trường học cần xác định rõ mục tiêu: chính xác hay sớm, và thiết kế mô hình tương ứng với ưu tiên đó.
+II. Định tuyến trong mạng tổn hao năng lượng thấp (Low-power Lossy Networks - LLN)
++ Mạng tổn hao năng lượng thấp (LLN): Mạng tổn hao năng lượng thấp (LLN) là một mạng bao gồm một hoặc nhiều bộ định tuyến và những thiết bị nhúng bị giới hạn điện năng nhận vào, giới hạn bộ nhớ và tài nguyên xử lý. LLN tối ưu nhất khi sử dụng trong những trường hợp tiết kiệm năng lượng
 
-Câu 19: Một bệnh viện có dữ liệu bệnh nhân từ nhiều khoa khác nhau. Một số khoa nhập dữ liệu rất đầy đủ, một số khoa nhập thiếu nhiều thông tin. Nếu xây dựng mô hình AI trên toàn bộ dữ liệu này, anh/chị dự đoán có thể gặp những vấn đề gì? Hãy đề xuất cách kiểm tra chất lượng dữ liệu theo từng nguồn phát sinh dữ liệu.
-Vấn đề khi xây dựng mô hình AI trên dữ liệu bệnh nhân từ nhiều khoa có chất lượng không đồng đều
-Trong môi trường bệnh viện đa khoa, dữ liệu được tạo ra bởi nhiều bộ phận với quy trình, hệ thống và thói quen nhập liệu khác nhau. Khi những luồng dữ liệu không đồng nhất này được gộp lại để xây dựng một mô hình AI chung, kết quả thường chứa đựng những thiên kiến và điểm yếu không rõ ràng nhưng có hệ thống.
-1. Những vấn đề có thể xảy ra
-Vấn đề đầu tiên và nghiêm trọng nhất là source bias – mô hình học cách nhận diện đặc trưng của quy trình nhập liệu thay vì đặc trưng lâm sàng thực sự. Nếu khoa A nhập đầy đủ và khoa B nhập thiếu nhiều trường, mô hình có thể học được rằng "dữ liệu đầy đủ" tương quan với kết quả điều trị tốt hơn – không phải vì bệnh nhân được chăm sóc tốt hơn, mà đơn giản là vì khoa đó ghi chép cẩn thận hơn. Đây là tương quan giả tạo (spurious correlation) có thể dẫn đến kết luận sai về chất lượng điều trị.
-Vấn đề thứ hai là sự không nhất quán về ngữ nghĩa. Các khoa khác nhau có thể dùng cùng một trường dữ liệu để ghi nhận thông tin khác nhau. Ví dụ, trường "chẩn đoán chính" có thể được điền theo tiêu chuẩn ICD-10 nghiêm ngặt ở một khoa, nhưng được điền bằng mô tả tự do ở khoa khác. Khi mô hình xử lý cả hai, nó sẽ học được những quy luật hỗn tạp không phản ánh thực tế lâm sàng.
-Vấn đề thứ ba là sự sụp đổ hiệu suất khi triển khai. Nếu mô hình được huấn luyện chủ yếu trên dữ liệu của khoa nhập liệu đầy đủ, khi áp dụng cho bệnh nhân từ khoa nhập liệu thiếu, các giá trị thiếu sẽ được xử lý khác với lúc huấn luyện và mô hình có thể đưa ra dự đoán không đáng tin cậy.
-2. Kiểm tra chất lượng dữ liệu theo từng nguồn phát sinh
-Cần xây dựng hệ thống theo dõi chất lượng dữ liệu (data quality dashboard) phân tách theo từng khoa, bao gồm: tỷ lệ thiếu dữ liệu (missing rate) cho từng trường quan trọng, phân phối của các biến số theo từng khoa để phát hiện bất thường, tỷ lệ nhất quán định dạng (format consistency rate), và lịch sử thay đổi theo thời gian. Khi phát hiện khoa nào có chất lượng nhập liệu kém, cần can thiệp ngay từ nguồn: đào tạo lại, chuẩn hóa quy trình, hoặc tích hợp kiểm tra tự động trong hệ thống nhập liệu. Mô hình AI chỉ có thể tốt khi dữ liệu đầu vào từ tất cả các nguồn đáp ứng tiêu chuẩn chất lượng nhất quán.
++ Giao thức định tuyến trong mạng tổn hao năng lượng thấp (RPL)
+RPL là giao thức định tuyến cho các mạng tổn hao năng lượng thấp nói chung và mạng cảm biến không dây nói riêng. Các mạng có đặc điểm: 1. Tiêu thụ năng lượng thấp, 2.Có khả năng mất mát dữ liệu cao, 3.Gồm nhiều thiết bị cảm biến, thường dùng trong môi trường IoT.
+RPL sử dụng các DAG trong mạng để định tuyến. 
+- DAG ROOT: nút có chức năng tập trung và xử lý dữ liệu từ các nút khác trong mạng gửi đến. Mọi tuyến liên kết trong DAG đều hướng về và kết thúc tại DAG ROOT.
+- DAG rank: thông số cho biết vị trí tương đối của nút so với DAG ROOT. Những nút có rank càng lớn càng xa DAG ROOT. DAG ROOT luôn có rank bằng 1.
+- DAG parent: Trong cùng một DAG, nút A được gọi là nút cha (parent) của nút B khi A và B có kết nối trực tiếp với nhau và A có rank nhỏ hơn B. Khi đó, nút B được gọi là nút con (children) của nút A.
+- DAG sibling: nút A là ngang cấp (sibling) với nút B trong một DAG nếu chúng có cùng rank trong DAG đó.
 
-Câu 20: Một mô hình dự đoán thời gian giao hàng được huấn luyện trên dữ liệu của khu vực nội thành. Khi áp dụng sang khu vực nông thôn, mô hình dự đoán kém chính xác. Anh/chị hãy phân tích vấn đề khác biệt phân phối dữ liệu (Data Distribution Shift) và đề xuất các bước cần làm trước khi triển khai mô hình sang khu vực mới.
-Data Distribution Shift khi triển khai mô hình dự đoán thời gian giao hàng từ nội thành sang nông thôn
-Data distribution shift – hay khác biệt phân phối dữ liệu – xảy ra khi đặc điểm thống kê của dữ liệu trong môi trường triển khai khác biệt có hệ thống so với dữ liệu mà mô hình đã học. Đây là một trong những nguyên nhân phổ biến và nguy hiểm nhất khiến mô hình hoạt động tốt trong phòng phát triển nhưng thất bại nghiêm trọng khi đưa vào thực tế, đặc biệt khi domain chuyển đổi có sự khác biệt lớn như từ nội thành sang nông thôn.
-1. Phân tích bản chất của sự khác biệt phân phối
-Mô hình được huấn luyện trên dữ liệu nội thành đã học các quy luật đặc thù của môi trường đó: mạng lưới đường xá dày đặc, khoảng cách giao hàng ngắn, nhiều điểm giao hàng tập trung trong cùng một khu vực cho phép tối ưu lộ trình, lưu lượng giao thông cao nhưng có thể dự đoán theo giờ, và cơ sở hạ tầng hỗ trợ (thang máy, bảo vệ, địa chỉ rõ ràng).
-Khu vực nông thôn có đặc thù hoàn toàn trái ngược: khoảng cách giao hàng có thể gấp nhiều lần, mật độ đơn hàng rất thấp, đường xá ít và chất lượng biến động lớn (đường đất, không có biển chỉ đường rõ ràng), địa chỉ thường mô tả không chuẩn hóa, và khả năng gặp tình huống bất ngờ cao hơn nhiều. Các đặc trưng dự đoán tốt ở nội thành – như khoảng cách theo đường chim bay – có thể mất đi giá trị dự báo đáng kể khi đường thực tế có thể dài gấp đôi vì phải vòng quanh địa hình.
-2. Các bước cần thực hiện trước khi triển khai sang khu vực mới
-Bước một là phân tích định lượng sự khác biệt phân phối. Sử dụng các kiểm định thống kê như Kolmogorov-Smirnov test hay Population Stability Index (PSI) để đo lường mức độ khác biệt phân phối của từng đặc trưng đầu vào quan trọng giữa dữ liệu nội thành và dữ liệu nông thôn. PSI > 0.25 thường được coi là mức báo động cần xem xét lại mô hình.
-Bước hai là thu thập dữ liệu thí điểm từ khu vực nông thôn và đánh giá hiệu suất mô hình hiện tại trên tập dữ liệu đó. Phân tích phân phối sai số theo khu vực địa lý, loại đường, và khoảng cách để xác định rõ mô hình đang sai theo hướng nào và nghiêm trọng đến mức nào.
-Bước ba là quyết định chiến lược thích ứng dựa trên mức độ khác biệt. Nếu khác biệt vừa phải, có thể fine-tune mô hình hiện tại bằng dữ liệu nông thôn bổ sung với kỹ thuật transfer learning. Nếu khác biệt quá lớn, nên xây dựng mô hình riêng biệt cho khu vực nông thôn với tập đặc trưng được thiết kế phù hợp với đặc thù địa bàn đó.
-Bước bốn là thiết lập hệ thống giám sát liên tục sau triển khai. Theo dõi sai số dự đoán theo thời gian và theo khu vực địa lý để phát hiện sớm bất kỳ drift nào mới xuất hiện. Thiết lập ngưỡng cảnh báo tự động và quy trình tái huấn luyện định kỳ để mô hình luôn cập nhật với thực tế vận hành.
+Cấu trúc DODAG: Mỗi nút trong mạng xây dựng một cây định tuyến hướng về một đích (thường là bộ thu dữ liệu hoặc gateway).
+Hỗ trợ nhiều loại lưu lượng:
+- Upward traffic: từ thiết bị đến root.
+- Downward traffic: từ root đến thiết bị.
+- Point-to-point traffic: giữa các thiết bị trong mạng.
+
++ RPL Instance (Thực thể RPL): một tập hợp các cấu hình định tuyến riêng biệt trong một mạng RPL.
+Mỗi instance có thể có:
+- Mục tiêu định tuyến khác nhau: ví dụ tối ưu hóa độ trễ, tiết kiệm năng lượng, độ tin cậy…
+- Các tham số hoạt động riêng biệt: như metric, mode of operation, các chính sách định tuyến.
+- Một DODAG hoặc nhiều DODAGs: là cấu trúc cây định tuyến hướng về một hoặc nhiều nút root.
+
+Một số đặc điểm chính của RPL Instance:
+- Instance ID: Mỗi instance được định danh bằng một mã số duy nhất gọi là Instance ID.
+- Phân biệt traffic: Cho phép các loại traffic khác nhau (ví dụ: dữ liệu cảm biến, điều khiển, cảnh báo…) sử dụng các đường định tuyến tối ưu riêng.
+- Quản lý linh hoạt: Một thiết bị có thể tham gia vào nhiều RPL Instance cùng lúc nếu cần thiết.
+
++ CÁC LOẠI BẢN TIN ĐIỀU KHIỂN TRONG DAG: 1.DAG Information Soliciation (DIS), 2.DAG Information Object (DIO), 3.Destination Advertisement Object (DAO)
+
++ ĐẶC ĐIỂM CỦA RPL
+- Tối ưu hóa năng lượng: RPL sử dụng các thuật toán định tuyến giúp giảm tiêu thụ năng lượng và kéo dài tuổi thọ thiết bị.
+- Khả năng phục hồi: Có thể tự động tái cấu trúc cây định tuyến khi có nút bị lỗi hoặc thay đổi vị trí.
+- Sử dụng các hàm mục tiêu (Objective Function): Dựa vào độ tin cậy, độ trễ, năng lượng còn lại để chọn tuyến đường tốt nhất.
+
++ Hàm mục tiêu
+- Hàm OF0 tìm quãng đường ngắn nhất đến nút gốc root. OF0 đánh dấu các nút gần root nhất, đặt thứ tự ưu tiên. Từ đó, chọn ra các nút cha có thứ tự ưu tiên cao nhất. Sử dụng metric là số lượng bước nhảy (hop count).
+- Hàm MRHOF sử dụng ETX (Expected Transmission Count – số lần truyền dự kiến) làm metric chính để đánh giá chất lượng tuyến đường. Các bước hoạt động:
+
+III. KIẾN TRÚC IoT
+3.2. Mô hình tham chiếu 3 lớp
+Lớp 1: Lớp thiết bị
+Lớp này bao gồm các cảm biến, thiết bị chấp hành và các bộ điều khiển như vi xử lý/vi điều khiển, PLC, FPGA đến các máy tính nhúng.
+Lớp thiết bị thực hiện đo lường và thu thập dữ liệu các đại lượng vật lý thông qua các cảm biến, điều khiển các thiết bị chấp hành và có thể truyền và nhận dữ liệu từ các thiết bị khác qua mạng.
+Lớp 2: Lớp mạng
+Chức năng lớp mạng xác định các giao thức truyền thông khác nhau được sử dụng cho việc kết nối mạng và thực hiện điện toán biên.
+Lớp mạng bao gồm các thiết bị liên kết mạng như Hub, Switch, Router; các thiết bị chuyển đổi giao thức mạng như Gateways; đến các thiết bị có khả năng lưu trữ, xử lý cục bộ trước khi gửi dữ liệu lên Server trung tâm.
+Lớp 3: Lớp ứng dụng
+Đây là trung tâm lưu trữ dữ liệu hay đám mây điện tử.
+Lớp này thực hiện thu nhận dữ liệu từ lớp mạng, lưu trữ, xử lý dữ liệu và ra quyết định dựa trên các thuật toán AI/ML hoặc các công cụ phân tích dữ liệu hiện đại.
+
+3.3. Mô hình tham chiếu IoT 5 lớp	
+Lớp 1: Lớp đối tượng (Objects Layer)
+Cảm biến/Thiết bị là thành phần quan trọng giúp thu thập dữ liệu trực tiếp từ môi trường xung quanh. Tất cả dữ liệu này có thể có nhiều mức độ phức tạp khác nhau. Nó có thể là một cảm biến theo dõi nhiệt độ đơn giản, hoặc nó có thể ở dạng nguồn cấp dữ liệu video.
+Lớp 2: Lớp trừu tượng đối tượng (Object Abstraction Layer)
+Tất cả dữ liệu thu thập được sẽ được gửi đến cơ sở hạ tầng đám mây. Các cảm biến phải được kết nối với đám mây bằng nhiều phương tiện khác nhau
+Lớp 3: Lớp quản lý dịch vụ (Service Management Layer)
+	Lớp Quản lý dịch vụ hoặc Middleware (ghép nối) kết hợp dịch vụ với người yêu cầu dựa trên địa chỉ và tên. Lớp này cho phép các lập trình viên ứng dụng IoT làm việc với các đối tượng không đồng nhất mà không cần xem xét đến một nền tảng phần cứng cụ thể.
+Lớp 4: Lớp ứng dụng (Application Layer)
+	Lớp ứng dụng cung cấp các dịch vụ theo yêu cầu của khách hàng.(Ví dụ, lớp ứng dụng có thể cung cấp các phép đo nhiệt độ và độ ẩm không khí cho khách hàng yêu cầu dữ liệu đó.)
+Lớp 5: Lớp quản lý (business layer)
+	Lớp quản lý quản lý các hoạt động và dịch vụ hệ thống IoT tổng thể. Trách nhiệm của lớp này là xây dựng mô hình kinh doanh, đồ thị, lưu đồ, v.v. dựa trên dữ liệu nhận được từ lớp Ứng dụng.
+
+3.4. Mô hình tham chiếu IoT 7 lớp
+Thiết bị, kết nối, điện toán biên, tích lũy dữ liệu, trừu tượng hóa, ứng dụng, hợp tác & quy trình.
+
+IV. CÁC THÀNH PHẦN CỦA IoT
+B. Giao thức ứng dụng
+- Giao thức CoAP (Constrained Application Protocol):Giao thức ứng dụng dùng cho thiết bị IoT có tài nguyên hạn chế, hoạt động qua UDP để tiết kiệm năng lượng.
+- Giao thức MQTT (Message Queuing Telemetry Transport): Giao thức nhắn tin sử dụng mô hình xuất bản/đăng ký, phù hợp với mạng băng thông thấp và thiết bị hạn chế tài nguyên.
+- Giao thức XMPP (Extensible Messaging and Presence Protocol): Giao thức nhắn tin tức thời dựa trên XML, hỗ trợ xác thực, mã hóa và tương thích cao, có thể dùng trong IoT.
+
+C. Các giao thức cơ sở hạ tầng
+1. RPL – Routing Protocol for Low Power and Lossy Network: giao thức định tuyến cho mạng tổn hao năng lượng thấp nói chung và mạng cảm biến không dây nói riêng:
+
+2. 6LowPAN: Low power Wireless Personal Area Networks (WPAN) đây là khu vực mạng cá nhân không dây công suất thấp) mà nhiều IoT có thể giao tiếp dựa vào có một số đặc điểm đặc biệt khác với các công nghệ lớp liên kết trước đây như kích thước gói giới hạn (ví dụ: tối đa 127 byte cho IEEE 802.15.4), độ dài địa chỉ khác nhau và băng thông thấp
+
+Theo sau 6LoWPAN , biểu đồ dữ liệu được bao bọc bởi bởi sự kết hợp của một số tiêu đề. Các tiêu đề này có bốn loại được xác định bằng 2 bit :
+- (00) NO 6LoWPAN Header: các gói không phù hợp với đặc điểm kỹ thuật 6LoWPAN sẽ bị loại bỏ.
+- (01) Dispatch Header: Nén tiêu đề IPv6 hoặc đa hướng
+- (10) Mesh Addressing: xác định các gói IEEE 802.15.4 phải được chuyển tiếp đến trình liên kết.
+- (11) Fragmentation: dùng đối với các biểu đồ dữ liệu có độ dài vượt quá một khung IEEE 802.15.4
+Phân tích hiệu suất của 6LoWPAN trong mạng cảm biến không dây cho thấy độ trễ có tăng lên. Một số vấn đề khác như: tỷ lệ mất gói dữ liệu cao, dễ bị can thiệp
+
+3. IEEE 802.15.4: giao thức IEEE 802.15.4 được tạo ra để chỉ định lớp con trong Kiểm soát truy cập trung bình (MAC) và lớp vật lý (PHY) cho mạng vùng riêng không dây tốc độ thấp (LR-WPAN). Nó cung cấp một giao tiếp đáng tin cậy, khả năng hoạt động trên các nền tảng khác nhau và có thể xử lý một số lượng lớn các nút (khoảng 65k). Nó cũng cung cấp các dịch vụ bảo mật, mã hóa và xác thực ở mức độ cao. Tuy nhiên, nó không cung cấp đảm bảo QoS.
+
+IEEE 802.15.4 hỗ trợ ba băng tần kênh tần số và sử dụng phương pháp trải phổ chuỗi trực tiếp (DSSS).
+Dựa trên các kênh tần số đã sử dụng, lớp vật lý truyền và nhận dữ liệu trên ba tốc độ dữ liệu:
+- 250 kbps ở 2,4 GHz
+- 40 kbps ở 915 MHz
+- 20 kbps ở 868 MHz.
+Tần số cao và dải tần số rộng => thông lượng cao và độ trễ thấp
+Tần số thấp => độ nhạy tốt hơn và bao phủ khoảng cách lớn hơn.
+
+Chuẩn IEEE 802.15.4 hỗ trợ hai loại nút mạng:
+- Full Function Device(FFD) thiết bị đầy đủ chức năng hoạt động như một bộ điều phối mạng khu vực cá nhân (PAN) hoặc chỉ như một nút bình thường.
+- Reduced Function Device(RFD): thiết bị chức năng giảm là các nút rất đơn giản với tài nguyên bị hạn chế. Chúng chỉ có thể giao tiếp với một điều phối viên và bị giới hạn trong cấu trúc liên kết hình sao.
++ Tiêu chuẩn của các cấu trúc liên kết để tạo thành mạng IEEE 802.15.4 là hình sao, peer-to-peer (mesh), và cluster-tree.
+
+4. Bluetooth Low Energy(BLE): bluetooth năng lượng thấp hoặc bluetooth thông minh sử dụng radio tầm ngắn với lượng điện năng tối thiểu để hoạt động trong thời gian dài hơn (thậm chí trong nhiều năm) so với các phiên bản trước của nó.
+Ưu điển: phạm vi phủ sóng (khoảng 100 mét) gấp mười lần so với Bluetooth cổ điển trong khi độ trễ của nó thấp hơn 15 lần và có thể hoạt động nhờ công suất truyền từ 0,01 mW đến 10 mW.
+
+Điện năng tiêu thụ của BLE thấp hơn IEEE 802.15.4, IEEE 802.11ah có khả năng truyền dữ liệu tốt hơn IEEE 802.15.4 kể cả khi ở trạng thái có tải và không tải. Tuy nhiên IEEE 802.15.4 lại tiết kiệm năng lượng hơn, đặc biệt trong các mạng lưới lớn.
+
+5. EPCglobal: The Electronic Product Code(EPC) mã sản phẩm điện tử là một số nhận dạng duy nhất được lưu trữ trên thẻ RFID và được sử dụng cơ bản trong quản lý chuỗi cung ứng để xác định các mặt hàng.
+EPC được phân thành bốn loại: 96-bit, 64-bit (I), 64-bit (II) và 64-bit (III). Tất cả các loại EPC 64-bit hỗ trợ khoảng 16 000 công ty có danh tính riêng và bao gồm từ 1 đến 9 triệu loại sản phẩm và 33 triệu số sê-ri cho mỗi loại. Loại 96-bit hỗ trợ khoảng 268 triệu công ty có danh tính riêng, 16 triệu loại sản phẩm và 68 tỷ số sê-ri cho mỗi loại
+
+Hệ thống RFID chia thành 2 phần chính:
+- radio signal transponder (tag) bộ phát đáp tín hiệu vô tuyến
+- tag reader (bộ đọc thẻ).
+Qua một số bài nghiên cứu cho thấy giao thức EPC Gen-2 tốt hơn CDMA
+
+6. LTE-A ((Long Term Evolution—Advanced )(Tiến hóa dài hạn — Nâng cao): LTE-A bao gồm một tập hợp các giao thức truyền thông di động phù hợp tốt cho cơ sở hạ tầng Truyền thông kiểu máy (MTC) và IoT, đặc biệt là cho các thành phố thông minh nơi mong đợi độ bền lâu dài của cơ sở hạ tầng. Hơn nữa, nó vượt trội hơn các giải pháp di động khác về chi phí dịch vụ và khả năng mở rộng.
+
+Kiến trúc của mạng LTE-A dựa trên 2 phần chủ yếu
+- Đầu tiên là Mạng lõi (Core Network - CN): kiểm soát các thiết bị di động và xử lý các luồng gói IP.
+- Phần khác là mạng truy cập vô tuyến (RAN): xử lý truyền thông không dây và truy cập vô tuyến, đồng thời thiết lập các giao thức mặt phẳng người dùng và mặt phẳng điều khiển.
+RAN và CN được kết nối thông qua giao diện S1. Các thiết bị di động hoặc MTC có thể kết nối với các trạm gốc trực tiếp hoặc thông qua cổng MTC (MTCG). Tuy nhiên, giao thức này có những thách thức như tắc nghẽn mạng cao khi một số lượng lớn thiết bị đang truy cập mạng. Một thách thức khác, QoS có thể bị xâm phạm khi thiết bị MTC cố gắng truy cập mạng thông qua lựa chọn eNB hoặc MTCG.
+
+7. Z-Wave
+ Z-Wave như một giao thức truyền thông không dây công suất thấp cho mạng tự động hóa gia đình - Home Automation Networks (HAN), nó đã được sử dụng rộng rãi trong các ứng dụng điều khiển từ xa trong nhà thông minh cũng như các tên miền thương mại cỡ nhỏ.
+- Z-Wave cho phép kết nối điểm-điểm khoảng 30 mét, dùng cho các ứng dụng cần truyền dữ liệu nhỏ (ví dụ truyền tìn hiệu giữa các thiết bị thông minh trong nhà, cho phép chúng có thể “nói chuyện” với nhau)
+- Z-Wave hoạt động ở bằng tần ISM (khoảng 900MHz) và cho phép truyền đi với tốc độ 40kbps, và lên tới 200kbps.
+- Z-Wave có cấu trúc lưới. Các thiết bị (nút) được liên kết với 1 trung tâm. Qua đó sẽ dễ dàng điều khiển bằng điện thoại/ máy tính
+- Đánh giá: Nhược điểm: cấu trúc khép kín, không tương thích được với nhiều thiết bị, bị phụ thuộc vào đường truyền wifi, giá thành vẫn cao. Ưu điểm: độ tin cậy, khả năng mở rộng, hiệu suất mạnh.
